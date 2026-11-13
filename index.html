@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,6 +23,11 @@
             SECCION INICIO
         ========================= -->
         <section id="inicio" class="portada">
+
+         <!-- IMAGEN DE FONDO -->
+            <div class="fondo-portada">
+                <img src="IMG/bosque-novios.png" alt="">
+            </div>
 
             <!-- DECORACIONES -->
             <div class="decoracion-portada">
@@ -106,6 +110,37 @@
         </div>
 
 
+  <!-- MÚSICA -->
+<section class="seccion musica">
+
+    <div class="ornamento-musica">
+        <span></span>
+        ✦
+        <span></span>
+    </div>
+
+    <p class="musica-titulo">La melodía de nuestro cuento</p>
+
+    <p class="musica-texto">
+        Dale play y dejate llevar por nuestra historia.
+    </p>
+
+    <!-- BOTÓN PARA REPRODUCIR LA MÚSICA -->
+    <button class="boton-musica" id="boton-musica" type="button">
+        <span class="icono-musica">▶</span>
+        <span>Escuchar nuestra canción</span>
+    </button>
+
+    <p class="nombre-cancion">♪ El Castillo del Vagabundo</p>
+
+    <!-- CANCIÓN -->
+    <audio id="musica-boda" loop preload="auto">
+        <source src="./musica/castillo-vagabundo.mp3" type="audio/mpeg">
+    </audio>
+
+</section>
+
+
         <!-- 02. CUENTA REGRESIVA -->
         <section id="cuenta-regresiva" class="seccion cuenta-regresiva">
             <p class="etiqueta-seccion">CUENTA REGRESIVA</p>
@@ -184,6 +219,82 @@
         <div class="separador-lunar" aria-hidden="true">
             <img src="IMG/ramita-separador.svg" alt="">
         </div>
+        
+   <!--     9. CRONOGRAMA -->
+<section id="cronograma" class="seccion cronograma">
+
+    <div class="cronograma-contenido">
+
+        <p class="cronograma-subtitulo">Nuestro gran día</p>
+
+        <h2>Cronograma de nuestro día mágico</h2>
+
+        <div class="linea-tiempo">
+
+            <!-- Ceremonia religiosa -->
+            <div class="evento">
+                <div class="hora">19:00</div>
+
+                <div class="punto"></div>
+
+                <div class="detalle">
+                    <h3>El comienzo de nuestro “para siempre”</h3>
+                    <p>Ceremonia religiosa · Capilla Santa Teresita</p>
+                </div>
+            </div>
+
+            <!-- Apertura del salón -->
+            <div class="evento">
+                <div class="hora">20:30</div>
+
+                <div class="punto"></div>
+
+                <div class="detalle">
+                    <h3>Las puertas de nuestra celebración se abren</h3>
+                    <p>Apertura del salón Aurelia y bienvenida a nuestros queridos invitados</p>
+                </div>
+            </div>
+
+            <!-- Ceremonia civil -->
+            <div class="evento">
+                <div class="hora">21:00 – 21:15</div>
+
+                <div class="punto"></div>
+
+                <div class="detalle">
+                    <h3>Unidos bajo el cielo, unidos para siempre</h3>
+                    <p>Ceremonia civil al aire libre</p>
+                </div>
+            </div>
+
+            <!-- CEma -->
+            <div class="evento">
+                <div class="hora">21:30–23:00</div> 
+                <div class="punto"></div>
+
+                <div class="detalle">
+                    <h3>Un banquete para celebrar nuestro amor</h3>
+                    <p>Sabores y momentos compartidos bajo el encanto de esta noche.</p>
+                </div>
+            </div>
+
+            <!-- Fin -->
+            <div class="evento">
+                <div class="hora">04:30</div>
+
+                <div class="punto"></div>
+
+                <div class="detalle">
+                    <h3>El final de una noche para recordar</h3>
+                    <p>Fin de la velada de nuestros sueños</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
         <!-- 03. CEREMONIA RELIGIOSA -->
 <section id="iglesia" class="seccion ceremonia">
@@ -213,7 +324,7 @@
 
         <div class="detalle-evento">
             <span class="detalle-icono">◷</span>
-            <p class="horario-iglesia">Horario pendiente</p>
+            <p class="horario-iglesia">19:00hs</p>
         </div>
 
         <a 
@@ -255,22 +366,27 @@
 
         <p class="momento">Celebramos nuestro amor en</p>
 
-        <h3 class="lugar-civil">Lugar pendiente</h3>
+        <h3 class="lugar-civil">Aurelia salón de eventos</h3>
 
         <div class="detalle-evento">
             <span class="detalle-icono">⌖</span>
-            <p class="direccion-civil">Dirección pendiente</p>
+            <p class="direccion-civil">Ignacio Rivas 3057, Neuquén</p>
         </div>
 
         <div class="detalle-evento">
             <span class="detalle-icono">◷</span>
-            <p class="horario-civil">Horario pendiente</p>
+            <p class="horario-civil">21:00 hs</p>
         </div>
 
-        <a href="#" class="boton-ubicacion" target="_blank">
-            <span>⌖</span>
-            Cómo llegar
-        </a>
+            <a 
+    href="https://www.google.com/maps/place/Aurelia+sal%C3%B3n+de+eventos/@-38.9843803,-68.0822577,15z/data=!4m6!3m5!1s0x960a330066c0a725:0x9854f73803e143b3!8m2!3d-38.992481!4d-68.0805753!16s%2Fg%2F11yx7wyj23?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D"
+    class="boton-ubicacion"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    <span>⌖</span>
+    Cómo llegar
+</a>
 
     </div>
 
@@ -480,28 +596,32 @@
             <img src="IMG/ramita-separador.svg" alt="">
         </div>
 
+<!-- 10. CIERRE -->
+<section id="cierre" class="seccion cierre">
 
-        <!-- 10. CIERRE -->
-        <section id="cierre" class="seccion cierre">
+    <!-- IMAGEN DE FONDO -->
+    <div class="fondo-portada">
+        <img src="IMG/novios.png" alt="">
+    </div>
 
-            <div class="cuervos">
-                <!-- Cuervo rosa y cuervo negro -->
-                <!-- Incorporaremos sus ilustraciones y animaciones -->
-            </div>
+    <div class="cuervos">
+        <!-- Cuervo rosa y cuervo negro -->
+        <!-- Incorporaremos sus ilustraciones y animaciones -->
+    </div>
 
-            <h2>
-                Nuestro cuento no sería igual sin ustedes.
-            </h2>
+    <h2>
+        Nuestro cuento no sería igual sin ustedes.
+    </h2>
 
-            <p>
-                Gracias por acompañarnos en este día mágico.
-            </p>
+    <p>
+        Gracias por acompañarnos en este día mágico.
+    </p>
 
-            <p class="firma-final">
-                Con amor, Cecilia y José.
-            </p>
+    <p class="firma-final">
+        Con amor, Cecilia y José.
+    </p>
 
-        </section>
+</section>
 
     <!-- JavaScript -->
     <script src="JS/index.js?v=2"></script>

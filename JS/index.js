@@ -110,4 +110,15 @@ botonCopiar.addEventListener("click", async () => {
     document.getElementById("anio").textContent = new Date().getFullYear();
 
 });
+const musica = document.getElementById("musica-boda");
+const botonMusica = document.getElementById("boton-musica");
 
+botonMusica.addEventListener("click", function () {
+    if (musica.paused) {
+        musica.play();
+        botonMusica.innerHTML = "❚❚ Pausar música";
+    } else {
+        musica.pause();
+        botonMusica.innerHTML = "▶ Reproducir música";
+    }
+});
