@@ -107,5 +107,7 @@ botonCopiar.addEventListener("click", async () => {
         console.error("Error al copiar:", error);
     }
 
+    document.getElementById("anio").textContent = new Date().getFullYear();
+
 });
 
