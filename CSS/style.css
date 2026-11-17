@@ -2646,3 +2646,30 @@ background:
     color: var(--marron);
     opacity: 0.75;
 }
+/* =========================================
+   VIDEO DE FONDO - BOSQUE ENCANTADO
+========================================= */
+
+.bosque-video-fondo {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.video-bosque {
+    width: 100vw !important;
+    height: 500px !important;
+    background: red !important;
+    overflow: hidden !important;
+}
+
+.video-bosque video {
+    width: 100vw !important;
+    height: 500px !important;
+    object-fit: cover !important;
+}
+
+.contenido-sobre-video {
+    position: relative;
+    z-index: 1;
+}
