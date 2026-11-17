@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/style.css?v=17">
 </head>
 
 <body>
@@ -31,39 +31,7 @@
 
             <!-- DECORACIONES -->
             <div class="decoracion-portada">
-
-                <!-- Decoración izquierda -->
-                <div class="decoracion decoracion-izquierda">
-                    <img src="IMG/columna.svg" class="columna" alt="">
-
-                    <!-- Enredaderas -->
-                    <img src="IMG/enredadera-vertical.svg" class="enredadera enredadera-izq-1" alt="">
-                    <img src="IMG/enredadera-vertical.svg" class="enredadera enredadera-izq-2" alt="">
-
-                    <!-- Flores -->
-                    <img src="IMG/Rosa-Roja-Tupida.svg" class="flor flor-1" alt="">
-                    <img src="IMG/Rosa-Rosa-Tupida.svg" class="flor flor-2" alt="">
-                    <img src="IMG/Rosa-Blanca-Desarmada.svg" class="flor flor-3" alt="">
-                    <img src="IMG/Rosa-Blanca-Tupida.svg" class="flor flor-7" alt="">
-                    <img src="IMG/Rosa-Roja-Desarmada.svg" class="flor flor-8" alt="">
-                </div>
-
-                <!-- Decoración derecha -->
-                <div class="decoracion decoracion-derecha">
-                    <img src="IMG/columna.svg" class="columna" alt="">
-
-                    <!-- Enredaderas -->
-                    <img src="IMG/enredadera-vertical.svg" class="enredadera enredadera-der-1" alt="">
-                    <img src="IMG/enredadera-vertical.svg" class="enredadera enredadera-der-2" alt="">
-
-                    <!-- Flores -->
-                    <img src="IMG/Rosa-Roja-Tupida.svg" class="flor flor-4" alt="">
-                    <img src="IMG/Rosa-Rosa-Tupida.svg" class="flor flor-5" alt="">
-                    <img src="IMG/Rosa-Blanca-Desarmada.svg" class="flor flor-6" alt="">
-                    <img src="IMG/Rosa-Rosa-Desarmada.svg" class="flor flor-9" alt="">
-                    <img src="IMG/Rosa-Blanca-Tupida.svg" class="flor flor-10" alt="">
-                </div>
-
+                <img src="IMG/columnas-rosas.png" class="columnas-rosas" alt="">
             </div>
 
             <!-- CONTENIDO CENTRAL -->
@@ -103,14 +71,6 @@
 
         </section>
 
-    
-        <!-- VIDEO DE FONDO DEL BOSQUE -->
-<div class="video-bosque">
-    <video autoplay muted loop playsinline>
-        <source src="video/bosque.mp4" type="video/mp4">
-    </video>
-</div>
-
 <!-- SEPARADOR DECORATIVO -->
 <div class="separador-lunar" aria-hidden="true">
     <img src="IMG/ramita-separador.svg" alt="">
@@ -118,7 +78,7 @@
 
 
   <!-- MÚSICA -->
-<section class="seccion musica">
+<section class="seccion musica marco-informacion">
 
     <div class="ornamento-musica">
         <span></span>
@@ -147,30 +107,34 @@
 
 </section>
 
+<div class="separador-lunar" aria-hidden="true">
+    <img src="IMG/ramita-separador.svg" alt="">
+</div>
+
 
         <!-- 02. CUENTA REGRESIVA -->
-        <section id="cuenta-regresiva" class="seccion cuenta-regresiva">
+        <section id="cuenta-regresiva" class="seccion cuenta-regresiva marco-informacion">
             <p class="etiqueta-seccion">CUENTA REGRESIVA</p>
 
             <h2>¿Cuánto falta?</h2>
 
             <div class="contador">
-                <div class="contador-item">
+                <div class="contador-item marco-informacion">
                     <span id="dias">00</span>
                     <small>Días</small>
                 </div>
 
-                <div class="contador-item">
+                <div class="contador-item marco-informacion">
                     <span id="horas">00</span>
                     <small>Horas</small>
                 </div>
 
-                <div class="contador-item">
+                <div class="contador-item marco-informacion">
                     <span id="minutos">00</span>
                     <small>Minutos</small>
                 </div>
 
-                <div class="contador-item">
+                <div class="contador-item marco-informacion">
                     <span id="segundos">00</span>
                     <small>Segundos</small>
                 </div>
@@ -228,7 +192,7 @@
         </div>
         
    <!--     9. CRONOGRAMA -->
-<section id="cronograma" class="seccion cronograma">
+<section id="cronograma" class="seccion cronograma marco-informacion">
 
     <div class="cronograma-contenido">
 
@@ -303,8 +267,12 @@
 
 </section>
 
+<div class="separador-lunar" aria-hidden="true">
+    <img src="IMG/ramita-separador.svg" alt="">
+</div>
+
         <!-- 03. CEREMONIA RELIGIOSA -->
-<section id="iglesia" class="seccion ceremonia">
+<section id="iglesia" class="seccion ceremonia marco-informacion">
 
     <p class="etiqueta-seccion">UN MOMENTO PARA RECORDAR</p>
 
@@ -355,7 +323,7 @@
 
 
 <!-- 04. CEREMONIA CIVIL -->
-<section id="civil" class="seccion ceremonia">
+<section id="civil" class="seccion ceremonia marco-informacion">
 
     <p class="etiqueta-seccion">EL COMIENZO DE UNA NUEVA HISTORIA</p>
 
@@ -406,7 +374,7 @@
 
 
         <!-- 05. NUESTRA HISTORIA -->
-        <section id="historia" class="seccion historia">
+        <section id="historia" class="seccion historia marco-informacion">
             <p class="etiqueta-seccion">CADA MOMENTO NOS TRAJO HASTA AQUÍ</p>
 
             <h2>Nuestra historia</h2>
@@ -416,7 +384,7 @@
             </p>
 
             <!-- Carrusel de fotografías -->
-            <div class="carrusel">
+            <div class="carrusel marco-informacion">
                 <div class="carrusel-contenido" id="carrusel-contenido">
                     <!-- Las fotografías se agregarán después -->
                 </div>
@@ -445,7 +413,7 @@
 
        
    <!-- 06. DRESS CODE -->
-<section id="dress-code" class="seccion dress-code">
+<section id="dress-code" class="seccion dress-code marco-informacion">
 
     <!-- TARJETA / CUADRADO GRANDE -->
     <div class="contenedor-dresscode">
@@ -495,28 +463,17 @@
 
 
         <!-- 07. REGALOS -->
-        <section id="regalos" class="seccion regalos">
+        <section id="regalos" class="seccion regalos marco-informacion">
             <p class="etiqueta-seccion">UN DETALLE DE CARIÑO</p>
 
             <h2>Tu presencia es nuestro mejor regalo</h2>
 
             <p>
-                Si deseás hacernos un presente,<br>
-                podés hacerlo a través de las siguientes opciones.
+                Si deseás hacernos un presente, podés hacerlo a través de una transferencia bancaria.
             </p>
 
             <div class="opciones-regalo">
-                <details class="lista-regalos">
-                    <summary class="opcion-regalo">
-                        <span class="icono-regalo icono-caja" aria-hidden="true"></span>
-                        <span>Lista de regalos</span>
-                    </summary>
-                    <p class="mensaje-mas-opciones">
-                        Pronto compartiremos los detalles de la lista de regalos.
-                    </p>
-                </details>
-
-                <div class="opcion-regalo opcion-transferencia">
+                <div class="opcion-regalo opcion-transferencia marco-informacion">
                     <span class="icono-regalo icono-banco" aria-hidden="true"></span>
                     <span class="texto-transferencia">
                         Transferencia bancaria
@@ -529,16 +486,6 @@
                         Copiar alias
                     </button>
                 </div>
-
-                <details class="mas-opciones-regalo">
-                    <summary class="opcion-regalo">
-                        <span class="icono-regalo icono-mas" aria-hidden="true"></span>
-                        <span>Ver más opciones</span>
-                    </summary>
-                    <p class="mensaje-mas-opciones">
-                        Estamos preparando otras opciones para compartirlas pronto.
-                    </p>
-                </details>
             </div>
 
             <p class="regalo-gracias">
@@ -553,7 +500,7 @@
 
 
         <!-- 08. CONFIRMACIÓN DE ASISTENCIA -->
-        <section id="confirmacion" class="seccion confirmacion">
+        <section id="confirmacion" class="seccion confirmacion marco-informacion">
             <p class="etiqueta-seccion">QUEREMOS COMPARTIRLO CON VOS</p>
 
             <h2>Confirmá tu asistencia</h2>
@@ -581,7 +528,7 @@
 
 
         <!-- 09. GALERÍA COLABORATIVA -->
-        <section id="compartir-fotos" class="seccion compartir-fotos">
+        <section id="compartir-fotos" class="seccion compartir-fotos marco-informacion">
             <p class="etiqueta-seccion">LOS RECUERDOS TAMBIÉN SON DE USTEDES</p>
 
             <h2>Compartí tus fotos</h2>
@@ -592,7 +539,7 @@
                 para guardar juntos cada recuerdo.
             </p>
 
-            <div class="zona-fotos">
+            <div class="zona-fotos marco-informacion">
                 <!-- Aquí incorporaremos la subida de fotografías -->
                 <p>Próximamente: galería colaborativa.</p>
             </div>
@@ -625,7 +572,7 @@
     </p>
 
     <p class="firma-final">
-        Con amor, Cecilia y José.
+        Con amor, José y Cecilia.
     </p>
 
 </section>

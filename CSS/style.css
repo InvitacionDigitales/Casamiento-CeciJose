@@ -13,6 +13,7 @@
 
 :root {
     /* Paleta principal */
+    --fondo-pagina: #c8d5a4;
     --marfil: #f5eddf;
     --crema: #eadbc4;
     --champagne: #d7bd8a;
@@ -54,15 +55,33 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 25px;
+    background:
+        linear-gradient(
+            180deg,
+            #e4ebd0 0%,
+            var(--fondo-pagina) 42%,
+            #a9bd7a 100%
+        ) fixed;
 }
 
 body {
-    background: var(--marfil);
     color: var(--texto);
     font-family: var(--fuente-texto);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.7;
     overflow-x: hidden;
+}
+
+@media (max-width: 700px) {
+    html {
+        background:
+            linear-gradient(
+                145deg,
+                #e4ebd0 0%,
+                var(--fondo-pagina) 42%,
+                #a9bd7a 100%
+            ) fixed;
+    }
 }
 
 a {
@@ -83,6 +102,34 @@ button {
 img {
     max-width: 100%;
     display: block;
+}
+
+.marco-informacion {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid rgba(155, 122, 72, 0.55);
+    box-shadow: var(--sombra);
+}
+
+.contador-item.marco-informacion,
+.opcion-regalo.marco-informacion,
+.carrusel.marco-informacion,
+.zona-fotos.marco-informacion {
+    border-radius: 0;
+}
+
+.marco-informacion::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    z-index: 0;
+    border: 1px solid rgba(199, 170, 115, 0.42);
+    pointer-events: none;
+}
+
+.marco-informacion > * {
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -178,8 +225,8 @@ img {
 
 .etiqueta-seccion {
     font-family: var(--fuente-elegante);
-    font-size: 13px;
-    letter-spacing: 3px;
+    font-size: 15px;
+    letter-spacing: 2.5px;
     color: var(--dorado);
     margin-bottom: 12px;
     text-transform: uppercase;
@@ -453,6 +500,9 @@ img {
 
     color: var(--bordo);
     letter-spacing: 1px;
+    text-shadow:
+        0 0 6px rgba(255, 250, 242, 0.95),
+        0 3px 10px rgba(31, 20, 12, 0.45);
 }
 
 .nombres-novios span {
@@ -472,6 +522,9 @@ img {
     letter-spacing: 4px;
     text-transform: uppercase;
     color: #ffffff;
+    text-shadow:
+        0 2px 5px rgba(31, 20, 12, 0.95),
+        0 0 12px rgba(31, 20, 12, 0.8);
 
 }
 
@@ -483,6 +536,7 @@ img {
     color: var(--dorado);
     font-size: 13px;
     letter-spacing: 2px;
+    text-shadow: 0 1px 5px rgba(31, 20, 12, 0.75);
 }
 
 
@@ -495,6 +549,9 @@ img {
     font-size: 19px;
     line-height: 1.55;
     color: aliceblue;
+    text-shadow:
+        0 2px 5px rgba(31, 20, 12, 0.95),
+        0 0 12px rgba(31, 20, 12, 0.8);
 
 }
 
@@ -528,6 +585,7 @@ img {
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 
     box-shadow:
         inset 0 0 0 2px rgba(255, 235, 184, 0.1),
@@ -572,7 +630,7 @@ img {
     color: var(--blanco);
 
     text-decoration: none;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 1px;
 
@@ -650,10 +708,6 @@ img {
 
     overflow: hidden;
 
-    border: 1px solid rgba(155, 122, 72, 0.55);
-    outline: 7px solid rgba(199, 170, 115, 0.18);
-    outline-offset: -12px;
-
     background:
         linear-gradient(
             rgba(255, 252, 245, 0.78),
@@ -697,7 +751,7 @@ img {
 
 .cuenta-regresiva .etiqueta-seccion {
     margin-bottom: 10px;
-    letter-spacing: 4px;
+    letter-spacing: 2.5px;
 }
 
 .cuenta-regresiva h2 {
@@ -754,7 +808,7 @@ img {
     margin-top: 7px;
 
     font-family: var(--fuente-elegante);
-    font-size: clamp(12px, 2vw, 18px);
+    font-size: clamp(12px, 1vw, 14px);
 
     color: var(--marron);
 }
@@ -903,11 +957,12 @@ img {
     background-position: center, center;
     background-size: cover, cover;
 
-    border: 1px solid var(--dorado-claro);
-    border-radius: 8px;
-
-    box-shadow: var(--sombra);
+    border-radius: 0;
     overflow: hidden;
+}
+
+.tarjeta-evento.marco-informacion {
+    border-radius: 0;
 }
 
 /* CONTENIDO POR ENCIMA DE LA DECORACIÓN */
@@ -1059,7 +1114,7 @@ img {
 
     margin: 20px auto;
 
-    border: 5px solid var(--blanco);
+    border: 1px solid rgba(155, 122, 72, 0.55);
     border-radius: 5px;
 
     background: var(--crema);
@@ -1141,23 +1196,6 @@ img {
             rgba(247, 238, 224, 0.88)
         );
 
-    border: 1px solid rgba(155, 122, 72, 0.5);
-
-    box-shadow:
-        0 10px 30px rgba(73, 53, 38, 0.1);
-}
-
-/* Segunda línea interior */
-
-.contenedor-dresscode::before {
-    content: "";
-
-    position: absolute;
-    inset: 8px;
-
-    border: 1px solid rgba(199, 170, 115, 0.35);
-
-    pointer-events: none;
 }
 
 .contenedor-dresscode > * {
@@ -1286,10 +1324,6 @@ img {
 
     overflow: hidden;
 
-    border: 1px solid rgba(155, 122, 72, 0.55);
-    outline: 7px solid rgba(199, 170, 115, 0.18);
-    outline-offset: -12px;
-
     background:
         linear-gradient(
             rgba(255, 252, 245, 0.84),
@@ -1333,7 +1367,7 @@ img {
 
 .regalos .etiqueta-seccion {
     margin-bottom: 10px;
-    letter-spacing: 4px;
+    letter-spacing: 2.5px;
 }
 
 .regalos h2 {
@@ -1377,8 +1411,7 @@ img {
 
     overflow: hidden;
 
-    border: 1px solid rgba(155, 122, 72, 0.35);
-    border-radius: 22px;
+    border-radius: 0;
 
     background: rgba(255, 252, 245, 0.9);
 
@@ -1390,19 +1423,6 @@ img {
 
     text-align: left;
     text-decoration: none;
-}
-
-summary.opcion-regalo {
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-summary.opcion-regalo:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--sombra);
 }
 
 .icono-regalo {
@@ -1418,43 +1438,6 @@ summary.opcion-regalo:hover {
     color: var(--dorado);
     font-family: var(--fuente-elegante);
     font-size: 36px;
-}
-
-.icono-caja::before {
-    content: "";
-
-    width: 30px;
-    height: 22px;
-
-    border: 2px solid currentColor;
-    border-top-width: 6px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent 42%,
-            currentColor 42%,
-            currentColor 56%,
-            transparent 56%
-        );
-}
-
-.icono-caja::after {
-    content: "";
-
-    position: absolute;
-    top: 21px;
-    left: calc(50% - 5px);
-
-    width: 7px;
-    height: 7px;
-
-    border: 2px solid currentColor;
-    border-radius: 7px 7px 0 7px;
-
-    transform: rotate(45deg);
-
-    box-shadow: 6px -6px 0 -2px rgba(155, 122, 72, 0.9);
 }
 
 .icono-banco::before {
@@ -1486,17 +1469,6 @@ summary.opcion-regalo:hover {
             100% 100%,
             0 100%
         );
-}
-
-.icono-mas::before {
-    content: "...";
-
-    margin-top: -12px;
-
-    font-family: var(--fuente-texto);
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 1px;
 }
 
 .opcion-transferencia {
@@ -1535,7 +1507,7 @@ summary.opcion-regalo:hover {
     background: var(--verde);
     color: var(--blanco);
 
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.5px;
 
@@ -1547,45 +1519,6 @@ summary.opcion-regalo:hover {
 .boton-copiar-alias:hover {
     transform: translateY(-1px);
     background: var(--bordo);
-}
-
-.mas-opciones-regalo,
-.lista-regalos {
-    width: 100%;
-}
-
-.lista-regalos[open] .opcion-regalo {
-    border-radius: 18px 18px 0 0;
-}
-
-.lista-regalos > .mensaje-mas-opciones,
-.mas-opciones-regalo > .mensaje-mas-opciones {
-    margin: 0;
-    padding: 18px 22px;
-
-    border: 1px solid rgba(155, 122, 72, 0.3);
-    border-top: 0;
-
-    border-radius: 0 0 18px 18px;
-
-    background: rgba(255, 252, 245, 0.8);
-}
-
-.mas-opciones-regalo summary {
-    list-style: none;
-}
-
-.mas-opciones-regalo summary::-webkit-details-marker {
-    display: none;
-}
-
-.mensaje-mas-opciones {
-    margin: 14px auto 0;
-
-    color: var(--texto);
-    font-family: var(--fuente-elegante);
-    font-size: clamp(18px, 2.7vw, 23px);
-    line-height: 1.4;
 }
 
 .regalos > .regalo-gracias {
@@ -1612,8 +1545,12 @@ summary.opcion-regalo:hover {
         );
 }
 
+.confirmacion.marco-informacion {
+    overflow: hidden;
+}
+
 .confirmacion > .etiqueta-seccion {
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
 }
 
 .confirmacion h2 {
@@ -1642,8 +1579,6 @@ summary.opcion-regalo:hover {
 
     margin: 0 auto;
     padding: 14px 22px;
-
-    border-left: 2px solid var(--dorado-claro);
 
     color: var(--marron);
     font-family: var(--fuente-elegante);
@@ -1677,9 +1612,6 @@ summary.opcion-regalo:hover {
 
     margin-top: 30px;
     padding: 40px 20px;
-
-    border: 2px dashed var(--dorado);
-    border-radius: 10px;
 
     background: rgba(255, 250, 242, 0.8);
 
@@ -1884,7 +1816,7 @@ summary.opcion-regalo:hover {
 @media (max-width: 480px) {
 
     body {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .seccion {
@@ -1946,12 +1878,12 @@ summary.opcion-regalo:hover {
     }
 
     .datos-regalo {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .boton-copiar-alias {
         padding: 8px;
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .portada {
@@ -2017,7 +1949,7 @@ summary.opcion-regalo:hover {
     }
 
     .contador-item small {
-        font-size: 8px;
+        font-size: 12px;
     }
 
     .tarjeta-evento {
@@ -2147,7 +2079,7 @@ background:
 
 .copyright {
     color: rgba(232, 223, 201, 0.65);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.2px;
 }
 
@@ -2210,7 +2142,7 @@ background:
 
 .nombre-persona {
     color: var(--parchment);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
@@ -2242,7 +2174,7 @@ background:
     color: var(--gold);
     opacity: 0.45;
 
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
     text-decoration: none;
     white-space: nowrap;
@@ -2330,16 +2262,16 @@ background:
     }
 
     .correo {
-        font-size: 10px;
+        font-size: 11px;
         padding: 5px 8px;
     }
 
     .copyright {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     .nombre-persona {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .brillito {
@@ -2347,7 +2279,7 @@ background:
     }
 
     .ig-decorativo {
-        font-size: 8px;
+        font-size: 10px;
         letter-spacing: 1px;
     }
 
@@ -2502,6 +2434,10 @@ background:
     padding-left: 25px;
 }
 
+.cronograma-contenido.marco-informacion {
+    padding: 32px;
+}
+
 .detalle h3 {
     font-family: var(--fuente-elegante);
     font-size: 25px;
@@ -2534,6 +2470,10 @@ background:
 
     .detalle {
         padding-left: 15px;
+    }
+
+    .cronograma-contenido.marco-informacion {
+        padding: 24px 16px;
     }
 
     .detalle h3 {
@@ -2600,7 +2540,7 @@ background:
     margin: 0 auto 18px;
 
     font-family: var(--fuente-elegante);
-    font-size: 16px;
+    font-size: 18px;
     color: var(--marron);
 }
 
@@ -2619,7 +2559,7 @@ background:
     color: var(--bordo);
 
     font-family: var(--fuente-texto);
-    font-size: 13px;
+    font-size: 14px;
 
     cursor: pointer;
 
@@ -2641,7 +2581,7 @@ background:
 .nombre-cancion {
     margin-top: 10px;
 
-    font-size: 12px;
+    font-size: 14px;
     font-style: italic;
     color: var(--marron);
     opacity: 0.75;
@@ -2672,4 +2612,116 @@ background:
 .contenido-sobre-video {
     position: relative;
     z-index: 1;
+}
+
+/* Ancho y márgenes comunes para los paneles de información */
+.seccion.marco-informacion,
+.dress-code {
+    width: calc(100% - 50px);
+    max-width: none;
+    margin-inline: auto;
+}
+
+.seccion.marco-informacion {
+    padding-inline: 25px;
+}
+
+.cronograma.marco-informacion,
+.dress-code.marco-informacion {
+    padding-inline: 0;
+}
+
+.cronograma-contenido {
+    width: 100%;
+    max-width: none;
+    padding-inline: 25px;
+}
+
+.contenedor-dresscode {
+    width: 100%;
+    max-width: none;
+}
+
+.tarjeta-evento {
+    width: 100%;
+    max-width: none;
+}
+
+.carrusel,
+.zona-fotos {
+    width: 100%;
+    max-width: none;
+}
+
+.ceremonia,
+.historia {
+    padding-inline: 25px;
+}
+
+.ceremonia .tarjeta-evento {
+    border: 1px solid rgba(155, 122, 72, 0.4);
+    box-shadow: var(--sombra);
+}
+
+.tarjeta-evento h3,
+.tarjeta-evento p,
+.tarjeta-evento .icono-evento,
+.tarjeta-evento .detalle-icono {
+    color: var(--blanco);
+    text-shadow:
+        0 1px 3px rgba(31, 23, 16, 0.95),
+        0 0 9px rgba(31, 23, 16, 0.85);
+}
+
+@media (max-width: 700px) {
+    .seccion.marco-informacion,
+    .dress-code {
+        width: calc(100% - 20px);
+    }
+
+    .seccion.marco-informacion {
+        padding-inline: 10px;
+    }
+
+    .cronograma.marco-informacion,
+    .dress-code.marco-informacion {
+        padding-inline: 0;
+    }
+
+    .cronograma-contenido {
+        padding-inline: 10px;
+    }
+
+    .ceremonia,
+    .historia {
+        padding-inline: 10px;
+    }
+}
+
+/* Todos los paneles con marco comparten un fondo blanco */
+.marco-informacion {
+    background: #fff;
+}
+
+.contenedor-dresscode {
+    background: transparent;
+}
+
+
+#dress-code .etiqueta-seccion,
+#cronograma .cronograma-subtitulo {
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .etiqueta-seccion,
+    .cuenta-regresiva .etiqueta-seccion,
+    .regalos .etiqueta-seccion,
+    .confirmacion > .etiqueta-seccion {
+        font-size: 14px;
+        letter-spacing: 1.75px;
+    }
 }
