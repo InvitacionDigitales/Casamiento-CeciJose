@@ -14,10 +14,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="CSS/style.css?v=17">
+    <link rel="stylesheet" href="CSS/style.css?v=18">
+    <link rel="stylesheet" href="CSS/experience.css?v=2">
 </head>
 
 <body>
+    <a class="enlace-salto" href="#contenido-principal">Ir al contenido</a>
+
+    <main class="invitacion" id="contenido-principal">
+        <section class="apertura" id="apertura" aria-labelledby="apertura-titulo">
+            <div class="marco-apertura">
+                <p class="apertura-etiqueta">UNA INVITACIÓN PARA VOS</p>
+                <div class="sobre-antiguo">
+                    <span class="sobre-solapa" aria-hidden="true"></span>
+                    <span class="sobre-pliegue sobre-pliegue-izquierdo" aria-hidden="true"></span>
+                    <span class="sobre-pliegue sobre-pliegue-derecho" aria-hidden="true"></span>
+                    <span class="sobre-pliegue sobre-pliegue-inferior" aria-hidden="true"></span>
+                    <span class="rama-sobre rama-sobre-izquierda" aria-hidden="true"></span>
+                    <span class="rama-sobre rama-sobre-derecha" aria-hidden="true"></span>
+                    <button class="sello-cera" id="sello-apertura" type="button" aria-label="Abrir el sello de la invitación" aria-pressed="false">
+                        <span>C <i>&amp;</i> J</span>
+                    </button>
+                    <svg class="cuervo-mensajero" viewBox="0 0 220 150" focusable="false" aria-hidden="true">
+                        <path d="M17 104c17-8 26-24 34-42 9-21 25-36 49-41 19-4 37 2 50 14-7-17-6-29 1-41 16 11 25 25 26 41 18-3 33 4 44 17-16-2-28 4-36 16-13 18-29 28-53 28-15 0-28 8-34 21l-32 1 17-13c-24 8-44 12-66-1Zm125-46 39-22-5 22-24 11Z" fill="currentColor"/>
+                        <path d="M88 115l-7 19m31-19-2 19m-20 0h-14m35 0h-14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="5"/>
+                    </svg>
+                </div>
+                <h2 id="apertura-titulo">Un mensaje especial<br><em>ha llegado para vos</em></h2>
+                <p class="apertura-texto" id="apertura-texto">Tocá el sello y descubrí la historia de Cecilia y José.</p>
+                <a class="boton-apertura" href="#inicio">Abrir invitación <span aria-hidden="true">↓</span></a>
+                <span class="apertura-pie">13 · 02 · 2027</span>
+            </div>
+        </section>
 
         <!-- =========================
             SECCION INICIO
@@ -26,12 +54,12 @@
 
          <!-- IMAGEN DE FONDO -->
             <div class="fondo-portada">
-                <img src="IMG/bosque-novios.png" alt="">
+                <img src="IMG/bosque-novios.png" alt="" fetchpriority="high">
             </div>
 
             <!-- DECORACIONES -->
             <div class="decoracion-portada">
-                <img src="IMG/columnas-rosas.png" class="columnas-rosas" alt="">
+                <img src="IMG/columna-rosas.png" class="columnas-rosas" alt="">
             </div>
 
             <!-- CONTENIDO CENTRAL -->
@@ -39,7 +67,7 @@
 
                 <!-- Monograma -->
                 <div class="monograma">
-                    <img src="IMG/Escudo-Portada-SF.png" class="Escudo-Portada" alt="">
+                    <img src="IMG/Escudo-Portada-SF.png" class="Escudo-Portada" alt="Monograma ornamental de Cecilia y José">
                 </div>
 
                 <!-- Nombres -->
@@ -78,7 +106,7 @@
 
 
   <!-- MÚSICA -->
-<section class="seccion musica marco-informacion">
+<section class="seccion musica marco-informacion" aria-label="Música de la invitación">
 
     <div class="ornamento-musica">
         <span></span>
@@ -93,15 +121,15 @@
     </p>
 
     <!-- BOTÓN PARA REPRODUCIR LA MÚSICA -->
-    <button class="boton-musica" id="boton-musica" type="button">
+    <button class="boton-musica" id="boton-musica" type="button" aria-pressed="false">
         <span class="icono-musica">▶</span>
-        <span>Escuchar nuestra canción</span>
+        <span class="texto-musica">Escuchar nuestra canción</span>
     </button>
 
     <p class="nombre-cancion">♪ El Castillo del Vagabundo</p>
 
     <!-- CANCIÓN -->
-    <audio id="musica-boda" loop preload="auto">
+    <audio id="musica-boda" loop preload="none">
         <source src="./musica/castillo-vagabundo.mp3" type="audio/mpeg">
     </audio>
 
@@ -383,10 +411,18 @@
                 Un camino lleno de momentos, recuerdos y mucho amor.
             </p>
 
+            <figure class="historia-retrato">
+                <img src="IMG/novios.png" alt="Ilustración de una pareja en un bosque encantado" loading="lazy">
+                <figcaption>Un cuento escrito con amor</figcaption>
+            </figure>
+
             <!-- Carrusel de fotografías -->
             <div class="carrusel marco-informacion">
                 <div class="carrusel-contenido" id="carrusel-contenido">
-                    <!-- Las fotografías se agregarán después -->
+                    <div class="carrusel-vacio">
+                        <span class="album-sello" aria-hidden="true">C <i>&amp;</i> J</span>
+                        <p>Un álbum de recuerdos<br><em>que pronto llenaremos juntos</em></p>
+                    </div>
                 </div>
 
                 <button class="carrusel-anterior" aria-label="Foto anterior">
@@ -401,7 +437,7 @@
             <!-- Videos -->
             <div class="videos-historia">
                 <h3>Un poquito de nosotros</h3>
-                <!-- Los videos se incorporarán después -->
+                <p>La historia continúa en cada recuerdo compartido.</p>
             </div>
         </section>
 
@@ -440,6 +476,15 @@
                 class="imagen-dresscode"
             >
         </div>
+
+        <ul class="paleta-colores" aria-label="Inspiración cromática">
+            <li aria-label="Marfil"></li>
+            <li aria-label="Champagne"></li>
+            <li aria-label="Verde bosque"></li>
+            <li aria-label="Rosa antiguo"></li>
+            <li aria-label="Bordó"></li>
+        </ul>
+        <p class="nota-paleta">Tonos inspirados en el bosque; elegí libremente el color que más te represente.</p>
 
         <div class="linea-final-dresscode">
             <span></span>
@@ -558,9 +603,8 @@
         <img src="IMG/novios.png" alt="">
     </div>
 
-    <div class="cuervos">
-        <!-- Cuervo rosa y cuervo negro -->
-        <!-- Incorporaremos sus ilustraciones y animaciones -->
+    <div class="cuervos" aria-hidden="true">
+        <span class="cuervo-cierre">✦</span>
     </div>
 
     <h2>
@@ -577,19 +621,17 @@
 
 </section>
 
+    </main>
+
     <!-- JavaScript -->
-    <script src="JS/index.js?v=2"></script>
+    <script src="JS/index.js?v=4"></script>
 
     <!-- FOOTER LATANA STUDIO -->
 <footer class="tana-footer">
 
     <div class="footer-persona persona-ana">
         <div class="cabeza-marco">
-            <img
-                src="IMG/ana.png"
-                alt="Ana"
-                class="cabeza-foto"
-            >
+            <span class="cabeza-inicial" aria-hidden="true">A</span>
             <span class="brillito">✦</span>
         </div>
 
@@ -615,11 +657,7 @@
 
     <div class="footer-persona persona-nata">
         <div class="cabeza-marco">
-            <img
-                src="IMG/nata.png"
-                alt="Nata"
-                class="cabeza-foto"
-            >
+            <span class="cabeza-inicial" aria-hidden="true">N</span>
             <span class="brillito">★</span>
         </div>
 

@@ -1,124 +1,303 @@
 
-/* =========================================
-   INVITACIÓN DE BODA
-   CECILIA MATUS & JOSÉ ANTONIO FRESCO
-========================================= */
+/* Cecilia Matus & José Antonio Fresco — invitación de boda */
 
-
-/* =========================================
-   1. CUENTA REGRESIVA
-========================================= */
-
-// IMPORTANTE: cambiar por la fecha y hora reales.
 const FECHA_BODA = new Date("2027-02-13T00:00:00");
+const movimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function actualizarCuentaRegresiva() {
+    const diferencia = FECHA_BODA.getTime() - Date.now();
+    const valores = diferencia <= 0
+        ? { dias: "00", horas: "00", minutos: "00", segundos: "00" }
+        : {
+            dias: String(Math.floor(diferencia / 86400000)),
+            horas: String(Math.floor(diferencia / 3600000) % 24).padStart(2, "0"),
+            minutos: String(Math.floor(diferencia / 60000) % 60).padStart(2, "0"),
+            segundos: String(Math.floor(diferencia / 1000) % 60).padStart(2, "0")
+        };
 
-    const ahora = new Date();
-    const diferencia = FECHA_BODA - ahora;
+    Object.entries(valores).forEach(([unidad, valor]) => {
+        const elemento = document.getElementById(unidad);
+        if (elemento) elemento.textContent = valor;
+    });
+}
 
-    if (diferencia <= 0) {
-        document.getElementById("dias").textContent = "00";
-        document.getElementById("horas").textContent = "00";
-        document.getElementById("minutos").textContent = "00";
-        document.getElementById("segundos").textContent = "00";
+function prepararRevelaciones() {
+    const elementos = document.querySelectorAll(
+        ".seccion, .evento, .tarjeta-evento, .opcion-regalo, .contenedor-dresscode"
+    );
+
+    if (!("IntersectionObserver" in window)) {
+        elementos.forEach((elemento) => elemento.classList.add("revelado"));
         return;
     }
 
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
-    const segundos = Math.floor((diferencia / 1000) % 60);
+    const observador = new IntersectionObserver((entradas, observer) => {
+        entradas.forEach((entrada) => {
+            if (!entrada.isIntersecting) return;
+            entrada.target.classList.add("revelado");
+            observer.unobserve(entrada.target);
+        });
+    }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
 
-    document.getElementById("dias").textContent = dias;
-    document.getElementById("horas").textContent = String(horas).padStart(2, "0");
-    document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
-    document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
+    elementos.forEach((elemento, indice) => {
+        elemento.classList.add("revelacion");
+        elemento.style.setProperty("--retraso-revelacion", `${Math.min(indice % 5, 4) * 90}ms`);
+        observador.observe(elemento);
+    });
+
+    document.body.classList.add("animaciones-listas");
 }
 
-actualizarCuentaRegresiva();
-setInterval(actualizarCuentaRegresiva, 1000);
+function prepararApertura() {
+    const sello = document.getElementById("sello-apertura");
+    const apertura = document.getElementById("apertura");
+    const texto = document.getElementById("apertura-texto");
 
+    if (!sello || !apertura || !texto) return;
 
-/* =========================================
-   2. CARRUSEL DE FOTOGRAFÍAS
-========================================= */
+    sello.addEventListener("click", () => {
+        const abierto = sello.getAttribute("aria-pressed") !== "true";
+        sello.setAttribute("aria-pressed", String(abierto));
+        apertura.classList.toggle("sobre-abierto", abierto);
+        texto.textContent = abierto
+            ? "Con la bendición de Dios y de nuestras familias, te invitamos a celebrar nuestra boda."
+            : "Tocá el sello y descubrí la historia de Cecilia y José.";
+    });
+}
 
-const fotografias = [
-    // Agregaremos las rutas de las fotografías.
-];
+function prepararMusica() {
+    const musica = document.getElementById("musica-boda");
+    const boton = document.getElementById("boton-musica");
+    if (!musica || !boton) return;
 
-let fotoActual = 0;
+    musica.addEventListener("play", () => {
+        boton.setAttribute("aria-pressed", "true");
+        boton.querySelector(".icono-musica").textContent = "❚❚";
+        boton.querySelector(".texto-musica").textContent = "Pausar música";
+    });
 
-const contenidoCarrusel = document.getElementById("carrusel-contenido");
+    musica.addEventListener("pause", () => {
+        boton.setAttribute("aria-pressed", "false");
+        boton.querySelector(".icono-musica").textContent = "▶";
+        boton.querySelector(".texto-musica").textContent = "Escuchar nuestra canción";
+    });
 
-function mostrarFotografia() {
+    boton.addEventListener("click", async () => {
+        if (!musica.paused) {
+            musica.pause();
+            return;
+        }
 
-    if (!contenidoCarrusel || fotografias.length === 0) {
+        try {
+            await musica.play();
+        } catch (error) {
+            if (musica.paused && error && error.name === "AbortError") return;
+            console.error("No se pudo reproducir la canción de la invitación:", error);
+            boton.querySelector(".texto-musica").textContent = "No se pudo reproducir";
+            window.setTimeout(() => {
+                if (musica.paused) boton.querySelector(".texto-musica").textContent = "Escuchar nuestra canción";
+            }, 2400);
+        }
+    });
+}
+
+function crearElementosBosque() {
+    if (movimientoReducido.matches || document.querySelector(".elementos-bosque")) return;
+
+    const capa = document.createElement("div");
+    capa.className = "elementos-bosque";
+    capa.setAttribute("aria-hidden", "true");
+
+    const grupos = [
+        { clase: "luciernaga", cantidad: 8, duracion: 11 },
+        { clase: "particula-dorada", cantidad: 12, duracion: 15 },
+        { clase: "hoja-bosque", cantidad: 6, duracion: 17 },
+        { clase: "petalo", cantidad: 5, duracion: 20 },
+        { clase: "destello", cantidad: 5, duracion: 4 }
+    ];
+
+    grupos.forEach(({ clase, cantidad, duracion }) => {
+        for (let indice = 0; indice < cantidad; indice += 1) {
+            const elemento = document.createElement("span");
+            elemento.className = clase;
+            elemento.style.setProperty("--posicion-x", `${5 + Math.random() * 90}%`);
+            elemento.style.setProperty("--posicion-y", `${8 + Math.random() * 82}%`);
+            elemento.style.setProperty("--duracion-ambiente", `${duracion + Math.random() * duracion * 0.8}s`);
+            elemento.style.setProperty("--demora-ambiente", `${Math.random() * -duracion}s`);
+            elemento.style.setProperty("--deriva-x", `${Math.round(Math.random() * 90 - 45)}px`);
+            elemento.style.setProperty("--deriva-y", `${Math.round(Math.random() * 70 - 35)}px`);
+            capa.appendChild(elemento);
+        }
+    });
+
+    document.body.appendChild(capa);
+}
+
+function prepararBosqueEncantado() {
+    const inicioDelBosque = document.getElementById("cuenta-regresiva");
+    if (!inicioDelBosque) return;
+
+    let iniciado = false;
+    const activarBosque = () => {
+        if (iniciado) return;
+        iniciado = true;
+        document.body.classList.add("bosque-activo");
+        crearElementosBosque();
+    };
+
+    if (!("IntersectionObserver" in window)) {
+        const comprobarInicio = () => {
+            const limites = inicioDelBosque.getBoundingClientRect();
+            if (limites.top > window.innerHeight * 1.15 || limites.bottom < 0) return;
+            activarBosque();
+            window.removeEventListener("scroll", comprobarInicio);
+        };
+
+        window.addEventListener("scroll", comprobarInicio, { passive: true });
+        comprobarInicio();
         return;
     }
 
-    contenidoCarrusel.innerHTML = `
-        <img src="${fotografias[fotoActual]}"
-             alt="Recuerdo de Cecilia y José">
-    `;
+    const observador = new IntersectionObserver((entradas) => {
+        if (!entradas.some((entrada) => entrada.isIntersecting)) return;
+        activarBosque();
+        observador.disconnect();
+    }, { rootMargin: "15% 0px" });
+
+    observador.observe(inicioDelBosque);
 }
 
-document.querySelector(".carrusel-anterior").addEventListener("click", () => {
+function prepararParallaxDePortada() {
+    if (movimientoReducido.matches || !window.matchMedia("(pointer: fine)").matches) return;
 
-    if (fotografias.length === 0) return;
+    const portada = document.querySelector(".portada");
+    if (!portada) return;
 
-    fotoActual = (fotoActual - 1 + fotografias.length) % fotografias.length;
-    mostrarFotografia();
+    let cuadroPendiente = false;
+    let coordenadas = { x: 0, y: 0 };
 
-});
+    portada.addEventListener("pointermove", (evento) => {
+        coordenadas = {
+            x: (evento.clientX / window.innerWidth - 0.5) * 8,
+            y: (evento.clientY / window.innerHeight - 0.5) * 8
+        };
 
-document.querySelector(".carrusel-siguiente").addEventListener("click", () => {
+        if (cuadroPendiente) return;
+        cuadroPendiente = true;
+        window.requestAnimationFrame(() => {
+            portada.style.setProperty("--parallax-x", `${coordenadas.x}px`);
+            portada.style.setProperty("--parallax-y", `${coordenadas.y}px`);
+            cuadroPendiente = false;
+        });
+    });
+}
 
-    if (fotografias.length === 0) return;
-
-    fotoActual = (fotoActual + 1) % fotografias.length;
-    mostrarFotografia();
-
-});
-
-
-/* =========================================
-   3. COPIAR ALIAS DE MERCADO PAGO
-========================================= */
-
-const botonCopiar = document.getElementById("copiar-alias");
-
-botonCopiar.addEventListener("click", async () => {
-
-    const alias = document.getElementById("alias-regalo").textContent.trim();
-
-    try {
-        await navigator.clipboard.writeText(alias);
-
-        botonCopiar.textContent = "¡Alias copiado!";
-
-        setTimeout(() => {
-            botonCopiar.textContent = "Copiar alias";
-        }, 2000);
-
-    } catch (error) {
-        botonCopiar.textContent = "No se pudo copiar";
-        console.error("Error al copiar:", error);
+function prepararCarrusel() {
+    const fotografias = [];
+    const contenido = document.getElementById("carrusel-contenido");
+    const controles = document.querySelectorAll(".carrusel-anterior, .carrusel-siguiente");
+    if (!contenido || fotografias.length === 0) {
+        controles.forEach((control) => {
+            control.disabled = true;
+            control.setAttribute("aria-disabled", "true");
+            control.hidden = true;
+        });
+        return;
     }
 
-    document.getElementById("anio").textContent = new Date().getFullYear();
+    let fotoActual = 0;
+    const mostrarFotografia = () => {
+        const imagen = document.createElement("img");
+        imagen.src = fotografias[fotoActual];
+        imagen.alt = `Recuerdo ${fotoActual + 1} de Cecilia y José`;
+        imagen.loading = "lazy";
+        contenido.replaceChildren(imagen);
+    };
 
-});
-const musica = document.getElementById("musica-boda");
-const botonMusica = document.getElementById("boton-musica");
+    document.querySelector(".carrusel-anterior").addEventListener("click", () => {
+        fotoActual = (fotoActual - 1 + fotografias.length) % fotografias.length;
+        mostrarFotografia();
+    });
+    document.querySelector(".carrusel-siguiente").addEventListener("click", () => {
+        fotoActual = (fotoActual + 1) % fotografias.length;
+        mostrarFotografia();
+    });
+    mostrarFotografia();
+}
 
-botonMusica.addEventListener("click", function () {
-    if (musica.paused) {
-        musica.play();
-        botonMusica.innerHTML = "❚❚ Pausar música";
-    } else {
-        musica.pause();
-        botonMusica.innerHTML = "▶ Reproducir música";
+async function copiarTexto(texto) {
+    if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(texto);
+        return;
     }
-});
+
+    const campoTemporal = document.createElement("textarea");
+    campoTemporal.value = texto;
+    campoTemporal.setAttribute("readonly", "");
+    campoTemporal.style.position = "fixed";
+    campoTemporal.style.opacity = "0";
+    document.body.appendChild(campoTemporal);
+    campoTemporal.select();
+    const copiado = document.execCommand("copy");
+    campoTemporal.remove();
+    if (!copiado) throw new Error("El navegador no permitió copiar al portapapeles.");
+}
+
+function prepararCopiaDeAlias() {
+    const boton = document.getElementById("copiar-alias");
+    const alias = document.getElementById("alias-regalo");
+    if (!boton || !alias) return;
+
+    boton.addEventListener("click", async () => {
+        try {
+            await copiarTexto(alias.textContent.trim());
+            boton.textContent = "¡Alias copiado!";
+        } catch (error) {
+            console.error("No se pudo copiar el alias:", error);
+            boton.textContent = "No se pudo copiar";
+        }
+
+        window.setTimeout(() => {
+            boton.textContent = "Copiar alias";
+        }, 2200);
+    });
+}
+
+function prepararAno() {
+    const ano = document.getElementById("anio");
+    if (ano) ano.textContent = String(new Date().getFullYear());
+}
+
+function prepararInteracciones() {
+    const botones = document.querySelectorAll(
+        ".boton-apertura, .boton-comenzar, .boton-principal, .boton-ubicacion, .boton-musica, .boton-copiar-alias"
+    );
+
+    botones.forEach((boton) => {
+        boton.addEventListener("pointerdown", () => {
+            boton.classList.remove("pulso-interaccion");
+            window.requestAnimationFrame(() => boton.classList.add("pulso-interaccion"));
+        });
+        boton.addEventListener("animationend", () => boton.classList.remove("pulso-interaccion"));
+    });
+}
+
+function iniciarInvitacion() {
+    actualizarCuentaRegresiva();
+    window.setInterval(actualizarCuentaRegresiva, 1000);
+    prepararAno();
+    prepararApertura();
+    prepararMusica();
+    prepararCarrusel();
+    prepararCopiaDeAlias();
+    prepararRevelaciones();
+    prepararBosqueEncantado();
+    prepararParallaxDePortada();
+    prepararInteracciones();
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciarInvitacion, { once: true });
+} else {
+    iniciarInvitacion();
+}
