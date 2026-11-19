@@ -13,8 +13,8 @@
 
 :root {
     /* Transparencia global reutilizable para paneles beige/marfil */
-    --transparencia-secciones: 0.82;
-    --desenfoque-secciones: 3px;
+    --transparencia-secciones: 0.62;
+    --desenfoque-secciones: 2px;
 
     /* Paleta principal */
     --fondo-pagina: #c8d5a4;
@@ -254,14 +254,6 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #fffdf8 0%,
-            #f6ead8 58%,
-            #e7d4b7 100%
-        );
 }
 
 /* Textura suave */
@@ -272,15 +264,6 @@ img {
     inset: 0;
 
     pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(76, 55, 33, 0.05),
-            transparent 18%,
-            transparent 82%,
-            rgba(76, 55, 33, 0.05)
-        );
 
     z-index: 0;
 }
@@ -716,13 +699,9 @@ img {
     overflow: hidden;
 
     background:
-        linear-gradient(
-            rgba(255, 252, 245, var(--transparencia-secciones)),
-            rgba(255, 252, 245, var(--transparencia-secciones))
-        ),
         radial-gradient(
             ellipse at center,
-            rgba(255, 250, 241, var(--transparencia-secciones)) 0%,
+            rgba(255, 252, 245, var(--transparencia-secciones)) 0%,
             rgba(238, 224, 201, var(--transparencia-secciones)) 100%
         );
 
@@ -1329,13 +1308,9 @@ img {
     overflow: hidden;
 
     background:
-        linear-gradient(
-            rgba(255, 252, 245, var(--transparencia-secciones)),
-            rgba(255, 252, 245, var(--transparencia-secciones))
-        ),
         radial-gradient(
             ellipse at center,
-            rgba(255, 250, 241, var(--transparencia-secciones)),
+            rgba(255, 252, 245, var(--transparencia-secciones)),
             rgba(238, 224, 201, var(--transparencia-secciones))
         );
 
@@ -2350,7 +2325,12 @@ background:
     overflow: hidden;
     padding: 100px 20px;
 
-    background-color: rgba(245, 237, 223, var(--transparencia-secciones));
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 253, 248, var(--transparencia-secciones)),
+            rgba(245, 237, 223, var(--transparencia-secciones))
+        );
     backdrop-filter: blur(var(--desenfoque-secciones));
     -webkit-backdrop-filter: blur(var(--desenfoque-secciones));
     text-align: center;

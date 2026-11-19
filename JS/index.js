@@ -52,16 +52,76 @@ function prepararApertura() {
     const sello = document.getElementById("sello-apertura");
     const apertura = document.getElementById("apertura");
     const texto = document.getElementById("apertura-texto");
+    const saltar = document.getElementById("saltar-apertura");
+    const portada = document.getElementById("inicio");
+    const comenzar = document.getElementById("comenzar-invitacion");
 
-    if (!sello || !apertura || !texto) return;
+    if (!sello || !apertura || !texto || !saltar || !portada || !comenzar) return;
+
+    const contenidoBloqueado = Array.from(
+        document.querySelectorAll("#contenido-principal > *")
+    ).filter((elemento) => elemento !== apertura);
+    const pie = document.querySelector(".tana-footer");
+    let etapa = "sobre-cerrado";
+
+    const bloquearContenido = () => {
+        contenidoBloqueado.forEach((elemento) => { elemento.inert = true; });
+        if (pie) pie.inert = true;
+    };
+
+    const mostrarPortada = (animar = true) => {
+        if (etapa === "portada") return;
+        etapa = "portada";
+        portada.inert = false;
+        portada.classList.add("portada-emergente");
+
+        if (!animar || movimientoReducido.matches) {
+            portada.classList.add("portada-sin-animacion");
+        }
+
+        apertura.classList.add("apertura-retirando");
+        const retirarApertura = () => {
+            apertura.hidden = true;
+            comenzar.focus();
+        };
+
+        if (animar && !movimientoReducido.matches) {
+            window.setTimeout(retirarApertura, 680);
+        } else {
+            retirarApertura();
+        }
+    };
+
+    bloquearContenido();
 
     sello.addEventListener("click", () => {
-        const abierto = sello.getAttribute("aria-pressed") !== "true";
-        sello.setAttribute("aria-pressed", String(abierto));
-        apertura.classList.toggle("sobre-abierto", abierto);
-        texto.textContent = abierto
-            ? "Con la bendición de Dios y de nuestras familias, te invitamos a celebrar nuestra boda."
-            : "Tocá el sello y descubrí la historia de Cecilia y José.";
+        if (etapa !== "sobre-cerrado") return;
+        etapa = "abriendo-sobre";
+        sello.disabled = true;
+        sello.setAttribute("aria-pressed", "true");
+        apertura.classList.add("sobre-abierto");
+        texto.textContent = "La invitación está saliendo del sobre.";
+
+        if (movimientoReducido.matches) {
+            mostrarPortada(false);
+            return;
+        }
+
+        window.setTimeout(() => mostrarPortada(true), 1050);
+    });
+
+    saltar.addEventListener("click", () => {
+        mostrarPortada(false);
+    });
+
+    comenzar.addEventListener("click", () => {
+        if (!document.body.classList.contains("intro-activa")) return;
+
+        document.body.classList.remove("intro-activa");
+        contenidoBloqueado.forEach((elemento) => { elemento.inert = false; });
+        if (pie) pie.inert = false;
+        portada.classList.remove("portada-emergente", "portada-sin-animacion");
+        portada.hidden = true;
     });
 }
 
@@ -109,7 +169,7 @@ function crearElementosBosque() {
     capa.setAttribute("aria-hidden", "true");
 
     const grupos = [
-        { clase: "luciernaga", cantidad: 8, duracion: 11 },
+        { clase: "luciernaga", cantidad: 12, duracion: 11 },
         { clase: "particula-dorada", cantidad: 12, duracion: 15 },
         { clase: "hoja-bosque", cantidad: 6, duracion: 17 },
         { clase: "petalo", cantidad: 5, duracion: 20 },
@@ -270,7 +330,7 @@ function prepararAno() {
 
 function prepararInteracciones() {
     const botones = document.querySelectorAll(
-        ".boton-apertura, .boton-comenzar, .boton-principal, .boton-ubicacion, .boton-musica, .boton-copiar-alias"
+        ".saltar-apertura, .boton-comenzar, .boton-principal, .boton-ubicacion, .boton-musica, .boton-copiar-alias"
     );
 
     botones.forEach((boton) => {
