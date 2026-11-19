@@ -1,4 +1,9 @@
 :root {
+    --imagen-fondo-apertura: url("../IMG/bosque-novios.png"); /* Fondo existente; editable. */
+    --imagen-sobre-cerrado: none; /* IMAGEN DEL SOBRE CERRADO: AGREGAR RUTA */
+    --imagen-sello-lacre: none; /* IMAGEN DEL SELLO DE LACRE: AGREGAR RUTA */
+    --imagen-sobre-abierto: none; /* IMAGEN DEL SOBRE ABIERTO: AGREGAR RUTA */
+
     --libro-marfil: #f5eedf;
     --libro-papel: #eaddc4;
     --libro-tinta: #38291f;
@@ -102,15 +107,42 @@ button:focus-visible {
 
 /* La carta abre el recorrido antes de la portada original. */
 .apertura {
-    position: relative;
+    position: fixed;
+    z-index: 10000;
+    inset: 0;
     display: grid;
-    min-height: min(100svh, 960px);
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 100vh;
+    min-height: 100svh;
     padding: clamp(32px, 7vw, 88px) 20px;
     overflow: hidden;
     place-items: center;
     background:
         linear-gradient(135deg, rgba(20, 35, 25, .92), rgba(30, 42, 30, .65)),
-        url("../IMG/bosque-novios.png") center 48% / cover;
+        var(--imagen-fondo-apertura) center 48% / cover no-repeat;
+}
+
+body.intro-activa {
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+}
+
+body.intro-activa .enlace-salto {
+    display: none;
+}
+
+.apertura[hidden] {
+    display: none;
+}
+
+.apertura.apertura-retirando {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .65s ease, visibility 0s linear .65s;
 }
 
 .apertura::before,
@@ -140,13 +172,17 @@ button:focus-visible {
     position: relative;
     z-index: 1;
     width: min(100%, 590px);
+    max-height: calc(100svh - 40px);
     padding: clamp(32px, 7vw, 62px) clamp(22px, 6vw, 58px) 34px;
+    overflow-x: hidden;
+    overflow-y: auto;
     border: 1px solid rgba(211, 183, 127, .84);
     background:
-        radial-gradient(ellipse at 50% 10%, rgba(255, 253, 245, var(--transparencia-secciones, .82)), rgba(236, 222, 194, var(--transparencia-secciones, .82))),
-        var(--libro-marfil);
+        radial-gradient(ellipse at 50% 10%, rgba(255, 253, 245, var(--transparencia-secciones, .62)), rgba(236, 222, 194, var(--transparencia-secciones, .62)));
     box-shadow: 0 30px 90px rgba(0, 0, 0, .4), inset 0 0 55px rgba(135, 101, 53, .12);
     text-align: center;
+    backdrop-filter: blur(var(--desenfoque-secciones, 2px));
+    -webkit-backdrop-filter: blur(var(--desenfoque-secciones, 2px));
 }
 
 .marco-apertura::before {
@@ -174,9 +210,13 @@ button:focus-visible {
     aspect-ratio: 1.55;
     margin: 30px auto 34px;
     border: 1px solid rgba(134, 98, 49, .72);
-    background:
-        linear-gradient(145deg, rgba(255, 255, 247, var(--transparencia-secciones, .82)), rgba(216, 198, 161, var(--transparencia-secciones, .82))),
-        var(--libro-papel);
+    background-color: var(--libro-papel);
+    background-image:
+        var(--imagen-sobre-cerrado),
+        linear-gradient(145deg, rgba(255, 255, 247, var(--transparencia-secciones, .62)), rgba(216, 198, 161, var(--transparencia-secciones, .62)));
+    background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover, cover;
     box-shadow: 0 17px 30px rgba(67, 47, 27, .23), inset 0 0 20px rgba(129, 94, 47, .12);
     perspective: 700px;
 }
@@ -214,6 +254,38 @@ button:focus-visible {
     clip-path: polygon(0 100%, 50% 54%, 100% 100%);
 }
 
+.tarjeta-emergente {
+    position: absolute;
+    z-index: 4;
+    top: 10%;
+    left: 50%;
+    display: grid;
+    width: 60%;
+    height: 82%;
+    transform: translate(-50%, 28%) scale(.78);
+    place-items: start center;
+    padding-top: 12%;
+    border: 1px solid rgba(165, 129, 69, .75);
+    background: linear-gradient(145deg, rgba(255, 253, 245, .98), rgba(236, 222, 194, .98));
+    box-shadow: 0 8px 18px rgba(67, 47, 27, .22);
+    color: var(--libro-bordo);
+    font-family: var(--fuente-elegante), Georgia, serif;
+    font-size: clamp(18px, 4vw, 27px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tarjeta-emergente > span {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.tarjeta-emergente i {
+    color: var(--libro-oro);
+    font-size: .75em;
+}
+
 .rama-sobre {
     position: absolute;
     z-index: 4;
@@ -248,14 +320,34 @@ button:focus-visible {
     place-items: center;
     border: 1px solid rgba(243, 204, 150, .72);
     border-radius: 50%;
-    background:
+    background-color: #64272d;
+    background-image:
+        var(--imagen-sello-lacre),
         radial-gradient(circle at 34% 27%, #9a5a55, #64272d 66%, #4f1b22);
+    background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover, cover;
     box-shadow: 0 5px 16px rgba(48, 23, 19, .45), inset 0 0 0 4px rgba(231, 197, 149, .15);
     color: #f2dfbd;
     cursor: pointer;
     font-family: var(--fuente-elegante), Georgia, serif;
     font-size: 20px;
     transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.sello-cera::after {
+    position: absolute;
+    inset: -12px;
+    transform: scale(.65);
+    border: 1px solid rgba(243, 204, 150, .72);
+    border-radius: 50%;
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sello-cera:active {
+    transform: translate(-50%, -50%) scale(.88);
 }
 
 .sello-cera:hover {
@@ -271,7 +363,7 @@ button:focus-visible {
 .cuervo-mensajero {
     position: absolute;
     z-index: 6;
-    top: -26%;
+    top: -12%;
     right: -11%;
     width: clamp(100px, 24vw, 170px);
     color: #1d211c;
@@ -286,7 +378,56 @@ button:focus-visible {
 }
 
 .sobre-abierto .sello-cera {
-    transform: translate(-50%, -50%) scale(.92) rotate(12deg);
+    animation: sello-se-rompe .55s ease .18s forwards;
+    pointer-events: none;
+}
+
+.sobre-abierto .sello-cera::after {
+    animation: sello-brilla .62s ease-out forwards;
+}
+
+.sobre-abierto .tarjeta-emergente {
+    animation: tarjeta-desde-sobre .9s cubic-bezier(.18, .72, .24, 1) .38s forwards;
+}
+
+.sobre-abierto .sobre-antiguo {
+    background-image:
+        var(--imagen-sobre-abierto),
+        var(--imagen-sobre-cerrado),
+        linear-gradient(145deg, rgba(255, 255, 247, .98), rgba(216, 198, 161, .98));
+}
+
+@keyframes sello-se-rompe {
+    45% { opacity: 1; transform: translate(-50%, -50%) scale(.78) rotate(-8deg); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(.38) rotate(18deg); }
+}
+
+@keyframes sello-brilla {
+    45% { opacity: .8; transform: scale(1.05); }
+    100% { opacity: 0; transform: scale(1.5); }
+}
+
+@keyframes tarjeta-desde-sobre {
+    0% { opacity: 0; transform: translate(-50%, 28%) scale(.78); }
+    30% { opacity: 1; }
+    100% { opacity: 1; transform: translate(-50%, -32%) scale(.9); }
+}
+
+@keyframes escena-portada-aparece {
+    to { opacity: 1; }
+}
+
+@keyframes tarjeta-portada-emerge {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40vh, 0) scale(.72);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: none;
+    }
 }
 
 .marco-apertura h2 {
@@ -314,7 +455,7 @@ button:focus-visible {
     line-height: 1.45;
 }
 
-.boton-apertura,
+.saltar-apertura,
 .boton-comenzar,
 .boton-principal,
 .boton-ubicacion,
@@ -342,7 +483,7 @@ button:focus-visible {
     cursor: pointer;
 }
 
-.boton-apertura:hover,
+.saltar-apertura:hover,
 .boton-comenzar:hover,
 .boton-principal:hover,
 .boton-ubicacion:hover,
@@ -353,14 +494,22 @@ button:focus-visible {
     box-shadow: 0 12px 26px rgba(40, 27, 21, .26), 0 0 18px rgba(211, 183, 127, .2);
 }
 
-.boton-apertura span {
-    color: var(--libro-oro-claro);
-    font-size: 22px;
-    transition: transform .25s ease;
+.saltar-apertura {
+    min-height: 40px;
+    margin-top: 2px;
+    padding: 8px 18px;
+    border-color: rgba(165, 129, 69, .58);
+    background: transparent;
+    box-shadow: none;
+    color: var(--libro-verde-profundo);
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.boton-apertura:hover span {
-    transform: translateY(3px);
+.saltar-apertura:hover {
+    background: rgba(255, 253, 245, .5);
+    box-shadow: 0 5px 16px rgba(40, 27, 21, .12);
+    color: var(--libro-bordo);
 }
 
 .apertura-pie {
@@ -378,6 +527,48 @@ button:focus-visible {
     overflow: hidden;
     place-items: center;
     background: var(--libro-verde-profundo);
+}
+
+.portada.portada-emergente {
+    position: fixed;
+    z-index: 10001;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    background: transparent;
+}
+
+.portada.portada-emergente::before {
+    opacity: 0;
+    animation: escena-portada-aparece .65s ease .42s forwards;
+}
+
+.portada.portada-emergente .fondo-portada,
+.portada.portada-emergente .decoracion-portada {
+    opacity: 0;
+    animation: escena-portada-aparece .65s ease .42s forwards;
+}
+
+.portada.portada-emergente .contenido-portada {
+    animation: tarjeta-portada-emerge .95s cubic-bezier(.18, .72, .24, 1) forwards;
+}
+
+.portada.portada-emergente.portada-sin-animacion::before,
+.portada.portada-emergente.portada-sin-animacion .fondo-portada,
+.portada.portada-emergente.portada-sin-animacion .decoracion-portada {
+    opacity: 1;
+    animation: none;
+}
+
+.portada.portada-emergente.portada-sin-animacion .contenido-portada {
+    opacity: 1;
+    animation: none;
+    filter: none;
+    transform: none;
 }
 
 .portada .fondo-portada,
@@ -410,11 +601,13 @@ button:focus-visible {
     position: absolute;
     bottom: -3%;
     left: 50%;
-    width: min(100%, 1500px);
+    width: min(330%, 1725px);
+    max-width: none;
     height: 102%;
     object-fit: contain;
     object-position: center bottom;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scaleY(1.45);
+    transform-origin: center bottom;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .12));
 }
 
@@ -426,11 +619,10 @@ button:focus-visible {
     outline: 1px solid rgba(222, 193, 137, .5);
     outline-offset: -9px;
     background:
-        linear-gradient(145deg, rgba(248, 241, 220, var(--transparencia-secciones, .82)), rgba(232, 216, 184, var(--transparencia-secciones, .82))),
-        var(--libro-marfil);
+        linear-gradient(145deg, rgba(248, 241, 220, var(--transparencia-secciones, .62)), rgba(232, 216, 184, var(--transparencia-secciones, .62)));
     box-shadow: 0 28px 80px rgba(0, 0, 0, .42);
-    backdrop-filter: blur(var(--desenfoque-secciones, 3px));
-    -webkit-backdrop-filter: blur(var(--desenfoque-secciones, 3px));
+    backdrop-filter: blur(var(--desenfoque-secciones, 2px));
+    -webkit-backdrop-filter: blur(var(--desenfoque-secciones, 2px));
 }
 
 .contenido-portada::before,
@@ -534,8 +726,8 @@ button:focus-visible {
     overflow: hidden;
     border: 1px solid rgba(164, 128, 69, .8);
     box-shadow: var(--libro-sombra);
-    backdrop-filter: blur(var(--desenfoque-secciones, 3px));
-    -webkit-backdrop-filter: blur(var(--desenfoque-secciones, 3px));
+    backdrop-filter: blur(var(--desenfoque-secciones, 2px));
+    -webkit-backdrop-filter: blur(var(--desenfoque-secciones, 2px));
 }
 
 .invitacion .seccion::before {
@@ -609,8 +801,7 @@ button:focus-visible {
     align-items: center;
     gap: 5px 24px;
     background:
-        linear-gradient(115deg, rgba(249, 242, 224, var(--transparencia-secciones, .82)), rgba(234, 221, 193, var(--transparencia-secciones, .82))),
-        var(--libro-marfil);
+        linear-gradient(115deg, rgba(249, 242, 224, var(--transparencia-secciones, .62)), rgba(234, 221, 193, var(--transparencia-secciones, .62)));
 }
 
 .ornamento-musica {
@@ -668,7 +859,7 @@ button:focus-visible {
     min-width: 0;
     padding: 18px 10px 14px;
     border: 1px solid rgba(165, 129, 69, .45);
-    background: rgba(255, 252, 243, var(--transparencia-secciones, .82));
+    background: rgba(255, 252, 243, var(--transparencia-secciones, .62));
     box-shadow: 0 8px 20px rgba(69, 50, 29, .08);
     transition: transform .35s ease, box-shadow .35s ease;
 }
@@ -827,7 +1018,7 @@ button:focus-visible {
     padding: clamp(28px, 5vw, 44px) clamp(18px, 5vw, 38px);
     border: 1px solid rgba(165, 129, 69, .6);
     background:
-        linear-gradient(rgba(248, 241, 222, var(--transparencia-secciones, .82)), rgba(248, 241, 222, var(--transparencia-secciones, .82))),
+        linear-gradient(rgba(248, 241, 222, var(--transparencia-secciones, .62)), rgba(248, 241, 222, var(--transparencia-secciones, .62))),
         url("../IMG/puerta\ ubicacion.jpg") center / cover;
     box-shadow: 0 18px 40px rgba(68, 51, 32, .16);
     transition: transform .4s ease, box-shadow .4s ease;
@@ -874,7 +1065,7 @@ button:focus-visible {
     margin: 16px auto 28px;
     padding: 10px 10px 43px;
     border: 1px solid rgba(165, 129, 69, .68);
-    background: rgba(255, 250, 240, var(--transparencia-secciones, .82));
+    background: rgba(255, 250, 240, var(--transparencia-secciones, .62));
     box-shadow: 0 16px 32px rgba(59, 43, 28, .18);
     transform: rotate(-1.5deg);
     transition: transform .4s ease, box-shadow .4s ease;
@@ -909,8 +1100,7 @@ button:focus-visible {
     margin: 18px auto;
     border: 1px solid rgba(165, 129, 69, .6);
     background:
-        linear-gradient(135deg, rgba(245, 237, 220, var(--transparencia-secciones, .82)), rgba(226, 211, 183, var(--transparencia-secciones, .82))),
-        var(--libro-papel);
+        linear-gradient(135deg, rgba(245, 237, 220, var(--transparencia-secciones, .62)), rgba(226, 211, 183, var(--transparencia-secciones, .62)));
     box-shadow: 0 12px 30px rgba(59, 43, 28, .12);
 }
 
@@ -1042,7 +1232,7 @@ button:focus-visible {
 .opcion-regalo {
     min-height: 78px;
     border: 1px solid rgba(165, 129, 69, .42);
-    background: rgba(255, 252, 242, var(--transparencia-secciones, .82));
+    background: rgba(255, 252, 242, var(--transparencia-secciones, .62));
     box-shadow: 0 8px 20px rgba(69, 50, 29, .08);
     transition: transform .3s ease, box-shadow .3s ease;
 }
@@ -1090,8 +1280,7 @@ button:focus-visible {
 
 .confirmacion {
     background:
-        radial-gradient(ellipse at 50% 0, rgba(255, 255, 250, var(--transparencia-secciones, .82)), rgba(241, 231, 208, var(--transparencia-secciones, .82))),
-        var(--libro-marfil) !important;
+        radial-gradient(ellipse at 50% 0, rgba(255, 255, 250, var(--transparencia-secciones, .62)), rgba(241, 231, 208, var(--transparencia-secciones, .62))) !important;
 }
 
 .confirmacion .nota-solo-adultos {
@@ -1112,7 +1301,7 @@ button:focus-visible {
     place-items: center;
     border: 1px dashed rgba(165, 129, 69, .75);
     background:
-        linear-gradient(rgba(246, 239, 223, var(--transparencia-secciones, .82)), rgba(246, 239, 223, var(--transparencia-secciones, .82))),
+        linear-gradient(rgba(246, 239, 223, var(--transparencia-secciones, .62)), rgba(246, 239, 223, var(--transparencia-secciones, .62))),
         url("../IMG/Rosa-Blanca-Desarmada.svg") center / 160px no-repeat;
 }
 
@@ -1436,8 +1625,10 @@ button:focus-visible {
     }
 
     .decoracion-portada .columnas-rosas {
-        width: 145%;
+        width: min(115%, 1725px);
         max-width: none;
+        height: 102%;
+        transform: translateX(-50%) scaleY(1.35);
         opacity: .76;
     }
 

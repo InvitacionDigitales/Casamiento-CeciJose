@@ -13,8 +13,8 @@
 
 :root {
     /* Transparencia global reutilizable para paneles beige/marfil */
-    --transparencia-secciones: 0.82;
-    --desenfoque-secciones: 3px;
+    --transparencia-secciones: 0.62;
+    --desenfoque-secciones: 2px;
 
     /* Paleta principal */
     --fondo-pagina: #c8d5a4;
@@ -716,13 +716,9 @@ img {
     overflow: hidden;
 
     background:
-        linear-gradient(
-            rgba(255, 252, 245, var(--transparencia-secciones)),
-            rgba(255, 252, 245, var(--transparencia-secciones))
-        ),
         radial-gradient(
             ellipse at center,
-            rgba(255, 250, 241, var(--transparencia-secciones)) 0%,
+            rgba(255, 252, 245, var(--transparencia-secciones)) 0%,
             rgba(238, 224, 201, var(--transparencia-secciones)) 100%
         );
 
@@ -1329,13 +1325,9 @@ img {
     overflow: hidden;
 
     background:
-        linear-gradient(
-            rgba(255, 252, 245, var(--transparencia-secciones)),
-            rgba(255, 252, 245, var(--transparencia-secciones))
-        ),
         radial-gradient(
             ellipse at center,
-            rgba(255, 250, 241, var(--transparencia-secciones)),
+            rgba(255, 252, 245, var(--transparencia-secciones)),
             rgba(238, 224, 201, var(--transparencia-secciones))
         );
 
@@ -2350,7 +2342,12 @@ background:
     overflow: hidden;
     padding: 100px 20px;
 
-    background-color: rgba(245, 237, 223, var(--transparencia-secciones));
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 253, 248, var(--transparencia-secciones)),
+            rgba(245, 237, 223, var(--transparencia-secciones))
+        );
     backdrop-filter: blur(var(--desenfoque-secciones));
     -webkit-backdrop-filter: blur(var(--desenfoque-secciones));
     text-align: center;

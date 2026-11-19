@@ -15,34 +15,40 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="CSS/style.css?v=18">
-    <link rel="stylesheet" href="CSS/experience.css?v=2">
+    <link rel="stylesheet" href="CSS/experience.css?v=3">
+    <noscript>
+        <style>
+            body.intro-activa { height: auto; overflow: auto; }
+            .apertura { display: none !important; }
+        </style>
+    </noscript>
 </head>
 
-<body>
+<body class="intro-activa">
     <a class="enlace-salto" href="#contenido-principal">Ir al contenido</a>
 
     <main class="invitacion" id="contenido-principal">
-        <section class="apertura" id="apertura" aria-labelledby="apertura-titulo">
+        <section class="apertura" id="apertura" role="dialog" aria-modal="true" aria-labelledby="apertura-titulo">
             <div class="marco-apertura">
-                <p class="apertura-etiqueta">UNA INVITACIÓN PARA VOS</p>
+                <p class="apertura-etiqueta" id="apertura-titulo">Una invitación especial para vos</p>
                 <div class="sobre-antiguo">
                     <span class="sobre-solapa" aria-hidden="true"></span>
                     <span class="sobre-pliegue sobre-pliegue-izquierdo" aria-hidden="true"></span>
                     <span class="sobre-pliegue sobre-pliegue-derecho" aria-hidden="true"></span>
                     <span class="sobre-pliegue sobre-pliegue-inferior" aria-hidden="true"></span>
+                    <span class="tarjeta-emergente" aria-hidden="true"><span>J <i>&amp;</i> C</span></span>
                     <span class="rama-sobre rama-sobre-izquierda" aria-hidden="true"></span>
                     <span class="rama-sobre rama-sobre-derecha" aria-hidden="true"></span>
                     <button class="sello-cera" id="sello-apertura" type="button" aria-label="Abrir el sello de la invitación" aria-pressed="false">
-                        <span>C <i>&amp;</i> J</span>
+                        <span>J <i>&amp;</i> C</span>
                     </button>
                     <svg class="cuervo-mensajero" viewBox="0 0 220 150" focusable="false" aria-hidden="true">
                         <path d="M17 104c17-8 26-24 34-42 9-21 25-36 49-41 19-4 37 2 50 14-7-17-6-29 1-41 16 11 25 25 26 41 18-3 33 4 44 17-16-2-28 4-36 16-13 18-29 28-53 28-15 0-28 8-34 21l-32 1 17-13c-24 8-44 12-66-1Zm125-46 39-22-5 22-24 11Z" fill="currentColor"/>
                         <path d="M88 115l-7 19m31-19-2 19m-20 0h-14m35 0h-14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="5"/>
                     </svg>
                 </div>
-                <h2 id="apertura-titulo">Un mensaje especial<br><em>ha llegado para vos</em></h2>
-                <p class="apertura-texto" id="apertura-texto">Tocá el sello y descubrí la historia de Cecilia y José.</p>
-                <a class="boton-apertura" href="#inicio">Abrir invitación <span aria-hidden="true">↓</span></a>
+                <p class="apertura-texto" id="apertura-texto" aria-live="polite">Tocá el sello para abrir</p>
+                <button class="saltar-apertura" id="saltar-apertura" type="button">Saltar animación</button>
                 <span class="apertura-pie">13 · 02 · 2027</span>
             </div>
         </section>
@@ -91,7 +97,7 @@
                 </p>
 
                 <!-- Botón -->
-                <a href="#cuenta-regresiva" class="boton-comenzar">
+                <a href="#cuenta-regresiva" class="boton-comenzar" id="comenzar-invitacion">
                     Comenzar <span>›</span>
                 </a>
 
@@ -632,7 +638,7 @@
     </main>
 
     <!-- JavaScript -->
-    <script src="JS/index.js?v=4"></script>
+    <script src="JS/index.js?v=5"></script>
 <!-- FOOTER LATANA STUDIO -->
 <footer class="tana-footer">
 
