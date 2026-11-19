@@ -121,6 +121,7 @@ function prepararApertura() {
         contenidoBloqueado.forEach((elemento) => { elemento.inert = false; });
         if (pie) pie.inert = false;
         portada.classList.remove("portada-emergente", "portada-sin-animacion");
+        portada.hidden = true;
     });
 }
 
@@ -168,7 +169,7 @@ function crearElementosBosque() {
     capa.setAttribute("aria-hidden", "true");
 
     const grupos = [
-        { clase: "luciernaga", cantidad: 8, duracion: 11 },
+        { clase: "luciernaga", cantidad: 12, duracion: 11 },
         { clase: "particula-dorada", cantidad: 12, duracion: 15 },
         { clase: "hoja-bosque", cantidad: 6, duracion: 17 },
         { clase: "petalo", cantidad: 5, duracion: 20 },

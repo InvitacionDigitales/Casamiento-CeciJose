@@ -15,7 +15,14 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="CSS/style.css?v=18">
-    <link rel="stylesheet" href="CSS/experience.css?v=2">
+    <link rel="stylesheet" href="CSS/experience.css?v=16">
+    <noscript>
+        <style>
+            body.intro-activa { height: auto; overflow: auto; }
+            .apertura { display: none !important; }
+        </style>
+    </noscript>
+
 </head>
 
 <body class="intro-activa">
@@ -30,7 +37,6 @@
                     <span class="sobre-pliegue sobre-pliegue-izquierdo" aria-hidden="true"></span>
                     <span class="sobre-pliegue sobre-pliegue-derecho" aria-hidden="true"></span>
                     <span class="sobre-pliegue sobre-pliegue-inferior" aria-hidden="true"></span>
-                    <span class="tarjeta-emergente" aria-hidden="true"><span>J <i>&amp;</i> C</span></span>
                     <span class="rama-sobre rama-sobre-izquierda" aria-hidden="true"></span>
                     <span class="rama-sobre rama-sobre-derecha" aria-hidden="true"></span>
                     <button class="sello-cera" id="sello-apertura" type="button" aria-label="Abrir el sello de la invitación" aria-pressed="false">
@@ -54,12 +60,10 @@
 
          <!-- IMAGEN DE FONDO -->
             <div class="fondo-portada">
-                <img src="IMG/bosque-novios.png" alt="" fetchpriority="high">
             </div>
 
             <!-- DECORACIONES -->
             <div class="decoracion-portada">
-                <img src="IMG/columna-rosas.png" class="columnas-rosas" alt="">
             </div>
 
             <!-- CONTENIDO CENTRAL -->
@@ -312,11 +316,11 @@
 
             <div class="contenido-ceremonia">
                 <div class="columna-foto">
-                    <!-- RUTA DE FOTOGRAFÍA: AGREGAR RUTA -->
-                    <div class="foto-evento foto-iglesia">
-                        <img src="IMG/puerta ubicacion.jpg" alt="Capilla Santa Teresita">
-                    </div>
-                </div>
+                            <!-- RUTA DE FOTOGRAFÍA: AGREGAR RUTA -->
+                            <div class="foto-evento foto-iglesia">
+                                <img src="IMG/puerta ubicacion.jpg" alt="Capilla Santa Teresita">
+                            </div>
+                        </div>
 
                 <div class="separador-vertical" aria-hidden="true"><span>◆</span></div>
 
@@ -366,11 +370,10 @@
 
     <div class="contenido-ceremonia">
         <div class="columna-foto">
-            <!-- RUTA DE FOTOGRAFÍA: AGREGAR RUTA -->
-         <div class="foto-evento foto-iglesia">
-                        <img src="IMG/puerta ubicacion.jpg" alt="Capilla Santa Teresita">
-                    </div>
-                </div>
+            <div class="foto-evento">
+                <img src="IMG/Salon-aurelia.jpeg" alt="Salón Aurelia">
+            </div>
+        </div>
 
         <div class="separador-vertical" aria-hidden="true"><span>◆</span></div>
 
@@ -485,13 +488,6 @@
             >
         </div>
 
-        <ul class="paleta-colores" aria-label="Inspiración cromática">
-            <li aria-label="Marfil"></li>
-            <li aria-label="Champagne"></li>
-            <li aria-label="Verde bosque"></li>
-            <li aria-label="Rosa antiguo"></li>
-            <li aria-label="Bordó"></li>
-        </ul>
         <p class="nota-paleta">Tonos inspirados en el bosque; elegí libremente el color que más te represente.</p>
 
         <div class="linea-final-dresscode">
@@ -517,33 +513,55 @@
 
         <!-- 07. REGALOS -->
         <section id="regalos" class="seccion regalos marco-informacion">
-            <p class="etiqueta-seccion">UN DETALLE DE CARIÑO</p>
+            <header class="encabezado-regalo">
+                <p class="etiqueta-seccion">UN REGALO ESPECIAL</p>
+                <img class="floritura-regalo" src="IMG/separador-bordo-delicado.svg" alt="" aria-hidden="true">
+            </header>
 
-            <h2>Tu presencia es nuestro mejor regalo</h2>
+            <div class="contenido-regalo">
+                <div class="regalo-presentacion">
+                    <svg class="ilustracion-regalo" viewBox="0 0 180 125" fill="none" aria-hidden="true" focusable="false">
+                        <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <path d="M34 55h112v56H34z" />
+                            <path d="M26 41h128v19H26z" />
+                            <path d="M90 60v51" />
+                            <path d="M90 41c-14 0-29-7-29-19 0-9 10-13 18-8 8 4 11 14 11 27Z" />
+                            <path d="M90 41c14 0 29-7 29-19 0-9-10-13-18-8-8 4-11 14-11 27Z" />
+                            <path d="M44 70h28m36 0h28M34 111h112" />
+                            <path d="M18 98c7-17 16-28 29-39M20 84c-7-3-11-8-13-15 9 1 15 5 18 12M29 70c-1-8 1-14 7-19 4 7 4 13 1 20" />
+                            <path d="M162 98c-7-17-16-28-29-39m27 25c7-3 11-8 13-15-9 1-15 5-18 12m9-17c1-8-1-14-7-19-4 7-4 13-1 20" />
+                        </g>
+                    </svg>
+                    <h2>Tu presencia es nuestro mejor regalo</h2>
+                    <img class="floritura-regalo floritura-regalo-corta" src="IMG/separador-bordo-delicado.svg" alt="" aria-hidden="true">
+                </div>
 
-            <p>
-                Si deseás hacernos un presente, podés hacerlo a través de una transferencia bancaria.
-            </p>
+                <div class="detalles-regalo">
+                    <p class="mensaje-regalo">
+                        Si deseás hacernos un presente, podés hacerlo a través de una transferencia bancaria.
+                    </p>
 
-            <div class="opciones-regalo">
-                <div class="opcion-regalo opcion-transferencia marco-informacion">
-                    <span class="icono-regalo icono-banco" aria-hidden="true"></span>
-                    <span class="texto-transferencia">
-                        Transferencia bancaria
-                        <span class="datos-regalo">
-                            Alias: <span id="alias-regalo">ALIAS_PENDIENTE</span>
-                        </span>
-                    </span>
-                    <button id="copiar-alias" class="boton-copiar-alias"
-                        type="button" aria-label="Copiar alias">
-                        Copiar alias
-                    </button>
+                    <div class="opciones-regalo">
+                        <div class="opcion-regalo opcion-transferencia marco-informacion">
+                            <span class="icono-regalo icono-banco" aria-hidden="true"></span>
+                            <span class="texto-transferencia">
+                                Transferencia bancaria
+                                <span class="datos-regalo">
+                                    Alias: <span id="alias-regalo">ALIAS_PENDIENTE</span>
+                                </span>
+                            </span>
+                            <button id="copiar-alias" class="boton-copiar-alias"
+                                type="button" aria-label="Copiar alias">
+                                Copiar alias
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="regalo-gracias">
+                        Lo más importante es compartir este día con vos.
+                    </p>
                 </div>
             </div>
-
-            <p class="regalo-gracias">
-                Lo más importante es compartir este día con vos.
-            </p>
         </section>
 
 
