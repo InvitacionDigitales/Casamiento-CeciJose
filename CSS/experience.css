@@ -143,7 +143,7 @@ button:focus-visible {
     padding: clamp(32px, 7vw, 62px) clamp(22px, 6vw, 58px) 34px;
     border: 1px solid rgba(211, 183, 127, .84);
     background:
-        radial-gradient(ellipse at 50% 10%, rgba(255, 253, 245, .97), rgba(236, 222, 194, .96)),
+        radial-gradient(ellipse at 50% 10%, rgba(255, 253, 245, var(--transparencia-secciones, .82)), rgba(236, 222, 194, var(--transparencia-secciones, .82))),
         var(--libro-marfil);
     box-shadow: 0 30px 90px rgba(0, 0, 0, .4), inset 0 0 55px rgba(135, 101, 53, .12);
     text-align: center;
@@ -175,7 +175,7 @@ button:focus-visible {
     margin: 30px auto 34px;
     border: 1px solid rgba(134, 98, 49, .72);
     background:
-        linear-gradient(145deg, rgba(255, 255, 247, .92), rgba(216, 198, 161, .9)),
+        linear-gradient(145deg, rgba(255, 255, 247, var(--transparencia-secciones, .82)), rgba(216, 198, 161, var(--transparencia-secciones, .82))),
         var(--libro-papel);
     box-shadow: 0 17px 30px rgba(67, 47, 27, .23), inset 0 0 20px rgba(129, 94, 47, .12);
     perspective: 700px;
@@ -426,10 +426,11 @@ button:focus-visible {
     outline: 1px solid rgba(222, 193, 137, .5);
     outline-offset: -9px;
     background:
-        linear-gradient(145deg, rgba(248, 241, 220, .92), rgba(232, 216, 184, .86)),
+        linear-gradient(145deg, rgba(248, 241, 220, var(--transparencia-secciones, .82)), rgba(232, 216, 184, var(--transparencia-secciones, .82))),
         var(--libro-marfil);
     box-shadow: 0 28px 80px rgba(0, 0, 0, .42);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(var(--desenfoque-secciones, 3px));
+    -webkit-backdrop-filter: blur(var(--desenfoque-secciones, 3px));
 }
 
 .contenido-portada::before,
@@ -532,10 +533,9 @@ button:focus-visible {
     padding: clamp(46px, 7vw, 82px) clamp(20px, 6vw, 72px);
     overflow: hidden;
     border: 1px solid rgba(164, 128, 69, .8);
-    background:
-        radial-gradient(ellipse at 50% 15%, rgba(255, 255, 250, .88), rgba(246, 238, 219, .95) 74%),
-        var(--libro-marfil);
     box-shadow: var(--libro-sombra);
+    backdrop-filter: blur(var(--desenfoque-secciones, 3px));
+    -webkit-backdrop-filter: blur(var(--desenfoque-secciones, 3px));
 }
 
 .invitacion .seccion::before {
@@ -609,7 +609,7 @@ button:focus-visible {
     align-items: center;
     gap: 5px 24px;
     background:
-        linear-gradient(115deg, rgba(249, 242, 224, .97), rgba(234, 221, 193, .97)),
+        linear-gradient(115deg, rgba(249, 242, 224, var(--transparencia-secciones, .82)), rgba(234, 221, 193, var(--transparencia-secciones, .82))),
         var(--libro-marfil);
 }
 
@@ -668,7 +668,7 @@ button:focus-visible {
     min-width: 0;
     padding: 18px 10px 14px;
     border: 1px solid rgba(165, 129, 69, .45);
-    background: rgba(255, 252, 243, .76);
+    background: rgba(255, 252, 243, var(--transparencia-secciones, .82));
     box-shadow: 0 8px 20px rgba(69, 50, 29, .08);
     transition: transform .35s ease, box-shadow .35s ease;
 }
@@ -827,7 +827,7 @@ button:focus-visible {
     padding: clamp(28px, 5vw, 44px) clamp(18px, 5vw, 38px);
     border: 1px solid rgba(165, 129, 69, .6);
     background:
-        linear-gradient(rgba(248, 241, 222, .82), rgba(248, 241, 222, .88)),
+        linear-gradient(rgba(248, 241, 222, var(--transparencia-secciones, .82)), rgba(248, 241, 222, var(--transparencia-secciones, .82))),
         url("../IMG/puerta\ ubicacion.jpg") center / cover;
     box-shadow: 0 18px 40px rgba(68, 51, 32, .16);
     transition: transform .4s ease, box-shadow .4s ease;
@@ -874,7 +874,7 @@ button:focus-visible {
     margin: 16px auto 28px;
     padding: 10px 10px 43px;
     border: 1px solid rgba(165, 129, 69, .68);
-    background: #fffaf0;
+    background: rgba(255, 250, 240, var(--transparencia-secciones, .82));
     box-shadow: 0 16px 32px rgba(59, 43, 28, .18);
     transform: rotate(-1.5deg);
     transition: transform .4s ease, box-shadow .4s ease;
@@ -909,7 +909,7 @@ button:focus-visible {
     margin: 18px auto;
     border: 1px solid rgba(165, 129, 69, .6);
     background:
-        linear-gradient(135deg, rgba(245, 237, 220, .9), rgba(226, 211, 183, .8)),
+        linear-gradient(135deg, rgba(245, 237, 220, var(--transparencia-secciones, .82)), rgba(226, 211, 183, var(--transparencia-secciones, .82))),
         var(--libro-papel);
     box-shadow: 0 12px 30px rgba(59, 43, 28, .12);
 }
@@ -1042,7 +1042,7 @@ button:focus-visible {
 .opcion-regalo {
     min-height: 78px;
     border: 1px solid rgba(165, 129, 69, .42);
-    background: rgba(255, 252, 242, .78);
+    background: rgba(255, 252, 242, var(--transparencia-secciones, .82));
     box-shadow: 0 8px 20px rgba(69, 50, 29, .08);
     transition: transform .3s ease, box-shadow .3s ease;
 }
@@ -1090,7 +1090,7 @@ button:focus-visible {
 
 .confirmacion {
     background:
-        radial-gradient(ellipse at 50% 0, rgba(255, 255, 250, .96), rgba(241, 231, 208, .96)),
+        radial-gradient(ellipse at 50% 0, rgba(255, 255, 250, var(--transparencia-secciones, .82)), rgba(241, 231, 208, var(--transparencia-secciones, .82))),
         var(--libro-marfil) !important;
 }
 
@@ -1112,7 +1112,7 @@ button:focus-visible {
     place-items: center;
     border: 1px dashed rgba(165, 129, 69, .75);
     background:
-        linear-gradient(rgba(246, 239, 223, .88), rgba(246, 239, 223, .88)),
+        linear-gradient(rgba(246, 239, 223, var(--transparencia-secciones, .82)), rgba(246, 239, 223, var(--transparencia-secciones, .82))),
         url("../IMG/Rosa-Blanca-Desarmada.svg") center / 160px no-repeat;
 }
 
