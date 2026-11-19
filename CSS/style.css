@@ -815,38 +815,35 @@ img {
 
 
 /* Ornamento */
-
 .ornamento-cuenta {
+    position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    width: min(100%, 620px);
-    height: 36px;
-
-    margin: 24px auto 16px;
-}
-
-.ornamento-cuenta::before {
-    content: "";
+    align-items: center;
 
     width: 100%;
-    height: 26px;
+    margin: 8px auto 12px;
+    padding: 0;
 
-    background:
-        url("../IMG/Rosa-Rosa-Desarmada.svg")
-            center / 28px 28px no-repeat,
-        linear-gradient(
-            to right,
-            transparent,
-            rgba(155, 122, 72, 0.55) 15%,
-            rgba(155, 122, 72, 0.55) 43%,
-            transparent 43%,
-            transparent 57%,
-            rgba(155, 122, 72, 0.55) 57%,
-            rgba(155, 122, 72, 0.55) 85%,
-            transparent
-        );
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.ornamento-cuenta::before,
+.ornamento-cuenta::after {
+    content: none;
+    display: none;
+}
+
+.ornamento-cuenta img {
+    display: block;
+    width: min(420px, 75%);
+    height: auto;
+    max-height: 100px;
+
+    object-fit: contain;
+    opacity: 0.82;
 }
 
 

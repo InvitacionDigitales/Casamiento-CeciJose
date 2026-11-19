@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" width="1200" height="260">
+  <defs>
+    <linearGradient id="silver" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0" stop-color="#f8f8fa"/><stop offset="0.48" stop-color="#c9cbd1"/><stop offset="1" stop-color="#8f929b"/>
+    </linearGradient>
+    <g id="star" fill="url(#silver)" stroke="#e7e8ec" stroke-width="1">
+      <path d="M0,-12 L3,-3 L12,0 L3,3 L0,12 L-3,3 L-12,0 L-3,-3 Z"/>
+    </g>
+    <g id="leaf" fill="url(#silver)" stroke="#aeb1ba" stroke-width="1">
+      <path d="M0,0 C-17,-19 -31,-18 -39,-8 C-25,7 -12,12 0,0Z"/>
+      <path d="M0,0 C17,-19 31,-18 39,-8 C25,7 12,12 0,0Z"/>
+      <path d="M-34,-8 Q-15,-3 0,0 Q15,-3 34,-8" fill="none" stroke="#f4f4f6" stroke-width="1.2"/>
+    </g>
+    <g id="side" fill="none" stroke="url(#silver)" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke-width="3" d="M0 130 C80 128 115 129 168 130 C230 131 260 111 302 87 C346 62 385 65 414 91 C439 114 426 145 401 147 C379 149 368 128 380 114 C392 101 411 108 409 121"/>
+      <path stroke-width="2.5" d="M40 130 C80 105 97 72 126 69 C156 66 168 93 151 111 C139 124 119 116 124 103 C128 92 141 94 143 102"/>
+      <path stroke-width="2.2" d="M100 130 C154 151 193 157 235 138 C274 120 286 95 317 91 C342 88 357 105 347 122 C339 136 321 132 324 119"/>
+      <path stroke-width="2" d="M170 129 C202 109 219 80 246 77 C267 75 278 91 267 105 C257 118 241 110 246 99"/>
+      <path stroke-width="2" d="M230 130 C269 151 302 173 345 160 C375 151 389 134 415 132"/>
+      <path stroke-width="2.2" d="M0 130 C-12 111 -3 96 10 91"/>
+      <path stroke-width="2" d="M55 130 C30 154 12 156 0 145"/>
+      <path stroke-width="2" d="M280 111 C300 130 315 143 338 145"/>
+      <path stroke-width="2" d="M350 85 C366 67 376 52 374 39 C371 22 352 19 342 31 C333 42 342 55 352 49"/>
+      <path stroke-width="2" d="M410 91 C438 74 449 54 443 39 C437 24 419 25 414 38 C410 49 422 57 430 48"/>
+      <path stroke-width="2" d="M392 146 C420 165 447 164 463 147 C478 130 470 112 457 111 C444 110 439 123 448 130"/>
+    </g>
+  </defs>
+  <!-- mirrored fine filigree -->
+  <use href="#side" x="55" y="0"/>
+  <use href="#side" transform="translate(1145 0) scale(-1 1)"/>
+  <!-- central crescent -->
+  <path d="M618 25 C565 39 538 88 547 137 C555 181 590 211 628 207 C589 190 574 153 579 113 C583 75 598 46 618 25Z" fill="url(#silver)" stroke="#f1f1f4" stroke-width="2"/>
+  <path d="M600 42 C573 72 565 113 576 151" fill="none" stroke="#fff" stroke-opacity=".65" stroke-width="2"/>
+  <!-- central curls -->
+  <g fill="none" stroke="url(#silver)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+    <path d="M548 160 C505 119 474 123 464 145 C454 168 480 181 493 165 C503 153 491 143 481 150"/>
+    <path d="M627 160 C669 119 700 123 710 145 C720 168 694 181 681 165 C671 153 683 143 693 150"/>
+    <path d="M550 183 C516 209 482 210 457 190 C440 176 443 159 456 155"/>
+    <path d="M625 183 C659 209 693 210 718 190 C735 176 732 159 719 155"/>
+  </g>
+  <!-- leaves and buds -->
+  <use href="#leaf" transform="translate(180 125) rotate(-12) scale(.8)"/>
+  <use href="#leaf" transform="translate(315 100) rotate(15) scale(.65)"/>
+  <use href="#leaf" transform="translate(420 139) rotate(8) scale(.55)"/>
+  <use href="#leaf" transform="translate(1020 125) rotate(-12) scale(.8)"/>
+  <use href="#leaf" transform="translate(885 100) rotate(15) scale(.65)"/>
+  <use href="#leaf" transform="translate(780 139) rotate(8) scale(.55)"/>
+  <use href="#star" transform="translate(245 67) scale(.75)"/>
+  <use href="#star" transform="translate(955 67) scale(.75)"/>
+  <use href="#star" transform="translate(95 104) scale(.55)"/>
+  <use href="#star" transform="translate(1105 104) scale(.55)"/>
+  <circle cx="355" cy="56" r="2.5" fill="#dfe1e6"/><circle cx="845" cy="56" r="2.5" fill="#dfe1e6"/>
+</svg>
