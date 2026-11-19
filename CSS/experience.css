@@ -1608,3 +1608,18 @@ button:focus-visible {
         animation: none;
     }
 }
+
+.invitacion .seccion.marco-informacion:not(.ceremonia-victoriana) {
+    border-radius: 18px;
+    background: rgba(245, 235, 216, var(--transparencia-secciones, .82)) !important;
+}
+
+.invitacion .seccion.marco-informacion:not(.ceremonia-victoriana)::after {
+    border-radius: 12px;
+}
+
+.invitacion #regalos,
+.invitacion #confirmacion,
+.invitacion .opcion-transferencia {
+    background: rgba(234, 221, 196, .9) !important;
+}
