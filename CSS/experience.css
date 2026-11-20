@@ -1111,6 +1111,7 @@ body.intro-activa .enlace-salto {
     height: 100%;
     object-fit: contain;
     filter: saturate(.92);
+    animation: imagen-carrusel-aparece .9s cubic-bezier(.2, .7, .2, 1) both;
 }
 
 .carrusel button {
@@ -1273,6 +1274,223 @@ body.intro-activa .enlace-salto {
     margin: 0 auto 18px;
     font-size: 13px;
     font-style: italic;
+}
+
+#dress-code {
+    width: min(calc(100% - 36px), 1240px);
+    min-height: 0;
+    margin: clamp(24px, 5vw, 56px) auto;
+    padding: clamp(54px, 7vw, 82px) clamp(20px, 6vw, 76px);
+    overflow: hidden;
+    border: 1px solid rgba(165, 112, 47, .82);
+    border-radius: 7px;
+    background:
+        linear-gradient(135deg, rgba(255, 249, 235, .97), rgba(247, 235, 213, .97)) !important;
+    box-shadow: 0 24px 60px rgba(27, 24, 16, .22), inset 0 0 0 5px rgba(255, 253, 245, .58);
+}
+
+#dress-code::before {
+    z-index: 0;
+    opacity: .78;
+    animation: flores-en-la-brisa 14s ease-in-out infinite alternate;
+    background-image:
+        url("../IMG/Rosa-Rosa-Tupida.svg"),
+        url("../IMG/Rosa-Rosa-Desarmada.svg"),
+        url("../IMG/Rosa-Rosa-Desarmada.svg"),
+        url("../IMG/Rosa-Rosa-Tupida.svg");
+    background-repeat: no-repeat;
+    background-size: clamp(104px, 14vw, 166px) auto;
+    background-position:
+        left 12px top 12px,
+        right 12px top 12px,
+        left 12px bottom 12px,
+        right 12px bottom 12px;
+}
+
+#dress-code::after {
+    inset: 12px;
+    border: 1px solid rgba(165, 112, 47, .55);
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 4px rgba(255, 250, 239, .72);
+    animation: marco-resplandece 8s ease-in-out infinite alternate;
+}
+
+#dress-code .contenedor-dresscode {
+    width: min(100%, 920px);
+    max-width: 920px;
+}
+
+#dress-code .etiqueta-seccion {
+    margin-bottom: 4px;
+    color: #69451f;
+    letter-spacing: .24em;
+}
+
+#dress-code .ornamento-dresscode {
+    margin: 5px 0 9px;
+}
+
+#dress-code h2 {
+    margin-bottom: 8px;
+    color: var(--libro-verde-profundo);
+    font-size: clamp(52px, 8vw, 82px);
+    line-height: 1;
+}
+
+#dress-code h2::after {
+    display: block;
+    width: min(170px, 42vw);
+    height: 24px;
+    margin: 9px auto 0;
+    background: url("../IMG/separador-bordo-delicado.svg") center / contain no-repeat;
+    content: "";
+}
+
+#dress-code .introduccion-dresscode {
+    max-width: 620px;
+    margin-bottom: 12px;
+    color: #4b382b;
+    font-size: clamp(19px, 2.7vw, 27px);
+    font-style: italic;
+}
+
+#dress-code .vestimenta-elegante {
+    margin: 0 auto;
+}
+
+#dress-code .imagen-dresscode {
+    width: min(100%, 218px);
+    filter: drop-shadow(0 8px 9px rgba(58, 42, 27, .12));
+}
+
+#dress-code .nivel-dresscode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 2vw, 22px);
+    margin: 0 auto;
+    color: var(--libro-bordo);
+    font-family: var(--fuente-titulo), cursive;
+    font-size: clamp(53px, 8vw, 76px);
+    line-height: 1;
+}
+
+#dress-code .nivel-dresscode::before,
+#dress-code .nivel-dresscode::after {
+    width: clamp(36px, 10vw, 105px);
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgba(165, 129, 69, .76);
+    color: var(--libro-oro);
+    content: "✦";
+    font-family: var(--fuente-elegante), Georgia, serif;
+    font-size: 13px;
+    line-height: 1;
+}
+
+#dress-code .linea-final-dresscode {
+    margin: 8px 0 5px;
+}
+
+#dress-code .indicaciones-vestimenta {
+    max-width: 610px;
+    margin-bottom: 0;
+    color: #584534;
+    font-size: clamp(18px, 2.5vw, 25px);
+    font-style: italic;
+    line-height: 1.35;
+}
+
+#dress-code .nota-paleta {
+    max-width: 580px;
+    margin: 10px auto 0;
+    color: #6a5945;
+    font-size: 13px;
+    font-style: italic;
+}
+
+#dress-code .indicaciones-vestimenta strong {
+    color: var(--libro-bordo);
+}
+
+@media (max-width: 700px) {
+    #dress-code {
+        width: calc(100% - 20px);
+        padding: 48px 20px;
+    }
+
+    #dress-code::before {
+        opacity: .56;
+        background-size: clamp(78px, 21vw, 116px) auto;
+        background-position:
+            left 7px top 7px,
+            right 7px top 7px,
+            left 7px bottom 7px,
+            right 7px bottom 7px;
+    }
+
+    #dress-code::after {
+        inset: 8px;
+    }
+
+    #dress-code .imagen-dresscode {
+        width: min(100%, 184px);
+    }
+}
+
+.invitacion .seccion.marco-informacion {
+    transition:
+        opacity .9s ease var(--retraso-revelacion, 0ms),
+        filter .9s ease var(--retraso-revelacion, 0ms),
+        transform 1s cubic-bezier(.18, .72, .24, 1) var(--retraso-revelacion, 0ms),
+        border-color .45s ease,
+        box-shadow .45s ease;
+}
+
+.invitacion .seccion.marco-informacion.revelado:hover {
+    transform: translateY(-4px);
+    border-color: rgba(165, 129, 69, .78);
+    box-shadow: 0 24px 48px rgba(39, 31, 21, .18);
+}
+
+.invitacion .seccion.marco-informacion .foto-evento img,
+.invitacion .seccion.marco-informacion .historia-retrato img,
+.invitacion .seccion.marco-informacion .imagen-dresscode {
+    transition:
+        filter .6s ease,
+        transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+
+.invitacion .seccion.marco-informacion .foto-evento:hover img,
+.invitacion .seccion.marco-informacion .historia-retrato:hover img {
+    transform: scale(1.035);
+    filter: saturate(1.08);
+}
+
+@keyframes flores-en-la-brisa {
+    from { transform: scale(1); }
+    to { transform: scale(1.035); }
+}
+
+@keyframes marco-resplandece {
+    from {
+        border-color: rgba(165, 112, 47, .42);
+        box-shadow: inset 0 0 0 4px rgba(255, 250, 239, .62);
+    }
+    to {
+        border-color: rgba(165, 112, 47, .72);
+        box-shadow: inset 0 0 0 4px rgba(255, 250, 239, .9);
+    }
+}
+
+@keyframes imagen-carrusel-aparece {
+    from {
+        opacity: .35;
+        transform: scale(.965);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .ornamento-dresscode,
@@ -1498,15 +1716,18 @@ body.intro-activa .enlace-salto {
 /* Animación de entrada y detalles ambientales. */
 .animaciones-listas .revelacion {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translate3d(0, 30px, 0) scale(.985);
+    filter: blur(4px);
     transition:
-        opacity .8s ease var(--retraso-revelacion, 0ms),
-        transform .8s cubic-bezier(.2, .7, .2, 1) var(--retraso-revelacion, 0ms);
+        opacity .9s ease var(--retraso-revelacion, 0ms),
+        transform 1s cubic-bezier(.18, .72, .24, 1) var(--retraso-revelacion, 0ms),
+        filter .9s ease var(--retraso-revelacion, 0ms);
 }
 
 .animaciones-listas .revelacion.revelado {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
 }
 
 .elementos-bosque {

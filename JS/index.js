@@ -344,7 +344,6 @@ function prepararCarrusel() {
         const elementoEnfocado = document.activeElement;
         const debeRotar = carruselVisible
             && reproduccionActiva
-            && !carrusel.matches(":hover")
             && (!carrusel.contains(elementoEnfocado) || elementoEnfocado === reproduccion);
 
         if (debeRotar && !intervaloCambio) {
@@ -360,8 +359,6 @@ function prepararCarrusel() {
         actualizarBotonReproduccion();
         actualizarRotacion();
     });
-    carrusel.addEventListener("mouseenter", actualizarRotacion);
-    carrusel.addEventListener("mouseleave", actualizarRotacion);
     carrusel.addEventListener("focusin", actualizarRotacion);
     carrusel.addEventListener("focusout", actualizarRotacion);
 
