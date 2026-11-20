@@ -57,6 +57,8 @@ function prepararApertura() {
     const comenzar = document.getElementById("comenzar-invitacion");
 
     if (!sello || !apertura || !texto || !saltar || !portada || !comenzar) return;
+    const sobre = apertura.querySelector(".sobre-antiguo");
+    if (!sobre) return;
 
     const contenidoBloqueado = Array.from(
         document.querySelectorAll("#contenido-principal > *")
@@ -73,6 +75,17 @@ function prepararApertura() {
         if (etapa === "portada") return;
         etapa = "portada";
         portada.inert = false;
+
+        if (animar && !movimientoReducido.matches) {
+            const sobreRect = sobre.getBoundingClientRect();
+            const anchoVentana = document.documentElement.clientWidth;
+            const altoVentana = window.innerHeight;
+            portada.style.setProperty("--carta-inicio-x", `${sobreRect.left}px`);
+            portada.style.setProperty("--carta-inicio-y", `${sobreRect.top}px`);
+            portada.style.setProperty("--carta-escala-x", String(sobreRect.width / anchoVentana));
+            portada.style.setProperty("--carta-escala-y", String(sobreRect.height / altoVentana));
+        }
+
         portada.classList.add("portada-emergente");
 
         if (!animar || movimientoReducido.matches) {

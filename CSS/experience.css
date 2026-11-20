@@ -375,15 +375,22 @@ body.intro-activa .enlace-salto {
     to { opacity: 1; }
 }
 
-@keyframes tarjeta-portada-emerge {
-    from {
-        opacity: 0;
-        transform: scale(.72);
-        filter: blur(4px);
+@keyframes carta-sale-del-sobre {
+    0% {
+        transform: translate(var(--carta-inicio-x), calc(var(--carta-inicio-y) + 22px)) scale(var(--carta-escala-x), var(--carta-escala-y));
+        transform-origin: top left;
+        border-radius: 5px;
+        filter: drop-shadow(0 16px 18px rgba(0, 0, 0, .35));
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
+    22% {
+        transform: translate(var(--carta-inicio-x), calc(var(--carta-inicio-y) - 18px)) scale(var(--carta-escala-x), var(--carta-escala-y));
+        transform-origin: top left;
+        border-radius: 5px;
+    }
+    100% {
+        transform: translate(0, 0) scale(1, 1);
+        transform-origin: top left;
+        border-radius: 0;
         filter: none;
     }
 }
@@ -501,7 +508,10 @@ body.intro-activa .enlace-salto {
     min-height: 100vh;
     min-height: 100svh;
     margin: 0;
-    background: url("../IMG/josececy.jpeg") center 52% / cover no-repeat;
+    padding: 0;
+    background: url("../IMG/bosque-novios.png") center 52% / cover no-repeat;
+    animation: carta-sale-del-sobre 1.25s cubic-bezier(.2, .75, .25, 1) both;
+
 }
 
 .portada.portada-emergente::before {
@@ -513,10 +523,6 @@ body.intro-activa .enlace-salto {
 .portada.portada-emergente .decoracion-portada {
     opacity: 0;
     animation: escena-portada-aparece .65s ease .42s forwards;
-}
-
-.portada.portada-emergente .contenido-portada {
-    animation: tarjeta-portada-emerge .95s cubic-bezier(.18, .72, .24, 1) forwards;
 }
 
 .portada.portada-emergente.portada-sin-animacion::before,
@@ -531,6 +537,12 @@ body.intro-activa .enlace-salto {
     animation: none;
     filter: none;
     transform: none;
+}
+
+.portada.portada-emergente.portada-sin-animacion {
+    animation: none;
+    transform: none;
+    filter: none;
 }
 
 .portada .fondo-portada,
