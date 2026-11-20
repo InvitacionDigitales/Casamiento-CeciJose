@@ -157,7 +157,7 @@ body.intro-activa .enlace-salto {
     height: min(82svh, 820px);
     max-height: calc(100svh - 40px);
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     border: 2px solid rgba(211, 183, 127, .92);
     background:
         linear-gradient(125deg, rgba(196, 187, 157, .72), rgba(112, 115, 93, .66));
@@ -191,9 +191,9 @@ body.intro-activa .enlace-salto {
 .globo-apertura {
     position: absolute;
     z-index: 4;
-    top: 8%;
-    left: 23%;
-    width: min(38%, 450px);
+    top: -11%;
+    left: 36%;
+    width: min(26%, 300px);
     height: auto;
     filter: drop-shadow(0 8px 8px rgba(31, 28, 21, .22));
 }
@@ -349,9 +349,10 @@ body.intro-activa .enlace-salto {
 .cuervo-mensajero {
     position: absolute;
     z-index: 6;
-    top: -60%;
-    right: -18%;
-    width: min(54%, 280px);
+    top: auto;
+    bottom: calc(100% - 24px);
+    right: -3%;
+    width: min(26%, 150px);
     height: auto;
     filter: drop-shadow(0 8px 5px rgba(33, 25, 16, .28));
 }
@@ -361,7 +362,7 @@ body.intro-activa .enlace-salto {
     z-index: 40;
     top: 0;
     left: -24vw;
-    width: clamp(145px, 17vw, 220px);
+    width: clamp(150px, 20vw, 250px);
     height: auto;
     pointer-events: none;
     opacity: 0;
@@ -376,7 +377,7 @@ body.intro-activa .cuervo-volando-tarjeta {
 
 @keyframes vuelo-cuervo-tarjeta {
     0%, 48% {
-        top: 18vh;
+        top: 100vh;
         left: -24vw;
         opacity: 0;
         transform: scale(.82) rotate(-5deg);
@@ -2115,9 +2116,9 @@ body.intro-activa .cuervo-volando-tarjeta {
     }
 
     .globo-apertura {
-        top: 6%;
-        left: 5%;
-        width: 56%;
+        top: -1%;
+        left: 25%;
+        width: 40%;
     }
 
     .firulete-apertura {
@@ -2137,9 +2138,9 @@ body.intro-activa .cuervo-volando-tarjeta {
     }
 
     .cuervo-mensajero {
-        top: -49%;
         right: -4%;
-        width: clamp(122px, 34vw, 170px);
+        width: clamp(92px, 28vw, 112px);
+        bottom: calc(100% - 36px);
     }
 
     .cuervo-volando-tarjeta {
