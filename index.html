@@ -15,7 +15,7 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="CSS/style.css?v=18">
-    <link rel="stylesheet" href="CSS/experience.css?v=21">
+    <link rel="stylesheet" href="CSS/experience.css?v=37">
     <noscript>
         <style>
             body.intro-activa { height: auto; overflow: auto; }
@@ -32,6 +32,13 @@
         <section class="apertura" id="apertura" role="dialog" aria-modal="true" aria-labelledby="apertura-titulo">
             <div class="marco-apertura">
                 <p class="apertura-etiqueta" id="apertura-titulo">Una invitación especial para vos</p>
+                <img class="globo-apertura" src="IMG/goblo-dialogo.png" alt="">
+                <div class="ornamentos-apertura" aria-hidden="true">
+                    <img class="firulete-apertura firulete-apertura-superior-izquierdo" src="IMG/firulete-dorado.png" alt="">
+                    <img class="firulete-apertura firulete-apertura-superior-derecho" src="IMG/firulete-dorado.png" alt="">
+                    <img class="firulete-apertura firulete-apertura-inferior-izquierdo" src="IMG/firulete-dorado.png" alt="">
+                    <img class="firulete-apertura firulete-apertura-inferior-derecho" src="IMG/firulete-dorado.png" alt="">
+                </div>
                 <div class="sobre-antiguo">
                     <span class="sobre-solapa" aria-hidden="true"></span>
                     <span class="sobre-pliegue sobre-pliegue-izquierdo" aria-hidden="true"></span>
@@ -40,12 +47,10 @@
                     <button class="sello-cera" id="sello-apertura" type="button" aria-label="Abrir el sello de la invitación" aria-pressed="false">
                         <img src="IMG/Escudo de Cera Roja con Crestón Dorado.png" alt="Escudo de José y Cecilia">
                     </button>
-                    <svg class="cuervo-mensajero" viewBox="0 0 220 150" focusable="false" aria-hidden="true">
-                        <path d="M17 104c17-8 26-24 34-42 9-21 25-36 49-41 19-4 37 2 50 14-7-17-6-29 1-41 16 11 25 25 26 41 18-3 33 4 44 17-16-2-28 4-36 16-13 18-29 28-53 28-15 0-28 8-34 21l-32 1 17-13c-24 8-44 12-66-1Zm125-46 39-22-5 22-24 11Z" fill="currentColor"/>
-                        <path d="M88 115l-7 19m31-19-2 19m-20 0h-14m35 0h-14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="5"/>
-                    </svg>
+                    <img class="cuervo-mensajero" src="IMG/cuervo.png" alt="">
                 </div>
                 <p class="apertura-texto" id="apertura-texto" aria-live="polite">Tocá el sello para abrir</p>
+                <span class="separador-apertura" aria-hidden="true">✥</span>
             </div>
         </section>
 
@@ -53,17 +58,15 @@
             SECCION INICIO
         ========================= -->
         <section id="inicio" class="portada">
-
-         <!-- IMAGEN DE FONDO -->
-            <div class="fondo-portada">
-            </div>
-
-            <!-- DECORACIONES -->
-            <div class="decoracion-portada">
-            </div>
-
             <!-- CONTENIDO CENTRAL -->
             <div class="contenido-portada">
+                <div class="decoracion-portada" aria-hidden="true">
+                    <img class="firulete-portada firulete-portada-superior-izquierdo" src="IMG/firulete-dorado.png" alt="">
+                    <img class="firulete-portada firulete-portada-superior-derecho" src="IMG/firulete-dorado.png" alt="">
+                    <img class="firulete-portada firulete-portada-inferior-izquierdo" src="IMG/firulete-dorado.png" alt="">
+                    <img class="firulete-portada firulete-portada-inferior-derecho" src="IMG/firulete-dorado.png" alt="">
+                    <img class="rosas-en-fila-portada" src="IMG/Rosas-en-fila.png" alt="">
+                </div>
 
                 <!-- Monograma -->
                 <div class="monograma">
@@ -80,7 +83,7 @@
                     13 · 02 · 2027
                 </p>
 
-                <div class="separador">✦ ───── ✦ ───── ✦</div>
+                <img class="separador separador-portada" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
 
                 <!-- Frase -->
                 <p class="texto-portada">
@@ -91,44 +94,35 @@
                 </p>
 
                 <!-- Botón -->
-                <a href="#cuenta-regresiva" class="boton-comenzar" id="comenzar-invitacion">
+                <a href="#musica" class="boton-comenzar" id="comenzar-invitacion">
                     Comenzar <span>›</span>
                 </a>
 
             </div>
 
         </section>
-
-<!-- SEPARADOR DECORATIVO -->
-<div class="separador-lunar" aria-hidden="true">
-    <img src="IMG/separador-lunar-plateado.svg" alt="">
-</div>
-
-
   <!-- MÚSICA -->
-<section class="seccion musica marco-informacion" aria-label="Música de la invitación">
-
-    <div class="ornamento-musica">
-        <span></span>
-        ✦
-        <span></span>
+<section id="musica" class="seccion musica marco-informacion" aria-label="Música de la invitación">
+    <div class="ilustracion-caja-musical">
+        <img src="IMG/caja-musical.png" alt="Caja musical antigua con rosas y notas musicales" loading="lazy">
     </div>
 
-    <p class="musica-titulo">La melodía de nuestro cuento</p>
+    <div class="contenido-musica">
+        <h2 class="musica-titulo">La melodía de nuestro cuento</h2>
+        <img class="separador-musica" src="IMG/separador-bordo-delicado.svg" alt="" aria-hidden="true">
 
-    <p class="musica-texto">
-        Dale play y dejate llevar por nuestra historia.
-    </p>
+        <p class="musica-texto">
+            Dale play y dejate llevar por nuestra historia.
+        </p>
 
-    <!-- BOTÓN PARA REPRODUCIR LA MÚSICA -->
-    <button class="boton-musica" id="boton-musica" type="button" aria-pressed="false">
-        <span class="icono-musica">▶</span>
-        <span class="texto-musica">Escuchar nuestra canción</span>
-    </button>
+        <button class="boton-musica" id="boton-musica" type="button" aria-pressed="false">
+            <span class="icono-musica" aria-hidden="true">▶</span>
+            <span class="texto-musica">Escuchar nuestra canción</span>
+        </button>
 
-    <p class="nombre-cancion">♪ El Castillo del Vagabundo</p>
+        <p class="nombre-cancion"><span aria-hidden="true">✦</span> El Castillo del Vagabundo <span aria-hidden="true">✦</span></p>
+    </div>
 
-    <!-- CANCIÓN -->
     <audio id="musica-boda" loop preload="none">
         <source src="./musica/castillo-vagabundo.mp3" type="audio/mpeg">
     </audio>
@@ -136,7 +130,7 @@
 </section>
 
 <div class="separador-lunar" aria-hidden="true">
-    <img src="IMG/separador-lunar-plateado.svg" alt="">
+    <img src="IMG/separador-rosas-vicotrianas.png" alt="">
 </div>
 
 
@@ -225,7 +219,7 @@
 
 
         <div class="separador-lunar" aria-hidden="true">
-            <img src="IMG/separador-lunar-plateado.svg" alt="">
+            <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
         
    <!--     9. CRONOGRAMA -->
@@ -312,7 +306,7 @@
 </section>
 
 <div class="separador-lunar" aria-hidden="true">
-    <img src="IMG/separador-lunar-plateado.svg" alt="">
+    <img src="IMG/separador-rosas-vicotrianas.png" alt="">
 </div>
 
         <!-- 03. CEREMONIA RELIGIOSA -->
@@ -336,7 +330,7 @@
                 <div class="columna-foto">
                             <!-- RUTA DE FOTOGRAFÍA: AGREGAR RUTA -->
                             <div class="foto-evento foto-iglesia">
-                                <img src="IMG/puerta ubicacion.jpg" alt="Capilla Santa Teresita">
+                                <img src="IMG/capilla.png" alt="Capilla Santa Teresita">
                             </div>
                         </div>
 
@@ -373,7 +367,7 @@
 
 
 <div class="separador-lunar" aria-hidden="true">
-    <img src="IMG/separador-lunar-plateado.svg" alt="">
+    <img src="IMG/separador-rosas-vicotrianas.png" alt="">
 </div>
 
 
@@ -434,15 +428,22 @@
 
 
         <div class="separador-lunar" aria-hidden="true">
-            <img src="IMG/separador-lunar-plateado.svg" alt="">
+            <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
 
 
         <!-- 05. NUESTRA HISTORIA -->
-        <section id="historia" class="seccion historia marco-informacion">
+        <section id="historia" class="seccion historia marco-informacion tarjeta-victoriana">
+            <div class="ornamentos-tarjeta" aria-hidden="true">
+                <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
+                <img class="rosa-tarjeta rosa-tarjeta-inferior" src="IMG/rosas-esquina-ornamental.png" alt="">
+                <img class="firulete-tarjeta firulete-tarjeta-superior" src="IMG/firulete-ornamental.png" alt="">
+                <img class="firulete-tarjeta firulete-tarjeta-inferior" src="IMG/firulete-ornamental.png" alt="">
+            </div>
             <p class="etiqueta-seccion">CADA MOMENTO NOS TRAJO HASTA AQUÍ</p>
 
             <h2>Nuestra historia</h2>
+            <img class="separador-tarjeta separador-tarjeta-titulo" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
 
             <p class="texto-intro">
                 Un camino lleno de momentos, recuerdos y mucho amor.
@@ -454,21 +455,21 @@
             </figure>
 
             <!-- Carrusel de fotografías -->
-            <div class="carrusel marco-informacion">
+            <div class="carrusel marco-informacion" id="carrusel" role="region" aria-label="Fotos de Cecilia y José">
                 <div class="carrusel-contenido" id="carrusel-contenido">
-                    <div class="carrusel-vacio">
-                        <span class="album-sello" aria-hidden="true">C <i>&amp;</i> J</span>
-                        <p>Un álbum de recuerdos<br><em>que pronto llenaremos juntos</em></p>
-                    </div>
                 </div>
 
-                <button class="carrusel-anterior" aria-label="Foto anterior">
+                <button class="carrusel-anterior" type="button" aria-label="Foto anterior">
                     &#10094;
                 </button>
 
-                <button class="carrusel-siguiente" aria-label="Foto siguiente">
+                <button class="carrusel-siguiente" type="button" aria-label="Foto siguiente">
                     &#10095;
                 </button>
+                <div class="carrusel-pie">
+                    <p class="carrusel-contador" id="carrusel-contador"></p>
+                    <button class="carrusel-reproduccion" id="carrusel-reproduccion" type="button"></button>
+                </div>
             </div>
 
             <!-- Videos -->
@@ -480,7 +481,7 @@
 
 
         <div class="separador-lunar" aria-hidden="true">
-            <img src="IMG/separador-lunar-plateado.svg" alt="">
+            <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
 
 
@@ -516,14 +517,16 @@
             >
         </div>
 
-        <p class="nota-paleta">Tonos inspirados en el bosque; elegí libremente el color que más te represente.</p>
+        <p class="nivel-dresscode">Elegante</p>
 
         <img class="separador-tarjeta separador-tarjeta-final" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
 
         <p class="indicaciones-vestimenta">
-            La temática de la noche es <strong>elegante</strong>.<br>
-            ¡Sentite libre de elegir el color que más te represente!
+            Vestí tu mejor versión y acompañanos<br>
+            a vivir una noche de cuento.
         </p>
+
+        <p class="nota-paleta">Tonos inspirados en el bosque; elegí libremente el color que más te represente.</p>
 
     </div>
 
@@ -531,7 +534,7 @@
 
 
         <div class="separador-lunar" aria-hidden="true">
-            <img src="IMG/separador-lunar-plateado.svg" alt="">
+            <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
 
 
@@ -594,15 +597,22 @@
 
 
         <div class="separador-lunar" aria-hidden="true">
-            <img src="IMG/separador-lunar-plateado.svg" alt="">
+            <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
 
 
         <!-- 08. CONFIRMACIÓN DE ASISTENCIA -->
-        <section id="confirmacion" class="seccion confirmacion marco-informacion">
+        <section id="confirmacion" class="seccion confirmacion marco-informacion tarjeta-victoriana">
+            <div class="ornamentos-tarjeta" aria-hidden="true">
+                <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
+                <img class="rosa-tarjeta rosa-tarjeta-inferior" src="IMG/rosas-esquina-ornamental.png" alt="">
+                <img class="firulete-tarjeta firulete-tarjeta-superior" src="IMG/firulete-ornamental.png" alt="">
+                <img class="firulete-tarjeta firulete-tarjeta-inferior" src="IMG/firulete-ornamental.png" alt="">
+            </div>
             <p class="etiqueta-seccion">QUEREMOS COMPARTIRLO CON VOS</p>
 
             <h2>Confirmá tu asistencia</h2>
+            <img class="separador-tarjeta separador-tarjeta-titulo" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
 
             <p>
                 Nos encantaría que nos acompañes en este día tan especial.
@@ -622,15 +632,22 @@
 
 
         <div class="separador-lunar" aria-hidden="true">
-            <img src="IMG/separador-lunar-plateado.svg" alt="">
+            <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
 
 
         <!-- 09. GALERÍA COLABORATIVA -->
-        <section id="compartir-fotos" class="seccion compartir-fotos marco-informacion">
+        <section id="compartir-fotos" class="seccion compartir-fotos marco-informacion tarjeta-victoriana">
+            <div class="ornamentos-tarjeta" aria-hidden="true">
+                <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
+                <img class="rosa-tarjeta rosa-tarjeta-inferior" src="IMG/rosas-esquina-ornamental.png" alt="">
+                <img class="firulete-tarjeta firulete-tarjeta-superior" src="IMG/firulete-ornamental.png" alt="">
+                <img class="firulete-tarjeta firulete-tarjeta-inferior" src="IMG/firulete-ornamental.png" alt="">
+            </div>
             <p class="etiqueta-seccion">LOS RECUERDOS TAMBIÉN SON DE USTEDES</p>
 
             <h2>Compartí tus fotos</h2>
+            <img class="separador-tarjeta separador-tarjeta-titulo" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
 
             <p>
                 Queremos ver la boda desde sus ojos.
@@ -646,7 +663,7 @@
 
 
         <div class="separador-lunar" aria-hidden="true">
-            <img src="IMG/separador-lunar-plateado.svg" alt="">
+            <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
 
 <!-- 10. CIERRE -->
@@ -678,7 +695,7 @@
     </main>
 
     <!-- JavaScript -->
-    <script src="JS/index.js?v=7"></script>
+    <script src="JS/index.js?v=9"></script>
 <!-- FOOTER LATANA STUDIO -->
 <footer class="tana-footer">
 

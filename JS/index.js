@@ -261,9 +261,20 @@ function prepararParallaxDePortada() {
 }
 
 function prepararCarrusel() {
-    const fotografias = [];
+    const fotografias = [
+        "IMG/jc1.jpeg",
+        "IMG/jc2.jpeg",
+        "IMG/jc3.jpeg",
+        "IMG/jc4.jpeg",
+        "IMG/jc5.jpeg"
+    ];
     const contenido = document.getElementById("carrusel-contenido");
-    const controles = document.querySelectorAll(".carrusel-anterior, .carrusel-siguiente");
+    const carrusel = document.getElementById("carrusel");
+    const contador = document.getElementById("carrusel-contador");
+    const reproduccion = document.getElementById("carrusel-reproduccion");
+    const anterior = document.querySelector(".carrusel-anterior");
+    const siguiente = document.querySelector(".carrusel-siguiente");
+    const controles = [anterior, siguiente].filter(Boolean);
     if (!contenido || fotografias.length === 0) {
         controles.forEach((control) => {
             control.disabled = true;
@@ -274,23 +285,88 @@ function prepararCarrusel() {
     }
 
     let fotoActual = 0;
-    const mostrarFotografia = () => {
-        const imagen = document.createElement("img");
-        imagen.src = fotografias[fotoActual];
-        imagen.alt = `Recuerdo ${fotoActual + 1} de Cecilia y José`;
-        imagen.loading = "lazy";
-        contenido.replaceChildren(imagen);
+    let temporizadorCambio;
+    const mostrarFotografia = (conTransicion = false) => {
+        window.clearTimeout(temporizadorCambio);
+        const actualizarImagen = () => {
+            const imagen = document.createElement("img");
+            imagen.src = fotografias[fotoActual];
+            imagen.alt = `Recuerdo ${fotoActual + 1} de Cecilia y José`;
+            imagen.loading = "eager";
+            contenido.replaceChildren(imagen);
+            contenido.classList.remove("carrusel-cambiando");
+            if (contador) contador.textContent = `Recuerdo ${fotoActual + 1} de ${fotografias.length}`;
+        };
+
+        if (!conTransicion || movimientoReducido.matches) {
+            actualizarImagen();
+            return;
+        }
+
+        contenido.classList.add("carrusel-cambiando");
+        temporizadorCambio = window.setTimeout(actualizarImagen, 650);
     };
 
-    document.querySelector(".carrusel-anterior").addEventListener("click", () => {
-        fotoActual = (fotoActual - 1 + fotografias.length) % fotografias.length;
-        mostrarFotografia();
+    const avanzar = (direccion) => {
+        if (!fotografias.length) return;
+        fotoActual = (fotoActual + direccion + fotografias.length) % fotografias.length;
+        mostrarFotografia(true);
+    };
+
+    anterior.addEventListener("click", () => {
+        avanzar(-1);
     });
-    document.querySelector(".carrusel-siguiente").addEventListener("click", () => {
-        fotoActual = (fotoActual + 1) % fotografias.length;
-        mostrarFotografia();
+    siguiente.addEventListener("click", () => {
+        avanzar(1);
     });
     mostrarFotografia();
+
+    if (!carrusel || !reproduccion) return;
+    let intervaloCambio;
+    let reproduccionActiva = !movimientoReducido.matches;
+    let carruselVisible = !("IntersectionObserver" in window);
+    const actualizarBotonReproduccion = () => {
+        reproduccion.setAttribute("aria-pressed", String(reproduccionActiva));
+        reproduccion.setAttribute(
+            "aria-label",
+            reproduccionActiva
+                ? "Pausar el cambio automático de fotos"
+                : "Reanudar el cambio automático de fotos"
+        );
+        reproduccion.textContent = reproduccionActiva ? "Ⅱ Pausar" : "▶ Reproducir";
+    };
+    const actualizarRotacion = () => {
+        const elementoEnfocado = document.activeElement;
+        const debeRotar = carruselVisible
+            && reproduccionActiva
+            && (!carrusel.contains(elementoEnfocado) || elementoEnfocado === reproduccion);
+
+        if (debeRotar && !intervaloCambio) {
+            intervaloCambio = window.setInterval(() => avanzar(1), 5000);
+        } else if (!debeRotar && intervaloCambio) {
+            window.clearInterval(intervaloCambio);
+            intervaloCambio = undefined;
+        }
+    };
+
+    reproduccion.addEventListener("click", () => {
+        reproduccionActiva = !reproduccionActiva;
+        actualizarBotonReproduccion();
+        actualizarRotacion();
+    });
+    carrusel.addEventListener("focusin", actualizarRotacion);
+    carrusel.addEventListener("focusout", actualizarRotacion);
+
+    if ("IntersectionObserver" in window) {
+        const observador = new IntersectionObserver((entradas) => {
+            carruselVisible = entradas.some((entrada) => entrada.isIntersecting);
+            actualizarRotacion();
+        });
+        observador.observe(carrusel);
+    }
+
+    actualizarBotonReproduccion();
+    actualizarRotacion();
 }
 
 async function copiarTexto(texto) {
