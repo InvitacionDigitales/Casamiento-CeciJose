@@ -45,7 +45,7 @@ body.bosque-activo::before {
     background:
         linear-gradient(180deg, rgba(17, 29, 21, .3), rgba(13, 21, 16, .72)),
         radial-gradient(ellipse at 52% 38%, transparent 18%, rgba(11, 19, 14, .28) 72%, rgba(10, 16, 12, .58)),
-        url("../IMG/bosque-novios.png") center 48% / cover no-repeat;
+        url("../IMG/josececy.jpeg") center 48% / cover no-repeat;
     opacity: 1;
 }
 
@@ -484,7 +484,7 @@ body.intro-activa .enlace-salto {
     padding: clamp(34px, 7vw, 80px) 18px;
     overflow: hidden;
     place-items: center;
-    background: url("../IMG/bosque-novios.png") center 52% / cover no-repeat;
+    background: url("../IMG/josececy.jpeg") center 52% / cover no-repeat;
 }
 
 #inicio[hidden] {
@@ -501,7 +501,7 @@ body.intro-activa .enlace-salto {
     min-height: 100vh;
     min-height: 100svh;
     margin: 0;
-    background: url("../IMG/bosque-novios.png") center 52% / cover no-repeat;
+    background: url("../IMG/josececy.jpeg") center 52% / cover no-repeat;
 }
 
 .portada.portada-emergente::before {
