@@ -15,7 +15,7 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="CSS/style.css?v=18">
-    <link rel="stylesheet" href="CSS/experience.css?v=17">
+    <link rel="stylesheet" href="CSS/experience.css?v=19">
     <noscript>
         <style>
             body.intro-activa { height: auto; overflow: auto; }
@@ -428,21 +428,21 @@
             </figure>
 
             <!-- Carrusel de fotografías -->
-            <div class="carrusel marco-informacion">
+            <div class="carrusel marco-informacion" id="carrusel" role="region" aria-label="Fotos de Cecilia y José">
                 <div class="carrusel-contenido" id="carrusel-contenido">
-                    <div class="carrusel-vacio">
-                        <span class="album-sello" aria-hidden="true">C <i>&amp;</i> J</span>
-                        <p>Un álbum de recuerdos<br><em>que pronto llenaremos juntos</em></p>
-                    </div>
                 </div>
 
-                <button class="carrusel-anterior" aria-label="Foto anterior">
+                <button class="carrusel-anterior" type="button" aria-label="Foto anterior">
                     &#10094;
                 </button>
 
-                <button class="carrusel-siguiente" aria-label="Foto siguiente">
+                <button class="carrusel-siguiente" type="button" aria-label="Foto siguiente">
                     &#10095;
                 </button>
+                <div class="carrusel-pie">
+                    <p class="carrusel-contador" id="carrusel-contador"></p>
+                    <button class="carrusel-reproduccion" id="carrusel-reproduccion" type="button"></button>
+                </div>
             </div>
 
             <!-- Videos -->
@@ -650,7 +650,7 @@
     </main>
 
     <!-- JavaScript -->
-    <script src="JS/index.js?v=6"></script>
+    <script src="JS/index.js?v=8"></script>
 <!-- FOOTER LATANA STUDIO -->
 <footer class="tana-footer">
 
