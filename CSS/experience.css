@@ -45,7 +45,7 @@ body.bosque-activo::before {
     background:
         linear-gradient(180deg, rgba(17, 29, 21, .3), rgba(13, 21, 16, .72)),
         radial-gradient(ellipse at 52% 38%, transparent 18%, rgba(11, 19, 14, .28) 72%, rgba(10, 16, 12, .58)),
-        url("../IMG/bosque-novios.png") center 48% / cover no-repeat;
+        url("../IMG/josececy.jpeg") center 48% / cover no-repeat;
     opacity: 1;
 }
 
@@ -193,8 +193,7 @@ body.intro-activa .enlace-salto {
     pointer-events: none;
 }
 
-.apertura-etiqueta,
-.apertura-pie {
+.apertura-etiqueta {
     position: relative;
     z-index: 1;
     color: var(--libro-oro);
@@ -252,27 +251,6 @@ body.intro-activa .enlace-salto {
     z-index: 2;
     background: linear-gradient(10deg, #d2bd94, #f1e7d2);
     clip-path: polygon(0 100%, 50% 54%, 100% 100%);
-}
-
-.rama-sobre {
-    position: absolute;
-    z-index: 4;
-    top: 7%;
-    width: 21%;
-    height: 82%;
-    background: url("../IMG/Rosa-Rosa-Desarmada.svg") center / contain no-repeat;
-    opacity: .8;
-    pointer-events: none;
-}
-
-.rama-sobre-izquierda {
-    left: 2%;
-    transform: rotate(-35deg);
-}
-
-.rama-sobre-derecha {
-    right: 2%;
-    transform: scaleX(-1) rotate(-35deg);
 }
 
 .sello-cera {
@@ -420,7 +398,6 @@ body.intro-activa .enlace-salto {
     line-height: 1.45;
 }
 
-.saltar-apertura,
 .boton-comenzar,
 .boton-principal,
 .boton-ubicacion,
@@ -448,7 +425,6 @@ body.intro-activa .enlace-salto {
     cursor: pointer;
 }
 
-.saltar-apertura:hover,
 .boton-comenzar:hover,
 .boton-principal:hover,
 .boton-ubicacion:hover,
@@ -459,30 +435,6 @@ body.intro-activa .enlace-salto {
     box-shadow: 0 12px 26px rgba(40, 27, 21, .26), 0 0 18px rgba(211, 183, 127, .2);
 }
 
-.saltar-apertura {
-    min-height: 40px;
-    margin-top: 2px;
-    padding: 8px 18px;
-    border-color: rgba(165, 129, 69, .58);
-    background: transparent;
-    box-shadow: none;
-    color: var(--libro-verde-profundo);
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.saltar-apertura:hover {
-    background: rgba(255, 253, 245, .5);
-    box-shadow: 0 5px 16px rgba(40, 27, 21, .12);
-    color: var(--libro-bordo);
-}
-
-.apertura-pie {
-    display: block;
-    margin-top: 24px;
-    font-size: 9px;
-}
-
 /* Portada original enmarcada como la primera página del libro. */
 .portada {
     position: relative;
@@ -491,7 +443,7 @@ body.intro-activa .enlace-salto {
     padding: clamp(34px, 7vw, 80px) 18px;
     overflow: hidden;
     place-items: center;
-    background: url("../IMG/bosque-novios.png") center 52% / cover no-repeat;
+    background: url("../IMG/josececy.jpeg") center 52% / cover no-repeat;
 }
 
 #inicio[hidden] {
@@ -508,7 +460,7 @@ body.intro-activa .enlace-salto {
     min-height: 100vh;
     min-height: 100svh;
     margin: 0;
-    background: url("../IMG/bosque-novios.png") center 52% / cover no-repeat;
+    background: url("../IMG/josececy.jpeg") center 52% / cover no-repeat;
     animation: carta-sale-del-sobre 1.25s cubic-bezier(.2, .75, .25, 1) both;
 }
 
@@ -605,28 +557,6 @@ body.intro-activa .enlace-salto {
     box-shadow: 0 28px 80px rgba(0, 0, 0, .42);
     backdrop-filter: blur(var(--desenfoque-secciones, 2px));
     -webkit-backdrop-filter: blur(var(--desenfoque-secciones, 2px));
-}
-
-.contenido-portada::before,
-.contenido-portada::after {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    background: url("../IMG/Rosa-Rosa-Tupida.svg") center / contain no-repeat;
-    content: "";
-    opacity: .78;
-}
-
-.contenido-portada::before {
-    top: -18px;
-    left: -16px;
-    transform: rotate(-32deg);
-}
-
-.contenido-portada::after {
-    right: -16px;
-    bottom: -18px;
-    transform: rotate(148deg);
 }
 
 .monograma {
@@ -1771,12 +1701,64 @@ body.intro-activa .enlace-salto {
 }
 
 .invitacion #regalos {
+    position: relative;
     width: min(calc(100% - 36px), 1120px);
     padding: clamp(46px, 6vw, 72px) clamp(22px, 6vw, 72px);
     border: 1px solid rgba(160, 119, 62, .86);
     border-radius: 12px;
     background: linear-gradient(135deg, rgba(255, 249, 235, .86), rgba(241, 226, 199, .84)) !important;
     box-shadow: 0 20px 52px rgba(26, 21, 15, .22), inset 0 0 0 5px rgba(175, 133, 68, .08);
+}
+
+.invitacion #regalos::before {
+    background-image: none;
+    opacity: 1;
+}
+
+.invitacion #regalos .ornamentos-regalo {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+}
+
+.rosa-regalo,
+.firulete-regalo {
+    position: absolute;
+    width: clamp(118px, 22vw, 238px);
+    height: auto;
+    object-fit: contain;
+}
+
+.rosa-regalo {
+    width: clamp(136px, 24vw, 258px);
+}
+
+.rosa-regalo-superior {
+    top: 0;
+    left: 0;
+    transform: rotate(180deg);
+}
+
+.rosa-regalo-inferior {
+    right: 0;
+    bottom: 0;
+    transform: none;
+}
+
+.firulete-regalo-superior {
+    top: -5px;
+    right: -5px;
+}
+
+.firulete-regalo {
+    width: clamp(150px, 26vw, 290px);
+}
+
+.firulete-regalo-inferior {
+    bottom: -5px;
+    left: -5px;
+    transform: rotate(180deg);
 }
 
 .encabezado-regalo {
@@ -1953,6 +1935,14 @@ body.intro-activa .enlace-salto {
         padding: 48px 18px 36px;
     }
 
+    .rosa-regalo {
+        width: clamp(86px, 24vw, 104px);
+    }
+
+    .firulete-regalo {
+        width: clamp(112px, 30vw, 140px);
+    }
+
     .floritura-regalo {
         width: min(100%, 270px);
         height: 34px;
@@ -2015,5 +2005,315 @@ body.intro-activa .enlace-salto {
         min-height: 42px;
         padding: 8px 16px;
         font-size: 12px;
+    }
+}
+
+/* Tarjetas victorianas de las secciones principales. */
+#contenido-principal .tarjeta-victoriana {
+    position: relative;
+    isolation: isolate;
+    width: min(calc(100% - 36px), 1120px);
+    max-width: 1120px;
+    min-height: 0;
+    margin: clamp(28px, 5vw, 64px) auto;
+    padding: clamp(52px, 6vw, 80px) clamp(24px, 6vw, 72px);
+    overflow: hidden;
+    border: 2px solid #ad843f;
+    border-radius: 22px;
+    background:
+        radial-gradient(ellipse at 50% 45%, rgba(255, 246, 224, .98), rgba(244, 226, 194, .98)) !important;
+    box-shadow: 0 18px 42px rgba(48, 34, 22, .2), inset 0 0 0 4px rgba(172, 129, 59, .1);
+}
+
+#contenido-principal .tarjeta-victoriana::before {
+    inset: 9px;
+    border: 1px solid rgba(165, 121, 52, .78);
+    border-radius: 14px;
+    background-image: none;
+    box-shadow: inset 0 0 0 3px rgba(113, 51, 61, .06);
+    opacity: 1;
+    pointer-events: none;
+}
+
+#contenido-principal .tarjeta-victoriana::after {
+    inset: 15px;
+    border: 1px solid rgba(113, 51, 61, .32);
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+#contenido-principal .tarjeta-victoriana > .ornamentos-tarjeta {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+}
+
+.rosa-tarjeta,
+.firulete-tarjeta {
+    position: absolute;
+    height: auto;
+    object-fit: contain;
+}
+
+.rosa-tarjeta {
+    width: clamp(145px, 20vw, 240px);
+}
+
+.rosa-tarjeta-superior {
+    top: 0;
+    left: 0;
+    transform: rotate(180deg);
+}
+
+.rosa-tarjeta-inferior {
+    right: 0;
+    bottom: 0;
+}
+
+.firulete-tarjeta {
+    width: clamp(125px, 17vw, 205px);
+}
+
+.firulete-tarjeta-superior {
+    top: 0;
+    right: 0;
+}
+
+.firulete-tarjeta-inferior {
+    bottom: 0;
+    left: 0;
+    transform: rotate(180deg);
+}
+
+.separador-tarjeta,
+.tarjeta-victoriana .separador-titulo img {
+    display: block;
+    width: min(430px, 72%);
+    height: 54px;
+    margin: 8px auto 20px;
+    object-fit: cover;
+    object-position: center;
+    opacity: .94;
+}
+
+#contenido-principal .tarjeta-victoriana .separador-titulo {
+    display: block;
+    width: min(430px, 72%);
+    height: auto;
+    margin: 12px auto 20px;
+}
+
+#contenido-principal .tarjeta-victoriana .separador-titulo::before,
+#contenido-principal .tarjeta-victoriana .separador-titulo::after {
+    display: none;
+}
+
+#cuenta-regresiva .separador-tarjeta-titulo {
+    margin: -4px auto 12px;
+}
+
+#cronograma .cronograma-subtitulo {
+    margin-bottom: 8px;
+    color: #71333d;
+    font-family: var(--fuente-texto), sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+}
+
+#cronograma h2 {
+    margin: 0 auto 8px !important;
+    color: #71333d !important;
+    font-size: clamp(43px, 6.4vw, 70px) !important;
+    line-height: 1.05;
+}
+
+#cronograma .separador-tarjeta-titulo {
+    margin: 0 auto 18px;
+}
+
+#cronograma .linea-tiempo {
+    width: min(100%, 760px);
+}
+
+#cronograma .linea-tiempo::before {
+    left: 178px;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, #ad843f 12%, #ad843f 88%, transparent);
+}
+
+#cronograma .evento {
+    grid-template-columns: 150px 20px minmax(0, 1fr);
+    gap: 18px;
+    min-height: 88px;
+    padding: 14px 0;
+}
+
+#cronograma .hora {
+    color: #71333d;
+    font-size: 20px;
+    font-style: italic;
+}
+
+#cronograma .punto {
+    width: 13px;
+    height: 13px;
+    border: 2px solid #f7ebd2;
+    background: #f7ebd2;
+    box-shadow: 0 0 0 1px #ad843f;
+}
+
+#cronograma .detalle h3,
+#cronograma .detalle p {
+    color: #71333d !important;
+}
+
+#cuenta-regresiva .contador-item {
+    border: 1px solid #b78c49;
+    border-radius: 2px;
+    background: rgba(255, 247, 229, .96);
+    box-shadow: inset 0 0 0 4px rgba(183, 140, 73, .12), 0 6px 14px rgba(69, 50, 29, .08);
+}
+
+#cuenta-regresiva .contador-item span,
+#cuenta-regresiva .calendario-boda h3,
+#cuenta-regresiva .mensaje-calendario {
+    color: #71333d !important;
+}
+
+#dress-code .contenedor-dresscode {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 900px);
+}
+
+#dress-code .imagen-dresscode {
+    width: clamp(190px, 28vw, 320px);
+}
+
+#dress-code .etiqueta-seccion,
+#dress-code h2,
+#dress-code .introduccion-dresscode,
+#dress-code .indicaciones-vestimenta {
+    color: #71333d !important;
+}
+
+#dress-code h2 {
+    font-size: clamp(52px, 7vw, 78px) !important;
+}
+
+#iglesia .separador-vertical span,
+#civil .separador-vertical span {
+    display: none;
+}
+
+#iglesia .foto-evento,
+#civil .foto-evento {
+    width: min(360px, 92%);
+    height: 370px;
+    border-color: #b78c49;
+    box-shadow: inset 0 0 0 7px rgba(255, 244, 220, .72), 0 12px 28px rgba(75, 48, 32, .18);
+}
+
+@media (max-width: 700px) {
+    #contenido-principal .tarjeta-victoriana {
+        width: calc(100% - 24px);
+        margin: 28px auto;
+        padding: 54px 24px 42px;
+    }
+
+    .rosa-tarjeta {
+        width: clamp(82px, 24vw, 112px);
+    }
+
+    .firulete-tarjeta {
+        width: clamp(82px, 22vw, 108px);
+    }
+
+    .separador-tarjeta,
+    .tarjeta-victoriana .separador-titulo img {
+        width: min(340px, 82%);
+        height: 42px;
+        margin-bottom: 16px;
+    }
+
+    #cronograma .cronograma-contenido {
+        width: 100%;
+        padding-inline: 0;
+    }
+
+    #cronograma .cronograma-subtitulo {
+        font-size: 11px;
+        letter-spacing: .2em;
+    }
+
+    #cronograma h2 {
+        font-size: clamp(38px, 9vw, 50px) !important;
+    }
+
+    #cronograma .linea-tiempo::before {
+        left: 88px;
+    }
+
+    #cronograma .evento {
+        grid-template-columns: 70px 16px minmax(0, 1fr);
+        gap: 10px;
+        min-height: 0;
+        padding: 13px 0;
+    }
+
+    #cronograma .hora {
+        font-size: 14px;
+    }
+
+    #cronograma .punto {
+        width: 12px;
+        height: 12px;
+        margin-top: 7px;
+    }
+
+    #cronograma .detalle {
+        padding-left: 0;
+    }
+
+    #cronograma .detalle h3 {
+        font-size: 19px !important;
+    }
+
+    #cronograma .detalle p {
+        font-size: 14px;
+    }
+
+    #cuenta-regresiva .contador {
+        gap: 7px;
+    }
+
+    #cuenta-regresiva .contador-item {
+        padding: 13px 4px 11px;
+    }
+
+    #cuenta-regresiva .contador-item span {
+        font-size: clamp(26px, 7vw, 38px);
+    }
+
+    #cuenta-regresiva .contador-item small {
+        font-size: 8px;
+        letter-spacing: .02em;
+    }
+
+    #iglesia .foto-evento,
+    #civil .foto-evento {
+        width: min(260px, 86%);
+        height: 280px;
+    }
+
+    #dress-code h2 {
+        font-size: clamp(48px, 12vw, 62px) !important;
+    }
+
+    #dress-code .imagen-dresscode {
+        width: min(68vw, 250px);
     }
 }

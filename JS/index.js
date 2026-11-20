@@ -52,11 +52,10 @@ function prepararApertura() {
     const sello = document.getElementById("sello-apertura");
     const apertura = document.getElementById("apertura");
     const texto = document.getElementById("apertura-texto");
-    const saltar = document.getElementById("saltar-apertura");
     const portada = document.getElementById("inicio");
     const comenzar = document.getElementById("comenzar-invitacion");
 
-    if (!sello || !apertura || !texto || !saltar || !portada || !comenzar) return;
+    if (!sello || !apertura || !texto || !portada || !comenzar) return;
     const sobre = apertura.querySelector(".sobre-antiguo");
     if (!sobre) return;
 
@@ -121,10 +120,6 @@ function prepararApertura() {
         }
 
         window.setTimeout(() => mostrarPortada(true), 1050);
-    });
-
-    saltar.addEventListener("click", () => {
-        mostrarPortada(false);
     });
 
     comenzar.addEventListener("click", () => {
@@ -343,7 +338,7 @@ function prepararAno() {
 
 function prepararInteracciones() {
     const botones = document.querySelectorAll(
-        ".saltar-apertura, .boton-comenzar, .boton-principal, .boton-ubicacion, .boton-musica, .boton-copiar-alias"
+        ".boton-comenzar, .boton-principal, .boton-ubicacion, .boton-musica, .boton-copiar-alias"
     );
 
     botones.forEach((boton) => {
