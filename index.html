@@ -15,7 +15,7 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="CSS/style.css?v=18">
-    <link rel="stylesheet" href="CSS/experience.css?v=37">
+    <link rel="stylesheet" href="CSS/experience.css?v=43">
     <noscript>
         <style>
             body.intro-activa { height: auto; overflow: auto; }
@@ -27,6 +27,7 @@
 
 <body class="intro-activa">
     <a class="enlace-salto" href="#contenido-principal">Ir al contenido</a>
+    <img class="cuervo-volando-tarjeta" src="IMG/Cuervovolando.png" alt="" aria-hidden="true">
 
     <main class="invitacion" id="contenido-principal">
         <section class="apertura" id="apertura" role="dialog" aria-modal="true" aria-labelledby="apertura-titulo">
@@ -668,29 +669,35 @@
         </div>
 
 <!-- 10. CIERRE -->
-<section id="cierre" class="seccion cierre">
+<section id="cierre" class="seccion cierre" aria-labelledby="cierre-titulo">
+    <div class="ornamento-cierre" aria-hidden="true">⚜</div>
 
-    <!-- IMAGEN DE FONDO -->
-    <div class="fondo-portada">
-        <img src="IMG/novios.png" alt="">
-    </div>
-
-    <div class="cuervos" aria-hidden="true">
-        <span class="cuervo-cierre">✦</span>
-    </div>
-
-    <h2>
-        Nuestro cuento no sería igual sin ustedes.
+    <h2 id="cierre-titulo">
+        <span>Y así, entre sueños, promesas</span>
+        <span>y un amor que eligió ser eterno...</span>
     </h2>
 
-    <p>
-        Gracias por acompañarnos en este día mágico.
-    </p>
+    <div class="separador-cierre" aria-hidden="true">
+        <span></span>
+        <i>⚜</i>
+        <span></span>
+    </div>
 
-    <p class="firma-final">
-        Con amor, José y Cecilia.
-    </p>
+    <div class="placa-cierre">
+        <span class="ornamento-placa" aria-hidden="true">❧</span>
+        <p class="firma-final">José &amp; Cecilia</p>
+        <span class="ornamento-placa" aria-hidden="true">❧</span>
+    </div>
 
+    <time class="fecha-cierre" datetime="2027-02-13">13 · 02 · 2027</time>
+
+    <div class="separador-cierre separador-cierre-fecha" aria-hidden="true">
+        <span></span>
+        <i>⚜</i>
+        <span></span>
+    </div>
+
+    <p class="agradecimiento-cierre">Gracias por ser parte de nuestro comienzo.</p>
 </section>
 
     </main>
