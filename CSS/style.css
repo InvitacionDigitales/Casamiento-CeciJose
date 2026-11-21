@@ -467,7 +467,7 @@ img {
     justify-content: center;
 }
 
-.Escudo-Portada {
+.escudo-portada {
     width: 210px;
     height: auto;
     object-fit: contain;
@@ -1001,7 +1001,7 @@ img {
 
 /* TEXTO "NOS ENCONTRAMOS EN" */
 
-.momento {
+.introduccion-ubicacion {
     margin-bottom: 5px !important;
 
     color: var(--marron);
@@ -1011,7 +1011,7 @@ img {
 
 /* DETALLES: DIRECCIÓN Y HORARIO */
 
-.detalle-evento {
+.dato-ubicacion {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1020,11 +1020,11 @@ img {
     margin: 10px auto;
 }
 
-.detalle-evento p {
+.dato-ubicacion p {
     margin: 0;
 }
 
-.detalle-icono {
+.icono-ubicacion {
     color: var(--dorado);
     font-size: 18px;
 }
@@ -1096,7 +1096,7 @@ img {
         );
 }
 
-.texto-intro {
+.introduccion-historia {
     font-family: var(--fuente-elegante);
     font-size: 20px;
     margin-bottom: 30px;
@@ -1765,7 +1765,7 @@ img {
         height: 200px;
     }
 
-    .Escudo-Portada {
+    .escudo-portada {
         width: 175px;
     }
 
@@ -2277,7 +2277,8 @@ background:
     }
 
     .ig-ana {
-        top: 8px;
+        top: auto;
+        bottom: 7px;
         left: 18%;
     }
 
@@ -2392,8 +2393,8 @@ background:
     transform: translateX(-50%);
 }
 
-/* Cada evento */
-.evento {
+/* Cada fila del cronograma */
+.cronograma-evento {
     position: relative;
 
     display: grid;
@@ -2403,8 +2404,8 @@ background:
     min-height: 120px;
 }
 
-/* Hora */
-.hora {
+/* Hora del evento */
+.cronograma-hora {
     text-align: right;
 
     font-family: var(--fuente-elegante);
@@ -2413,8 +2414,8 @@ background:
     padding-right: 25px;
 }
 
-/* Punto de la línea */
-.punto {
+/* Marcador de cada evento */
+.cronograma-punto {
     position: relative;
     z-index: 2;
 
@@ -2428,8 +2429,8 @@ background:
     border: 4px solid var(--marfil);
 }
 
-/* Información */
-.detalle {
+/* Descripción del evento */
+.cronograma-detalle {
     text-align: left;
     padding-left: 25px;
 }
@@ -2438,7 +2439,7 @@ background:
     padding: 32px;
 }
 
-.detalle h3 {
+.cronograma-detalle h3 {
     font-family: var(--fuente-elegante);
     font-size: 25px;
     color: var(--verde);
@@ -2446,7 +2447,7 @@ background:
     margin: 0 0 5px;
 }
 
-.detalle p {
+.cronograma-detalle p {
     font-size: 17px;
     color: var(--bordo);
     margin: 0;
@@ -2459,16 +2460,16 @@ background:
         font-size: 42px;
     }
 
-    .evento {
+    .cronograma-evento {
         grid-template-columns: 90px 30px 1fr;
     }
 
-    .hora {
+    .cronograma-hora {
         font-size: 18px;
         padding-right: 10px;
     }
 
-    .detalle {
+    .cronograma-detalle {
         padding-left: 15px;
     }
 
@@ -2476,11 +2477,11 @@ background:
         padding: 24px 16px;
     }
 
-    .detalle h3 {
+    .cronograma-detalle h3 {
         font-size: 21px;
     }
 
-    .detalle p {
+    .cronograma-detalle p {
         font-size: 15px;
     }
 
@@ -2639,7 +2640,7 @@ background:
 .tarjeta-evento h3,
 .tarjeta-evento p,
 .tarjeta-evento .icono-evento,
-.tarjeta-evento .detalle-icono {
+.tarjeta-evento .icono-ubicacion {
     color: var(--blanco);
     text-shadow:
         0 1px 3px rgba(31, 23, 16, 0.95),
@@ -2780,7 +2781,7 @@ background:
     min-width: 0;
 }
 
-.foto-evento {
+.foto-ceremonia {
     position: relative;
     width: min(330px, 90%);
     height: 330px;
@@ -2795,7 +2796,7 @@ background:
         0 12px 28px rgba(75, 48, 32, 0.18);
 }
 
-.foto-evento img {
+.foto-ceremonia img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2855,7 +2856,7 @@ background:
     display: none;
 }
 
-.ceremonia-victoriana .momento {
+.ceremonia-victoriana .introduccion-ubicacion {
     margin: 8px 0 5px !important;
     color: #71333D;
     font-family: var(--fuente-elegante);
@@ -2873,24 +2874,24 @@ background:
     text-shadow: none;
 }
 
-.ceremonia-victoriana .detalle-evento {
+.ceremonia-victoriana .dato-ubicacion {
     justify-content: center;
     margin: 13px auto;
 }
 
-.ceremonia-victoriana .detalle-evento p,
-.ceremonia-victoriana .detalle-icono {
+.ceremonia-victoriana .dato-ubicacion p,
+.ceremonia-victoriana .icono-ubicacion {
     color: #71333D;
     text-shadow: none;
     font-family: var(--fuente-elegante);
 }
 
-.ceremonia-victoriana .detalle-evento p {
+.ceremonia-victoriana .dato-ubicacion p {
     font-size: 20px;
     font-weight: 600;
 }
 
-.ceremonia-victoriana .detalle-icono {
+.ceremonia-victoriana .icono-ubicacion {
     color: #71333D;
     font-size: 21px;
 }
@@ -3026,7 +3027,7 @@ background:
         gap: 10px;
     }
 
-    .foto-evento {
+    .foto-ceremonia {
         width: min(270px, 82%);
         height: 270px;
     }
