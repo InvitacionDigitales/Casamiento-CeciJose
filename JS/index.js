@@ -4,26 +4,33 @@
 const FECHA_BODA = new Date("2027-02-13T00:00:00");
 const movimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+/* Los IDs de cada unidad mantienen el contador HTML conectado con estos valores. */
 function actualizarCuentaRegresiva() {
     const diferencia = FECHA_BODA.getTime() - Date.now();
-    const valores = diferencia <= 0
-        ? { dias: "00", horas: "00", minutos: "00", segundos: "00" }
+    const valoresContador = diferencia <= 0
+        ? {
+            "contador-dias": "00",
+            "contador-horas": "00",
+            "contador-minutos": "00",
+            "contador-segundos": "00"
+        }
         : {
-            dias: String(Math.floor(diferencia / 86400000)),
-            horas: String(Math.floor(diferencia / 3600000) % 24).padStart(2, "0"),
-            minutos: String(Math.floor(diferencia / 60000) % 60).padStart(2, "0"),
-            segundos: String(Math.floor(diferencia / 1000) % 60).padStart(2, "0")
+            "contador-dias": String(Math.floor(diferencia / 86400000)),
+            "contador-horas": String(Math.floor(diferencia / 3600000) % 24).padStart(2, "0"),
+            "contador-minutos": String(Math.floor(diferencia / 60000) % 60).padStart(2, "0"),
+            "contador-segundos": String(Math.floor(diferencia / 1000) % 60).padStart(2, "0")
         };
 
-    Object.entries(valores).forEach(([unidad, valor]) => {
-        const elemento = document.getElementById(unidad);
-        if (elemento) elemento.textContent = valor;
+    Object.entries(valoresContador).forEach(([idContador, valor]) => {
+        const elementoContador = document.getElementById(idContador);
+        if (elementoContador) elementoContador.textContent = valor;
     });
 }
 
+/* Revela cada bloque al entrar en pantalla y muestra todo si no hay IntersectionObserver. */
 function prepararRevelaciones() {
     const elementos = document.querySelectorAll(
-        ".seccion, .evento, .tarjeta-evento, .opcion-regalo, .contenedor-dresscode"
+        ".seccion, .cronograma-evento, .tarjeta-evento, .opcion-regalo, .contenedor-dresscode"
     );
 
     if (!("IntersectionObserver" in window)) {
@@ -48,6 +55,7 @@ function prepararRevelaciones() {
     document.body.classList.add("animaciones-listas");
 }
 
+/* Mantiene el contenido inerte mientras el sobre actúa como diálogo de apertura. */
 function prepararApertura() {
     const sello = document.getElementById("sello-apertura");
     const apertura = document.getElementById("apertura");
@@ -133,6 +141,7 @@ function prepararApertura() {
     });
 }
 
+/* Actualiza el audio y el estado accesible del botón según los eventos del reproductor. */
 function prepararMusica() {
     const musica = document.getElementById("musica-boda");
     const boton = document.getElementById("boton-musica");
@@ -169,6 +178,7 @@ function prepararMusica() {
     });
 }
 
+/* Genera decoración aleatoria, marcada como contenido oculto para tecnologías de asistencia. */
 function crearElementosBosque() {
     if (movimientoReducido.matches || document.querySelector(".elementos-bosque")) return;
 
@@ -177,7 +187,7 @@ function crearElementosBosque() {
     capa.setAttribute("aria-hidden", "true");
 
     const grupos = [
-        { clase: "luciernaga", cantidad: 12, duracion: 11 },
+        { clase: "luciernaga", cantidad: 15, duracion: 11 },
         { clase: "particula-dorada", cantidad: 12, duracion: 15 },
         { clase: "hoja-bosque", cantidad: 6, duracion: 17 },
         { clase: "petalo", cantidad: 5, duracion: 20 },
@@ -201,6 +211,7 @@ function crearElementosBosque() {
     document.body.appendChild(capa);
 }
 
+/* Activa el ambiente recién cuando la cuenta regresiva entra en el área visible. */
 function prepararBosqueEncantado() {
     const inicioDelBosque = document.getElementById("cuenta-regresiva");
     if (!inicioDelBosque) return;
@@ -235,6 +246,7 @@ function prepararBosqueEncantado() {
     observador.observe(inicioDelBosque);
 }
 
+/* Agrupa las lecturas del puntero en un solo frame para mantener fluida la portada. */
 function prepararParallaxDePortada() {
     if (movimientoReducido.matches || !window.matchMedia("(pointer: fine)").matches) return;
 
@@ -260,6 +272,7 @@ function prepararParallaxDePortada() {
     });
 }
 
+/* El carrusel solo rota automáticamente cuando está visible, sin foco y sin movimiento reducido. */
 function prepararCarrusel() {
     const fotografias = [
         "IMG/jc1.jpeg",
@@ -271,7 +284,6 @@ function prepararCarrusel() {
     const contenido = document.getElementById("carrusel-contenido");
     const carrusel = document.getElementById("carrusel");
     const contador = document.getElementById("carrusel-contador");
-    const reproduccion = document.getElementById("carrusel-reproduccion");
     const anterior = document.querySelector(".carrusel-anterior");
     const siguiente = document.querySelector(".carrusel-siguiente");
     const controles = [anterior, siguiente].filter(Boolean);
@@ -322,25 +334,13 @@ function prepararCarrusel() {
     });
     mostrarFotografia();
 
-    if (!carrusel || !reproduccion) return;
+    if (!carrusel) return;
     let intervaloCambio;
-    let reproduccionActiva = !movimientoReducido.matches;
     let carruselVisible = !("IntersectionObserver" in window);
-    const actualizarBotonReproduccion = () => {
-        reproduccion.setAttribute("aria-pressed", String(reproduccionActiva));
-        reproduccion.setAttribute(
-            "aria-label",
-            reproduccionActiva
-                ? "Pausar el cambio automático de fotos"
-                : "Reanudar el cambio automático de fotos"
-        );
-        reproduccion.textContent = reproduccionActiva ? "Ⅱ Pausar" : "▶ Reproducir";
-    };
     const actualizarRotacion = () => {
-        const elementoEnfocado = document.activeElement;
         const debeRotar = carruselVisible
-            && reproduccionActiva
-            && (!carrusel.contains(elementoEnfocado) || elementoEnfocado === reproduccion);
+            && !movimientoReducido.matches
+            && !carrusel.contains(document.activeElement);
 
         if (debeRotar && !intervaloCambio) {
             intervaloCambio = window.setInterval(() => avanzar(1), 5000);
@@ -350,11 +350,6 @@ function prepararCarrusel() {
         }
     };
 
-    reproduccion.addEventListener("click", () => {
-        reproduccionActiva = !reproduccionActiva;
-        actualizarBotonReproduccion();
-        actualizarRotacion();
-    });
     carrusel.addEventListener("focusin", actualizarRotacion);
     carrusel.addEventListener("focusout", actualizarRotacion);
 
@@ -366,10 +361,10 @@ function prepararCarrusel() {
         observador.observe(carrusel);
     }
 
-    actualizarBotonReproduccion();
     actualizarRotacion();
 }
 
+/* Usa la API moderna del portapapeles y conserva compatibilidad con navegadores antiguos. */
 async function copiarTexto(texto) {
     if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(texto);
@@ -388,6 +383,7 @@ async function copiarTexto(texto) {
     if (!copiado) throw new Error("El navegador no permitió copiar al portapapeles.");
 }
 
+/* Copia el alias bancario y comunica el resultado en el mismo botón. */
 function prepararCopiaDeAlias() {
     const boton = document.getElementById("copiar-alias");
     const alias = document.getElementById("alias-regalo");
@@ -408,11 +404,13 @@ function prepararCopiaDeAlias() {
     });
 }
 
+/* Completa el año actual del crédito del footer. */
 function prepararAno() {
-    const ano = document.getElementById("anio");
-    if (ano) ano.textContent = String(new Date().getFullYear());
+    const anioActual = document.getElementById("anio-actual");
+    if (anioActual) anioActual.textContent = String(new Date().getFullYear());
 }
 
+/* Añade un pulso visual breve a los controles interactivos. */
 function prepararInteracciones() {
     const botones = document.querySelectorAll(
         ".boton-comenzar, .boton-principal, .boton-ubicacion, .boton-musica, .boton-copiar-alias"
@@ -427,6 +425,7 @@ function prepararInteracciones() {
     });
 }
 
+/* Inicializa cada componente una vez que el documento está disponible. */
 function iniciarInvitacion() {
     actualizarCuentaRegresiva();
     window.setInterval(actualizarCuentaRegresiva, 1000);

@@ -16,6 +16,7 @@
     <!-- Estilos -->
     <link rel="stylesheet" href="CSS/style.css?v=20">
     <link rel="stylesheet" href="CSS/experience.css?v=57">
+
     <noscript>
         <style>
             body.intro-activa { height: auto; overflow: auto; }
@@ -30,10 +31,10 @@
     <img class="cuervo-volando-tarjeta" src="IMG/Cuervovolando.png" alt="" aria-hidden="true">
 
     <main class="invitacion" id="contenido-principal">
+        <!-- 01. APERTURA Y SOBRE INTERACTIVO -->
         <section class="apertura" id="apertura" role="dialog" aria-modal="true" aria-labelledby="apertura-titulo">
             <div class="marco-apertura">
                 <p class="apertura-etiqueta" id="apertura-titulo">Una invitación especial para vos</p>
-                <img class="globo-apertura" src="IMG/goblo-dialogo.png" alt="">
                 <div class="ornamentos-apertura" aria-hidden="true">
                     <img class="firulete-apertura firulete-apertura-superior-izquierdo" src="IMG/firulete-dorado.png" alt="">
                     <img class="firulete-apertura firulete-apertura-superior-derecho" src="IMG/firulete-dorado.png" alt="">
@@ -41,6 +42,8 @@
                     <img class="firulete-apertura firulete-apertura-inferior-derecho" src="IMG/firulete-dorado.png" alt="">
                 </div>
                 <div class="sobre-antiguo">
+                    <!-- El globo se ancla al sobre para quedar junto al pico en cualquier pantalla. -->
+                    <img class="globo-apertura" src="IMG/goblo-dialogo.png" alt="">
                     <span class="sobre-solapa" aria-hidden="true"></span>
                     <span class="sobre-pliegue sobre-pliegue-izquierdo" aria-hidden="true"></span>
                     <span class="sobre-pliegue sobre-pliegue-derecho" aria-hidden="true"></span>
@@ -58,6 +61,7 @@
         <!-- =========================
             SECCION INICIO
         ========================= -->
+        <!-- Portada que aparece al comenzar la invitación. -->
         <section id="inicio" class="portada">
             <!-- CONTENIDO CENTRAL -->
             <div class="contenido-portada">
@@ -71,7 +75,7 @@
 
                 <!-- Monograma -->
                 <div class="monograma">
-                    <img src="IMG/Escudo-Portada-SF.png" class="Escudo-Portada" alt="Monograma ornamental de Cecilia y José">
+                    <img src="IMG/Escudo-Portada-SF.png" class="escudo-portada" alt="Monograma ornamental de Cecilia y José">
                 </div>
 
                 <!-- Nombres -->
@@ -102,7 +106,7 @@
             </div>
 
         </section>
-  <!-- MÚSICA -->
+<!-- 02. MÚSICA -->
 <section id="musica" class="seccion musica marco-informacion" aria-label="Música de la invitación">
     <div class="ilustracion-caja-musical">
         <img src="IMG/caja-musical.png" alt="Caja musical antigua con rosas y notas musicales" loading="lazy">
@@ -135,7 +139,7 @@
 </div>
 
 
-        <!-- 02. CUENTA REGRESIVA -->
+        <!-- 03. CUENTA REGRESIVA -->
         <section id="cuenta-regresiva" class="seccion cuenta-regresiva marco-informacion tarjeta-victoriana">
             <div class="ornamentos-tarjeta" aria-hidden="true">
                 <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -149,23 +153,24 @@
             <img class="separador-tarjeta separador-tarjeta-titulo" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
 
             <div class="contador">
+                <!-- El script actualiza estos cuatro valores cada segundo. -->
                 <div class="contador-item marco-informacion">
-                    <span id="dias">00</span>
+                    <span id="contador-dias">00</span>
                     <small>Días</small>
                 </div>
 
                 <div class="contador-item marco-informacion">
-                    <span id="horas">00</span>
+                    <span id="contador-horas">00</span>
                     <small>Horas</small>
                 </div>
 
                 <div class="contador-item marco-informacion">
-                    <span id="minutos">00</span>
+                    <span id="contador-minutos">00</span>
                     <small>Minutos</small>
                 </div>
 
                 <div class="contador-item marco-informacion">
-                    <span id="segundos">00</span>
+                    <span id="contador-segundos">00</span>
                     <small>Segundos</small>
                 </div>
             </div>
@@ -223,7 +228,7 @@
             <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
         
-   <!--     9. CRONOGRAMA -->
+<!-- 04. CRONOGRAMA -->
 <section id="cronograma" class="seccion cronograma marco-informacion tarjeta-victoriana">
     <div class="ornamentos-tarjeta" aria-hidden="true">
         <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -242,59 +247,59 @@
         <div class="linea-tiempo">
 
             <!-- Ceremonia religiosa -->
-            <div class="evento">
-                <div class="hora">19:00</div>
+            <div class="cronograma-evento">
+                <div class="cronograma-hora">19:00</div>
 
-                <div class="punto"></div>
+                <div class="cronograma-punto"></div>
 
-                <div class="detalle">
+                <div class="cronograma-detalle">
                     <h3>El comienzo de nuestro “para siempre”</h3>
                     <p>Ceremonia religiosa · Capilla Santa Teresita</p>
                 </div>
             </div>
 
             <!-- Apertura del salón -->
-            <div class="evento">
-                <div class="hora">20:30</div>
+            <div class="cronograma-evento">
+                <div class="cronograma-hora">20:30</div>
 
-                <div class="punto"></div>
+                <div class="cronograma-punto"></div>
 
-                <div class="detalle">
+                <div class="cronograma-detalle">
                     <h3>Las puertas de nuestra celebración se abren</h3>
                     <p>Apertura del salón Aurelia y bienvenida a nuestros queridos invitados</p>
                 </div>
             </div>
 
             <!-- Ceremonia civil -->
-            <div class="evento">
-                <div class="hora">21:00 – 21:15</div>
+            <div class="cronograma-evento">
+                <div class="cronograma-hora">21:00 – 21:15</div>
 
-                <div class="punto"></div>
+                <div class="cronograma-punto"></div>
 
-                <div class="detalle">
+                <div class="cronograma-detalle">
                     <h3>Unidos bajo el cielo, unidos para siempre</h3>
                     <p>Ceremonia civil al aire libre</p>
                 </div>
             </div>
 
-            <!-- CEma -->
-            <div class="evento">
-                <div class="hora">21:30–23:00</div> 
-                <div class="punto"></div>
+            <!-- Cena -->
+            <div class="cronograma-evento">
+                <div class="cronograma-hora">21:30–23:00</div>
+                <div class="cronograma-punto"></div>
 
-                <div class="detalle">
+                <div class="cronograma-detalle">
                     <h3>Un banquete para celebrar nuestro amor</h3>
                     <p>Sabores y momentos compartidos bajo el encanto de esta noche.</p>
                 </div>
             </div>
 
             <!-- Fin -->
-            <div class="evento">
-                <div class="hora">04:30</div>
+            <div class="cronograma-evento">
+                <div class="cronograma-hora">04:30</div>
 
-                <div class="punto"></div>
+                <div class="cronograma-punto"></div>
 
-                <div class="detalle">
+                <div class="cronograma-detalle">
                     <h3>El final de una noche para recordar</h3>
                     <p>Fin de la velada de nuestros sueños</p>
                 </div>
@@ -310,7 +315,7 @@
     <img src="IMG/separador-rosas-vicotrianas.png" alt="">
 </div>
 
-        <!-- 03. CEREMONIA RELIGIOSA -->
+        <!-- 05. CEREMONIA RELIGIOSA -->
         <section id="iglesia" class="seccion ceremonia marco-informacion ceremonia-victoriana tarjeta-victoriana" data-ceremonia="religiosa">
             <div class="ornamentos-tarjeta" aria-hidden="true">
                 <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -329,8 +334,8 @@
 
             <div class="contenido-ceremonia">
                 <div class="columna-foto">
-                            <!-- RUTA DE FOTOGRAFÍA: AGREGAR RUTA -->
-                            <div class="foto-evento foto-iglesia">
+                            <!-- Imagen de la capilla donde será la ceremonia. -->
+                            <div class="foto-ceremonia foto-iglesia">
                                 <img src="IMG/capilla.png" alt="Capilla Santa Teresita">
                             </div>
                         </div>
@@ -339,16 +344,16 @@
 
                 <div class="tarjeta-evento">
                     <div class="icono-evento" aria-hidden="true">♱</div>
-                    <p class="momento">Nos encontramos en</p>
+                    <p class="introduccion-ubicacion">Nos encontramos en</p>
                     <h3 class="lugar-iglesia">Capilla Santa Teresita</h3>
 
-                    <div class="detalle-evento">
-                        <span class="detalle-icono" aria-hidden="true">⌖</span>
+                    <div class="dato-ubicacion">
+                        <span class="icono-ubicacion" aria-hidden="true">⌖</span>
                         <p class="direccion-iglesia">Chile 326, Q8300 Neuquén</p>
                     </div>
 
-                    <div class="detalle-evento">
-                        <span class="detalle-icono" aria-hidden="true">◷</span>
+                    <div class="dato-ubicacion">
+                        <span class="icono-ubicacion" aria-hidden="true">◷</span>
                         <p class="horario-iglesia">19:00hs</p>
                     </div>
 
@@ -372,7 +377,7 @@
 </div>
 
 
-<!-- 04. CEREMONIA CIVIL -->
+<!-- 06. CEREMONIA CIVIL -->
 <section id="civil" class="seccion ceremonia marco-informacion ceremonia-victoriana tarjeta-victoriana" data-ceremonia="civil">
     <div class="ornamentos-tarjeta" aria-hidden="true">
         <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -391,7 +396,7 @@
 
     <div class="contenido-ceremonia">
         <div class="columna-foto">
-            <div class="foto-evento">
+            <div class="foto-ceremonia">
                 <img src="IMG/Salon-aurelia.jpeg" alt="Salón Aurelia">
             </div>
         </div>
@@ -400,16 +405,16 @@
 
         <div class="tarjeta-evento">
             <div class="icono-evento" aria-hidden="true">♡</div>
-            <p class="momento">Celebramos nuestro amor en</p>
+            <p class="introduccion-ubicacion">Celebramos nuestro amor en</p>
             <h3 class="lugar-civil">Aurelia salón de eventos</h3>
 
-            <div class="detalle-evento">
-                <span class="detalle-icono" aria-hidden="true">⌖</span>
+            <div class="dato-ubicacion">
+                <span class="icono-ubicacion" aria-hidden="true">⌖</span>
                 <p class="direccion-civil">Ignacio Rivas 3057, Neuquén</p>
             </div>
 
-            <div class="detalle-evento">
-                <span class="detalle-icono" aria-hidden="true">◷</span>
+            <div class="dato-ubicacion">
+                <span class="icono-ubicacion" aria-hidden="true">◷</span>
                 <p class="horario-civil">21:00 hs</p>
             </div>
 
@@ -433,7 +438,7 @@
         </div>
 
 
-        <!-- 05. NUESTRA HISTORIA -->
+        <!-- 07. NUESTRA HISTORIA -->
         <section id="historia" class="seccion historia marco-informacion tarjeta-victoriana">
             <div class="ornamentos-tarjeta" aria-hidden="true">
                 <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -446,7 +451,7 @@
             <h2>Nuestra historia</h2>
             <img class="separador-tarjeta separador-tarjeta-titulo" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
 
-            <p class="texto-intro">
+            <p class="introduccion-historia">
                 Un camino lleno de momentos, recuerdos y mucho amor.
             </p>
 
@@ -455,7 +460,7 @@
                 <figcaption>Un cuento escrito con amor</figcaption>
             </figure>
 
-            <!-- Carrusel de fotografías -->
+            <!-- El script carga las fotos y conecta los controles de navegación. -->
             <div class="carrusel marco-informacion" id="carrusel" role="region" aria-label="Fotos de Cecilia y José">
                 <div class="carrusel-contenido" id="carrusel-contenido">
                 </div>
@@ -469,7 +474,6 @@
                 </button>
                 <div class="carrusel-pie">
                     <p class="carrusel-contador" id="carrusel-contador"></p>
-                    <button class="carrusel-reproduccion" id="carrusel-reproduccion" type="button"></button>
                 </div>
             </div>
 
@@ -487,7 +491,7 @@
 
 
        
-   <!-- 06. DRESS CODE -->
+<!-- 08. CÓDIGO DE VESTIMENTA -->
 <section id="dress-code" class="seccion dress-code marco-informacion tarjeta-victoriana">
     <div class="ornamentos-tarjeta" aria-hidden="true">
         <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -539,7 +543,7 @@
         </div>
 
 
-        <!-- 07. REGALOS -->
+        <!-- 09. REGALOS -->
         <section id="regalos" class="seccion regalos marco-informacion">
             <div class="ornamentos-regalo" aria-hidden="true">
                 <img class="rosa-regalo rosa-regalo-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -602,7 +606,7 @@
         </div>
 
 
-        <!-- 08. CONFIRMACIÓN DE ASISTENCIA -->
+        <!-- 10. CONFIRMACIÓN DE ASISTENCIA -->
         <section id="confirmacion" class="seccion confirmacion marco-informacion tarjeta-victoriana">
             <div class="ornamentos-tarjeta" aria-hidden="true">
                 <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -637,7 +641,7 @@
         </div>
 
 
-        <!-- 09. GALERÍA COLABORATIVA -->
+        <!-- 11. GALERÍA COLABORATIVA -->
         <section id="compartir-fotos" class="seccion compartir-fotos marco-informacion tarjeta-victoriana">
             <div class="ornamentos-tarjeta" aria-hidden="true">
                 <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -668,7 +672,7 @@
             <img src="IMG/separador-rosas-vicotrianas.png" alt="">
         </div>
 
-<!-- 10. CIERRE -->
+<!-- 12. CIERRE -->
 <section id="cierre" class="seccion cierre" aria-labelledby="cierre-titulo">
     <div class="ornamento-cierre" aria-hidden="true">⚜</div>
 
@@ -703,7 +707,11 @@
     </main>
 
     <!-- JavaScript -->
+<<<<<<< HEAD
     <script src="JS/index.js?v=10"></script>
+=======
+    <script src="JS/index.js?v=12"></script>
+>>>>>>> 73f4cf895103386483b494cd59904fc0e47190b2
 <!-- FOOTER LATANA STUDIO -->
 <footer class="tana-footer">
 
@@ -726,7 +734,7 @@
         </a>
 
         <small class="copyright">
-            © <span id="anio"></span> LATANA Studio ✦ · Invitaciones digitales
+            © <span id="anio-actual"></span> LATANA Studio ✦ · Invitaciones digitales
         </small>
     </div>
 

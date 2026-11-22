@@ -189,13 +189,15 @@ body.intro-activa .enlace-salto {
 }
 
 .globo-apertura {
+    /* El globo comparte el sobre como referencia para seguir la posición del cuervo. */
     position: absolute;
-    z-index: 4;
-    top: -11%;
-    left: 36%;
-    width: min(26%, 300px);
+    z-index: 7;
+    top: -54%;
+    left: calc(36% - 15px);
+    width: min(42%, 260px);
     height: auto;
     filter: drop-shadow(0 8px 8px rgba(31, 28, 21, .22));
+    animation: globo-apertura-ladea 4s ease-in-out infinite alternate;
 }
 
 .ornamentos-apertura {
@@ -714,7 +716,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     margin: 0 auto 12px;
 }
 
-.Escudo-Portada {
+.escudo-portada {
     width: 100%;
     filter: drop-shadow(0 8px 12px rgba(80, 53, 29, .18));
     animation: monograma-aparece 1.3s ease both;
@@ -1032,7 +1034,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     background: linear-gradient(180deg, transparent, var(--libro-oro), var(--libro-oro), transparent);
 }
 
-.evento {
+.cronograma-evento {
     display: grid;
     grid-template-columns: 90px 20px minmax(0, 1fr);
     align-items: start;
@@ -1041,7 +1043,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     text-align: left;
 }
 
-.hora {
+.cronograma-hora {
     padding-top: 4px;
     color: var(--libro-bordo);
     font-family: var(--fuente-elegante), Georgia, serif;
@@ -1051,7 +1053,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     white-space: nowrap;
 }
 
-.punto {
+.cronograma-punto {
     position: relative;
     z-index: 1;
     width: 12px;
@@ -1063,17 +1065,17 @@ body.intro-activa .cuervo-volando-tarjeta {
     box-shadow: 0 0 0 1px var(--libro-oro);
 }
 
-.detalle {
+.cronograma-detalle {
     padding: 0 0 0 4px;
 }
 
-.detalle h3 {
+.cronograma-detalle h3 {
     margin: 0 0 4px !important;
     color: var(--libro-verde) !important;
     font-size: clamp(20px, 3vw, 25px) !important;
 }
 
-.detalle p {
+.cronograma-detalle p {
     margin: 0;
     font-size: 15px;
     line-height: 1.5;
@@ -1108,7 +1110,7 @@ body.intro-activa .cuervo-volando-tarjeta {
 }
 
 .icono-evento,
-.detalle-icono {
+.icono-ubicacion {
     color: var(--libro-oro) !important;
 }
 
@@ -1121,7 +1123,7 @@ body.intro-activa .cuervo-volando-tarjeta {
 }
 
 /* Relato ilustrado y álbum. */
-.texto-intro {
+.introduccion-historia {
     max-width: 590px;
     margin-bottom: 18px;
     font-size: 20px;
@@ -1198,6 +1200,14 @@ body.intro-activa .cuervo-volando-tarjeta {
     animation: imagen-carrusel-aparece .9s cubic-bezier(.2, .7, .2, 1) both;
 }
 
+.carrusel-contenido img[alt="Recuerdo 3 de Cecilia y José"] {
+    object-position: center 42%;
+}
+
+.carrusel-contenido img[alt="Recuerdo 5 de Cecilia y José"] {
+    object-position: 58% 42%;
+}
+
 .carrusel button {
     z-index: 1;
     top: 50%;
@@ -1241,26 +1251,6 @@ body.intro-activa .cuervo-volando-tarjeta {
     letter-spacing: .14em;
     text-align: center;
     text-transform: uppercase;
-}
-
-.carrusel .carrusel-reproduccion {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 5px 10px;
-    transform: none;
-    border: 0;
-    background: transparent;
-    box-shadow: none;
-    color: var(--libro-verde);
-    font-family: var(--fuente-texto), sans-serif;
-    font-size: 11px;
-    letter-spacing: .08em;
-}
-
-.carrusel .carrusel-reproduccion:hover {
-    transform: none;
-    background: rgba(255, 250, 240, .7);
 }
 
 @media (max-width: 520px) {
@@ -1395,7 +1385,6 @@ body.intro-activa .cuervo-volando-tarjeta {
     inset: 12px;
     border: 1px solid rgba(165, 112, 47, .55);
     border-radius: 3px;
-    box-shadow: inset 0 0 0 4px rgba(255, 250, 239, .72);
     animation: marco-resplandece 8s ease-in-out infinite alternate;
 }
 
@@ -1536,7 +1525,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     box-shadow: 0 24px 48px rgba(39, 31, 21, .18);
 }
 
-.invitacion .seccion.marco-informacion .foto-evento img,
+.invitacion .seccion.marco-informacion .foto-ceremonia img,
 .invitacion .seccion.marco-informacion .historia-retrato img,
 .invitacion .seccion.marco-informacion .imagen-dresscode {
     transition:
@@ -1544,7 +1533,7 @@ body.intro-activa .cuervo-volando-tarjeta {
         transform .7s cubic-bezier(.2, .7, .2, 1);
 }
 
-.invitacion .seccion.marco-informacion .foto-evento:hover img,
+.invitacion .seccion.marco-informacion .foto-ceremonia:hover img,
 .invitacion .seccion.marco-informacion .historia-retrato:hover img {
     transform: scale(1.035);
     filter: saturate(1.08);
@@ -1558,11 +1547,9 @@ body.intro-activa .cuervo-volando-tarjeta {
 @keyframes marco-resplandece {
     from {
         border-color: rgba(165, 112, 47, .42);
-        box-shadow: inset 0 0 0 4px rgba(255, 250, 239, .62);
     }
     to {
         border-color: rgba(165, 112, 47, .72);
-        box-shadow: inset 0 0 0 4px rgba(255, 250, 239, .9);
     }
 }
 
@@ -2098,6 +2085,11 @@ body.intro-activa .cuervo-volando-tarjeta {
     50% { opacity: 1; text-shadow: 0 0 18px rgba(228, 201, 144, .82); }
 }
 
+@keyframes globo-apertura-ladea {
+    from { transform: translateX(-10px); }
+    to { transform: translateX(10px); }
+}
+
 @keyframes pulso-boton {
     45% { box-shadow: 0 0 0 5px rgba(211, 183, 127, .22), 0 8px 20px rgba(28, 38, 29, .18); }
 }
@@ -2116,9 +2108,9 @@ body.intro-activa .cuervo-volando-tarjeta {
     }
 
     .globo-apertura {
-        top: -1%;
-        left: 25%;
-        width: 40%;
+        top: -60%;
+        left: calc(30% - 15px);
+        width: 46%;
     }
 
     .firulete-apertura {
@@ -2203,17 +2195,17 @@ body.intro-activa .cuervo-volando-tarjeta {
         left: 74px;
     }
 
-    .evento {
+    .cronograma-evento {
         grid-template-columns: 58px 18px minmax(0, 1fr);
         gap: 12px;
     }
 
-    .hora {
+    .cronograma-hora {
         font-size: 15px;
         white-space: normal;
     }
 
-    .detalle p {
+    .cronograma-detalle p {
         font-size: 14px;
     }
 
@@ -2293,7 +2285,7 @@ body.intro-activa .cuervo-volando-tarjeta {
         row-gap: 4px;
     }
 
-    .evento {
+    .cronograma-evento {
         grid-template-columns: 52px 14px minmax(0, 1fr);
         gap: 9px;
     }
@@ -2302,11 +2294,11 @@ body.intro-activa .cuervo-volando-tarjeta {
         left: 66px;
     }
 
-    .hora {
+    .cronograma-hora {
         font-size: 14px;
     }
 
-    .detalle h3 {
+    .cronograma-detalle h3 {
         font-size: 19px !important;
     }
 
@@ -2321,6 +2313,14 @@ body.intro-activa .cuervo-volando-tarjeta {
 
     .footer-persona {
         grid-row: 2;
+    }
+
+    .persona-ana {
+        grid-column: 1;
+    }
+
+    .persona-nata {
+        grid-column: 3;
     }
 }
 
@@ -2368,7 +2368,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     padding: clamp(46px, 6vw, 72px) clamp(22px, 6vw, 72px);
     border: 1px solid rgba(160, 119, 62, .86);
     border-radius: 12px;
-    background: linear-gradient(135deg, rgba(255, 249, 235, .86), rgba(241, 226, 199, .84)) !important;
+    background: radial-gradient(ellipse at 50% 45%, rgba(255, 246, 224, .98), rgba(244, 226, 194, .98)) !important;
     box-shadow: 0 20px 52px rgba(26, 21, 15, .22), inset 0 0 0 5px rgba(175, 133, 68, .08);
 }
 
@@ -2688,7 +2688,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     margin: 0 auto 2px;
 }
 
-#inicio .Escudo-Portada {
+#inicio .escudo-portada {
     animation: monograma-aparece 1.3s ease both;
 }
 
@@ -3012,20 +3012,20 @@ body.intro-activa .cuervo-volando-tarjeta {
     background: linear-gradient(180deg, transparent, #ad843f 12%, #ad843f 88%, transparent);
 }
 
-#cronograma .evento {
+#cronograma .cronograma-evento {
     grid-template-columns: 150px 20px minmax(0, 1fr);
     gap: 18px;
     min-height: 88px;
     padding: 14px 0;
 }
 
-#cronograma .hora {
+#cronograma .cronograma-hora {
     color: #71333d;
     font-size: 20px;
     font-style: italic;
 }
 
-#cronograma .punto {
+#cronograma .cronograma-punto {
     width: 13px;
     height: 13px;
     border: 2px solid #f7ebd2;
@@ -3033,8 +3033,8 @@ body.intro-activa .cuervo-volando-tarjeta {
     box-shadow: 0 0 0 1px #ad843f;
 }
 
-#cronograma .detalle h3,
-#cronograma .detalle p {
+#cronograma .cronograma-detalle h3,
+#cronograma .cronograma-detalle p {
     color: #71333d !important;
 }
 
@@ -3077,8 +3077,8 @@ body.intro-activa .cuervo-volando-tarjeta {
     display: none;
 }
 
-#iglesia .foto-evento,
-#civil .foto-evento {
+#iglesia .foto-ceremonia,
+#civil .foto-ceremonia {
     width: min(360px, 92%);
     height: 370px;
     border-color: #b78c49;
@@ -3125,32 +3125,32 @@ body.intro-activa .cuervo-volando-tarjeta {
         left: 88px;
     }
 
-    #cronograma .evento {
+    #cronograma .cronograma-evento {
         grid-template-columns: 70px 16px minmax(0, 1fr);
         gap: 10px;
         min-height: 0;
         padding: 13px 0;
     }
 
-    #cronograma .hora {
+    #cronograma .cronograma-hora {
         font-size: 14px;
     }
 
-    #cronograma .punto {
+    #cronograma .cronograma-punto {
         width: 12px;
         height: 12px;
         margin-top: 7px;
     }
 
-    #cronograma .detalle {
+    #cronograma .cronograma-detalle {
         padding-left: 0;
     }
 
-    #cronograma .detalle h3 {
+    #cronograma .cronograma-detalle h3 {
         font-size: 19px !important;
     }
 
-    #cronograma .detalle p {
+    #cronograma .cronograma-detalle p {
         font-size: 14px;
     }
 
@@ -3171,8 +3171,8 @@ body.intro-activa .cuervo-volando-tarjeta {
         letter-spacing: .02em;
     }
 
-    #iglesia .foto-evento,
-    #civil .foto-evento {
+    #iglesia .foto-ceremonia,
+    #civil .foto-ceremonia {
         width: min(260px, 86%);
         height: 280px;
     }
@@ -3225,7 +3225,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     display: none;
 }
 
-#historia .texto-intro,
+#historia .introduccion-historia,
 #confirmacion > p:not(.etiqueta-seccion),
 #compartir-fotos > p:not(.etiqueta-seccion) {
     color: #5a392d !important;
@@ -3267,7 +3267,9 @@ body.intro-activa .cuervo-volando-tarjeta {
 
 #contenido-principal #iglesia.tarjeta-victoriana::before,
 #contenido-principal #civil.tarjeta-victoriana::before {
-    border-color: #ad843f;
+    inset: 12px;
+    border: 2px solid #ad843f;
+    box-shadow: none;
 }
 
 #contenido-principal #iglesia.tarjeta-victoriana::after,
