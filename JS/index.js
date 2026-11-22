@@ -291,6 +291,7 @@ function prepararCarrusel() {
         const actualizarImagen = () => {
             const imagen = document.createElement("img");
             imagen.src = fotografias[fotoActual];
+            imagen.dataset.foto = `jc${fotoActual + 1}`;
             imagen.alt = `Recuerdo ${fotoActual + 1} de Cecilia y José`;
             imagen.loading = "eager";
             contenido.replaceChildren(imagen);
