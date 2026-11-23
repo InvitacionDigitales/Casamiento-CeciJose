@@ -1134,6 +1134,12 @@ img {
     object-fit: cover;
 }
 
+.carrusel-contenido img[data-foto="jc3"],
+.carrusel-contenido img[data-foto="jc5"] {
+    object-position: center 0% ;
+    top: 50%
+}
+
 .carrusel button {
     position: absolute;
     top: 50%;

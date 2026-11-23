@@ -32,6 +32,10 @@ function prepararRevelaciones() {
     const elementos = document.querySelectorAll(
         ".seccion, .cronograma-evento, .tarjeta-evento, .opcion-regalo, .contenedor-dresscode"
     );
+    const retrasosCronograma = new Map(
+        [...document.querySelectorAll("#cronograma .cronograma-evento")]
+            .map((elemento, indice) => [elemento, indice * 130])
+    );
 
     if (!("IntersectionObserver" in window)) {
         elementos.forEach((elemento) => elemento.classList.add("revelado"));
@@ -48,11 +52,126 @@ function prepararRevelaciones() {
 
     elementos.forEach((elemento, indice) => {
         elemento.classList.add("revelacion");
-        elemento.style.setProperty("--retraso-revelacion", `${Math.min(indice % 5, 4) * 90}ms`);
+        const retraso = retrasosCronograma.has(elemento)
+            ? retrasosCronograma.get(elemento)
+            : Math.min(indice % 5, 4) * 90;
+        elemento.style.setProperty("--retraso-revelacion", `${retraso}ms`);
         observador.observe(elemento);
     });
 
     document.body.classList.add("animaciones-listas");
+}
+
+function prepararCronograma() {
+    const linea = document.querySelector("#cronograma .linea-tiempo");
+    if (!linea) return;
+    const marcador = linea.querySelector(".cronograma-punto");
+    if (!marcador) return;
+
+    let cuadroPendiente = false;
+    const actualizarPosicion = () => {
+        cuadroPendiente = false;
+        const rectLinea = linea.getBoundingClientRect();
+        const rectMarcador = marcador.getBoundingClientRect();
+        const escala = rectLinea.width / linea.offsetWidth;
+        if (!escala || !Number.isFinite(escala)) return;
+
+        const centro = (rectMarcador.left + rectMarcador.width / 2 - rectLinea.left) / escala;
+        linea.style.setProperty("--posicion-cronograma", `${centro}px`);
+    };
+    const programarActualizacion = () => {
+        if (cuadroPendiente) return;
+        cuadroPendiente = true;
+        window.requestAnimationFrame(actualizarPosicion);
+    };
+
+    actualizarPosicion();
+    window.addEventListener("resize", programarActualizacion, { passive: true });
+
+    if ("ResizeObserver" in window) {
+        const observador = new ResizeObserver(programarActualizacion);
+        observador.observe(linea);
+        observador.observe(marcador);
+    }
+
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(programarActualizacion);
+    }
+}
+
+function prepararMaquinaDeEscribir() {
+    const titulo = document.getElementById("nombres-novios");
+    if (!titulo) return;
+    if (titulo.dataset.maquinaLista === "true") return;
+    titulo.dataset.maquinaLista = "true";
+    titulo.classList.add("maquina-escribir");
+
+    const textoCompleto = "José y Cecilia";
+    titulo.textContent = "";
+    titulo.setAttribute("aria-label", textoCompleto);
+
+    if (movimientoReducido.matches) {
+        titulo.textContent = textoCompleto;
+        titulo.classList.remove("maquina-escribir");
+        return;
+    }
+
+    let indice = 0;
+    const escribir = () => {
+        if (indice >= textoCompleto.length) {
+            titulo.classList.remove("maquina-escribir");
+            return;
+        }
+
+        const caracter = textoCompleto[indice];
+        const letra = document.createElement("span");
+        if (textoCompleto.slice(0, indice).endsWith(" ") && caracter === "y") {
+            letra.className = "nombre-letra-conectora";
+        }
+        letra.textContent = caracter;
+        titulo.appendChild(letra);
+        indice += 1;
+        window.setTimeout(escribir, caracter === " " ? 220 : 115);
+    };
+
+    window.setTimeout(escribir, 420);
+}
+
+function prepararCuervosInteractivos() {
+    const secciones = document.querySelectorAll("#contenido-principal .seccion:not(#inicio):not(#apertura)");
+    secciones.forEach((seccion, indice) => {
+        if (seccion.querySelector(".cuervo-seccion")) return;
+
+        const cuervo = document.createElement("img");
+        cuervo.className = "cuervo-seccion";
+        cuervo.src = "IMG/jc-cuervo.png";
+        cuervo.alt = "";
+        cuervo.setAttribute("aria-hidden", "true");
+        cuervo.style.setProperty("--retraso-cuervo", `${indice * 180}ms`);
+        seccion.appendChild(cuervo);
+
+        cuervo.addEventListener("pointermove", (evento) => {
+            if (movimientoReducido.matches) return;
+            const rect = cuervo.getBoundingClientRect();
+            const centroX = rect.left + rect.width / 2;
+            const centroY = rect.top + rect.height / 2;
+            const giroX = Math.max(-7, Math.min(7, (evento.clientX - centroX) / 15));
+            const giroY = Math.max(-5, Math.min(5, (evento.clientY - centroY) / 20));
+            cuervo.style.setProperty("--giro-cuervo-x", `${giroX}deg`);
+            cuervo.style.setProperty("--giro-cuervo-y", `${giroY}deg`);
+        });
+
+        cuervo.addEventListener("pointerleave", () => {
+            cuervo.style.setProperty("--giro-cuervo-x", "0deg");
+            cuervo.style.setProperty("--giro-cuervo-y", "0deg");
+        });
+
+        cuervo.addEventListener("pointerdown", () => {
+            cuervo.classList.remove("cuervo-saludo");
+            void cuervo.offsetWidth;
+            cuervo.classList.add("cuervo-saludo");
+        });
+    });
 }
 
 /* Mantiene el contenido inerte mientras el sobre actúa como diálogo de apertura. */
@@ -94,6 +213,7 @@ function prepararApertura() {
         }
 
         portada.classList.add("portada-emergente");
+        window.setTimeout(prepararMaquinaDeEscribir, 720);
 
         if (!animar || movimientoReducido.matches) {
             portada.classList.add("portada-sin-animacion");
@@ -303,6 +423,7 @@ function prepararCarrusel() {
         const actualizarImagen = () => {
             const imagen = document.createElement("img");
             imagen.src = fotografias[fotoActual];
+            imagen.dataset.foto = `jc${fotoActual + 1}`;
             imagen.alt = `Recuerdo ${fotoActual + 1} de Cecilia y José`;
             imagen.loading = "eager";
             contenido.replaceChildren(imagen);
@@ -427,6 +548,8 @@ function prepararInteracciones() {
 /* Inicializa cada componente una vez que el documento está disponible. */
 function iniciarInvitacion() {
     actualizarCuentaRegresiva();
+    prepararCronograma();
+    prepararCuervosInteractivos();
     window.setInterval(actualizarCuentaRegresiva, 1000);
     prepararAno();
     prepararApertura();

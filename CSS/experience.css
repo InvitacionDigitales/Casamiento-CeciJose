@@ -2260,9 +2260,93 @@ body.intro-activa .cuervo-volando-tarjeta {
     }
 }
 
+.cuervo-seccion {
+    position: absolute;
+    z-index: 12;
+    top: -113px;
+    right: auto;
+    left: calc(50% - 310px);
+    width: clamp(175px, 18vw, 220px);
+    margin: 0;
+    height: auto;
+    object-fit: contain;
+    pointer-events: auto;
+    transform-origin: 50% 82%;
+    transform: rotateX(var(--giro-cuervo-y, 0deg)) rotateY(var(--giro-cuervo-x, 0deg));
+    filter: drop-shadow(0 12px 10px rgba(32, 21, 14, .28));
+    animation: cuervo-aparece .8s cubic-bezier(.2, .72, .2, 1) var(--retraso-cuervo, 0ms) both,
+        cuervo-flota 3.8s ease-in-out calc(var(--retraso-cuervo, 0ms) + .8s) infinite;
+    transition: transform .18s ease-out, filter .25s ease;
+}
+
+.invitacion .seccion > .cuervo-seccion {
+    position: absolute;
+    z-index: 12;
+    top: -113px;
+    right: auto;
+    left: calc(50% - 310px);
+    margin: 0;
+}
+
+.cuervo-seccion:hover {
+    filter: drop-shadow(0 16px 12px rgba(32, 21, 14, .38)) brightness(1.04);
+}
+
+.cuervo-seccion.cuervo-saludo {
+    animation: cuervo-saludo .72s cubic-bezier(.2, .75, .25, 1);
+}
+
+#contenido-principal .seccion:not(#inicio) {
+    overflow: visible;
+}
+
+@keyframes cuervo-aparece {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0) scale(.82) rotate(-8deg);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    }
+}
+
+@keyframes cuervo-flota {
+    0%, 100% { margin-top: 0; }
+    50% { margin-top: -7px; }
+}
+
+@keyframes cuervo-saludo {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    30% { transform: translate3d(0, -8px, 0) rotate(-7deg); }
+    60% { transform: translate3d(0, -3px, 0) rotate(6deg); }
+}
+
+@media (max-width: 700px) {
+    .cuervo-seccion {
+        top: -93px;
+        right: auto;
+        left: 18px;
+        width: clamp(128px, 34vw, 150px);
+        margin: 0;
+    }
+
+    .invitacion .seccion > .cuervo-seccion {
+        top: -93px;
+        right: auto;
+        left: 18px;
+        margin: 0;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .cuervo-volando-tarjeta {
         display: none;
+    }
+
+    .cuervo-seccion,
+    #inicio .nombres-novios.maquina-escribir::after {
+        animation: none;
     }
 }
 
@@ -2321,6 +2405,77 @@ body.intro-activa .cuervo-volando-tarjeta {
 
     .persona-nata {
         grid-column: 3;
+    }
+}
+
+@media (max-width: 700px) {
+    .tana-footer {
+        grid-template-columns: 84px minmax(0, 1fr) 84px;
+        grid-template-rows: auto auto;
+        min-height: 210px;
+        row-gap: 14px;
+        column-gap: 4px;
+        padding: 22px 12px 28px;
+    }
+
+    .tana-footer .footer-centro {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        width: 100%;
+    }
+
+    .tana-footer .footer-persona {
+        grid-row: 2;
+        align-self: end;
+    }
+
+    .tana-footer .persona-ana {
+        grid-column: 1;
+    }
+
+    .tana-footer .persona-nata {
+        grid-column: 3;
+    }
+
+    .tana-footer .cabeza-marco {
+        width: clamp(58px, 18vw, 74px);
+    }
+
+    .tana-footer .marca {
+        font-size: clamp(24px, 7vw, 32px);
+    }
+
+    .tana-footer .correo {
+        max-width: 92%;
+        overflow-wrap: anywhere;
+        font-size: 10px;
+    }
+
+    .tana-footer .copyright {
+        max-width: 240px;
+        font-size: 9px;
+        line-height: 1.35;
+    }
+
+    .tana-footer .ig-decorativo {
+        position: static;
+        grid-row: 2;
+        align-self: end;
+        margin-bottom: -16px;
+        font-size: 8px;
+        letter-spacing: .2px;
+    }
+
+    .tana-footer .ig-ana {
+        grid-column: 1;
+        justify-self: center;
+        left: auto;
+    }
+
+    .tana-footer .ig-nata {
+        grid-column: 3;
+        justify-self: center;
+        right: auto;
     }
 }
 
@@ -2698,6 +2853,30 @@ body.intro-activa .cuervo-volando-tarjeta {
     line-height: .96;
 }
 
+#inicio .nombres-novios.maquina-escribir {
+    min-height: 1em;
+}
+
+#inicio .nombres-novios.maquina-escribir::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: .78em;
+    margin-left: 4px;
+    vertical-align: -.04em;
+    background: #71333d;
+    animation: cursor-maquina .65s steps(1, end) infinite;
+}
+
+#inicio .nombres-novios .nombre-letra-conectora {
+    color: #71333d;
+    font-style: italic;
+}
+
+@keyframes cursor-maquina {
+    50% { opacity: 0; }
+}
+
 #inicio .fecha-portada {
     margin: 12px 0 5px;
     color: #70491e;
@@ -3007,7 +3186,7 @@ body.intro-activa .cuervo-volando-tarjeta {
 }
 
 #cronograma .linea-tiempo::before {
-    left: 178px;
+    left: var(--posicion-cronograma, 178px);
     width: 2px;
     background: linear-gradient(180deg, transparent, #ad843f 12%, #ad843f 88%, transparent);
 }
@@ -3122,7 +3301,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     }
 
     #cronograma .linea-tiempo::before {
-        left: 88px;
+        left: var(--posicion-cronograma, 88px);
     }
 
     #cronograma .cronograma-evento {
