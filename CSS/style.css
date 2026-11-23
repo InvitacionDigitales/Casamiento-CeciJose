@@ -3565,7 +3565,7 @@ background:
 }
 
 .cuervos-cierre {
-    width: clamp(220px, 35vw, 400px);
+    width: clamp(20px, 35vw, 400px);
     margin: 35px auto 20px;
     display: flex;
     justify-content: center;
@@ -3576,7 +3576,92 @@ background:
 
 .cuervos-cierre img {
     display: block;
-    width: 100%;
+    width: 80%;
     height: auto;
     object-fit: contain;
 }
+
+.indicadores-arco {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin: 18px auto 0;
+    position: relative;
+}
+
+.indicadores-arco span {
+    display: block;
+    flex: 0 0 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+
+/* =========================================
+   INDICADORES DEBAJO DE LAS FOTOS
+   CEREMONIA RELIGIOSA Y CIVIL
+========================================= */
+
+@media (max-width: 700px) {
+
+    #iglesia .columna-foto,
+    #civil .columna-foto {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        height: auto !important;
+        gap: 0 !important;
+    }
+
+    #iglesia .carrusel-arco,
+    #civil .carrusel-arco {
+        position: relative !important;
+        flex: 0 0 auto !important;
+        width: min(280px, 82vw) !important;
+        margin: 0 auto !important;
+    }
+
+    /* Los indicadores quedan debajo del carrusel */
+    #iglesia .indicadores-arco,
+    #civil .indicadores-arco {
+        position: static !important;
+        inset: auto !important;
+        transform: none !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 16px 0 0 !important;
+        padding: 0 !important;
+        order: 2 !important;
+        gap: 10px !important;
+    }
+
+    #iglesia .indicadores-arco span,
+    #civil .indicadores-arco span {
+        position: static !important;
+        display: block !important;
+        flex: 0 0 7px !important;
+        width: 7px !important;
+        height: 7px !important;
+        margin: 0 !important;
+        transform: none;
+    }
+
+    /* Las flechas permanecen sobre la fotografía */
+    #iglesia .flecha-carrusel,
+    #civil .flecha-carrusel {
+        top: 50% !important;
+        bottom: auto !important;
+        transform: translateY(-50%) !important;
+    }
+}
+
