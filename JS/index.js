@@ -444,3 +444,32 @@ if (document.readyState === "loading") {
 } else {
     iniciarInvitacion();
 }
+const carrusel = document.querySelector("#carruselIglesia");
+
+if (carrusel) {
+    const imagenes = carrusel.querySelectorAll(".carrusel-arco-imagenes img");
+    const indicadores = document.querySelectorAll(".indicadores-arco span");
+
+    const anterior = carrusel.querySelector(".anterior");
+    const siguiente = carrusel.querySelector(".siguiente");
+
+    let indiceActual = 0;
+
+    function mostrarImagen(indice) {
+        imagenes[indiceActual].classList.remove("activa");
+        indicadores[indiceActual].classList.remove("activo");
+
+        indiceActual = (indice + imagenes.length) % imagenes.length;
+
+        imagenes[indiceActual].classList.add("activa");
+        indicadores[indiceActual].classList.add("activo");
+    }
+
+    anterior.addEventListener("click", () => {
+        mostrarImagen(indiceActual - 1);
+    });
+
+    siguiente.addEventListener("click", () => {
+        mostrarImagen(indiceActual + 1);
+    });
+}
