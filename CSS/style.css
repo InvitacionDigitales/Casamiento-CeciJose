@@ -3270,14 +3270,17 @@ background:
 
 /* TEXTO DE LAS FOTOS */
 
-.historia-retrato figcaption {
-    padding-top: 10px;
-
-    color: var(--bordo);
-    font-family: var(--fuente-elegante);
-    font-size: 17px;
-    font-style: italic;
-    text-align: center;
+@media (max-width: 700px) {
+    .historia-retrato figcaption {
+        min-height: 32px !important;
+        height: 32px !important;
+        padding: 5px 3px 3px !important;
+        margin: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
 }
 
 /* FOTO DEL CENTRO */
