@@ -489,27 +489,59 @@
                 Un camino lleno de momentos, recuerdos y mucho amor.
             </p>
 
-            <figure class="historia-retrato">
-                <img src="IMG/novios.png" alt="Ilustración de una pareja en un bosque encantado" loading="lazy">
-                <figcaption>Un cuento escrito con amor</figcaption>
-            </figure>
+            <div class="historia-galeria" id="galeriaHistoria">
 
-            <!-- El script carga las fotos y conecta los controles de navegación. -->
-            <div class="carrusel marco-informacion" id="carrusel" role="region" aria-label="Fotos de Cecilia y José">
-                <div class="carrusel-contenido" id="carrusel-contenido">
-                </div>
+            <div class="historia-fotos">
+                <figure class="historia-retrato">
+                    <img src="IMG/novios.png" alt="Ilustración de una pareja en un bosque encantado" loading="lazy">
+                    <figcaption>Un cuento escrito con amor</figcaption>
+                </figure>
+                <figure class="historia-retrato">
+                    <img src="IMG/js-cuervos-victorianos.png" alt="Ilustración de dos cuervos vestidos de novios" loading="lazy">
+                    <figcaption>Un cuento escrito con amor</figcaption>
+                </figure>
+                <figure class="historia-retrato">
+                    <img src="IMG/jc1.jpeg" alt="Ilustración de una pareja en un bosque encantado" loading="lazy">
+                    <figcaption>Un cuento escrito con amor</figcaption>
+                </figure>
+                <figure class="historia-retrato">
+                    <img src="IMG/jc2.jpeg" alt="Ilustración de dos cuervos vestidos de novios" loading="lazy">
+                    <figcaption>Un cuento escrito con amor</figcaption>
+                </figure>
+                <figure class="historia-retrato">
+                    <img src="IMG/jc3.jpeg" alt="Ilustración de una pareja en un bosque encantado" loading="lazy">
+                    <figcaption>Un cuento escrito con amor</figcaption>
+                </figure>
+                <figure class="historia-retrato">
+                    <img src="IMG/jc4.jpeg" alt="Ilustración de dos cuervos vestidos de novios" loading="lazy">
+                    <figcaption>Un cuento escrito con amor</figcaption>
+                </figure>
+                <figure class="historia-retrato">
+                    <img src="IMG/jc5.jpeg" alt="Ilustración de dos cuervos vestidos de novios" loading="lazy">
+                    <figcaption>Un cuento escrito con amor</figcaption>
+                </figure>
+            </div>
 
-                <button class="carrusel-anterior" type="button" aria-label="Foto anterior">
+            <div class="historia-controles">
+                        
+                <button class="historia-flecha anterior"
+                        type="button"
+                        aria-label="Fotografía anterior">
                     &#10094;
                 </button>
 
-                <button class="carrusel-siguiente" type="button" aria-label="Foto siguiente">
+                <span class="historia-contador" id="contadorHistoria">
+                    1 / 7
+                </span>
+
+                <button class="historia-flecha siguiente"
+                        type="button"
+                        aria-label="Fotografía siguiente">
                     &#10095;
                 </button>
-                <div class="carrusel-pie">
-                    <p class="carrusel-contador" id="carrusel-contador"></p>
-                </div>
             </div>
+
+        </div>
 
             <!-- Videos -->
             <div class="videos-historia">
@@ -585,6 +617,7 @@
                 <img class="firulete-regalo firulete-regalo-superior" src="IMG/firulete-ornamental.png" alt="">
                 <img class="firulete-regalo firulete-regalo-inferior" src="IMG/firulete-ornamental.png" alt="">
             </div>
+            
             <header class="encabezado-regalo">
                 <p class="etiqueta-seccion">UN REGALO ESPECIAL</p>
                 <img class="floritura-regalo" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
@@ -592,16 +625,7 @@
 
             <div class="contenido-regalo">
                 <div class="regalo-presentacion">
-                    <svg class="ilustracion-regalo" viewBox="0 0 180 125" fill="none" aria-hidden="true" focusable="false">
-                        <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                            <path d="M34 55h112v56H34z" />
-                            <path d="M26 41h128v19H26z" />
-                            <path d="M90 60v51" />
-                            <path d="M90 41c-14 0-29-7-29-19 0-9 10-13 18-8 8 4 11 14 11 27Z" />
-                            <path d="M90 41c14 0 29-7 29-19 0-9-10-13-18-8-8 4-11 14-11 27Z" />
-                            <path d="M44 70h28m36 0h28M34 111h112" />
-                        </g>
-                    </svg>
+ 
                     <h2>Tu presencia es nuestro mejor regalo</h2>
                     <img class="floritura-regalo floritura-regalo-corta" src="IMG/separador-ornamental.png" alt="" aria-hidden="true">
                 </div>
@@ -676,7 +700,7 @@
 
 
         <!-- 11. GALERÍA COLABORATIVA -->
-        <section id="compartir-fotos" class="seccion compartir-fotos marco-informacion tarjeta-victoriana">
+        <section id="compartir-fotos " class="seccion compartir-fotos marco-informacion tarjeta-victoriana">
             <div class="ornamentos-tarjeta" aria-hidden="true">
                 <img class="rosa-tarjeta rosa-tarjeta-superior" src="IMG/rosas-esquina-ornamental.png" alt="">
                 <img class="rosa-tarjeta rosa-tarjeta-inferior" src="IMG/rosas-esquina-ornamental.png" alt="">
@@ -722,9 +746,9 @@
     </div>
 
     <div class="placa-cierre">
-        <span class="ornamento-placa" aria-hidden="true">❧</span>
+        <span class="ornamento-placa" aria-hidden="true"></span>
         <p class="firma-final">José &amp; Cecilia</p>
-        <span class="ornamento-placa" aria-hidden="true">❧</span>
+        <span class="ornamento-placa" aria-hidden="true"></span>
     </div>
 
     <time class="fecha-cierre" datetime="2027-02-13">13 · 02 · 2027</time>
@@ -735,13 +759,18 @@
         <span></span>
     </div>
 
-    <p class="agradecimiento-cierre">Gracias por ser parte de nuestro comienzo.</p>
+<p class="agradecimiento-cierre">
+    Gracias por ser parte de nuestro comienzo.
+</p>
+
+<div class="cuervos-cierre">
+    <img src="IMG/jc-cuervo.png"
+         alt="Dos cuervos, uno rosa y otro negro">
+</div>
+
 </section>
-
-    </main>
-
-    <!-- JavaScript -->
-    <script src="JS/index.js?v=15"></script>
+</main>
+<script src="JS/index.js?v=15"></script>
 <!-- FOOTER LATANA STUDIO -->
 <footer class="tana-footer">
 

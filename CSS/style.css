@@ -3209,3 +3209,374 @@ background:
     opacity: 1;
     background: #7c303c;
 }
+
+/* ======================================
+   GALERÍA DE FOTOS SUPERPUESTAS
+====================================== */
+
+.historia-galeria {
+    width: min(100%, 650px);
+    margin: 35px auto 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ESPACIO DONDE SE APILAN LAS FOTOS */
+
+.historia-fotos {
+    position: relative;
+    width: min(85vw, 340px);
+    height: 390px;
+    perspective: 1000px;
+}
+
+/* CADA FOTOGRAFÍA */
+
+.historia-retrato {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 245px;
+    padding: 10px 10px 18px;
+
+    background: #fffaf0;
+    border: 1px solid #c7aa73;
+
+    box-shadow:
+        0 8px 20px rgba(49, 32, 20, 0.22),
+        inset 0 0 0 3px rgba(199, 170, 115, 0.15);
+
+    transform-origin: center center;
+
+    transition:
+        transform 0.65s cubic-bezier(.2,.75,.25,1),
+        opacity 0.5s ease;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* IMÁGENES */
+
+.historia-retrato img {
+    width: 100%;
+    height: 285px;
+
+    object-fit: cover;
+    border: 1px solid rgba(155, 122, 72, 0.3);
+}
+
+/* TEXTO DE LAS FOTOS */
+
+.historia-retrato figcaption {
+    padding-top: 10px;
+
+    color: var(--bordo);
+    font-family: var(--fuente-elegante);
+    font-size: 17px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* FOTO DEL CENTRO */
+
+.historia-retrato.posicion-centro {
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+
+    transform: translate(-50%, -50%) rotate(-2deg) scale(1);
+}
+
+/* FOTO DE ATRÁS A LA IZQUIERDA */
+
+.historia-retrato.posicion-izquierda {
+    opacity: 0.85;
+    z-index: 3;
+
+    transform: translate(-72%, -47%) rotate(-11deg) scale(0.88);
+}
+
+/* FOTO DE ATRÁS A LA DERECHA */
+
+.historia-retrato.posicion-derecha {
+    opacity: 0.85;
+    z-index: 4;
+
+    transform: translate(-28%, -53%) rotate(9deg) scale(0.88);
+}
+
+/* FOTOS RESTANTES */
+
+.historia-retrato.posicion-oculta {
+    opacity: 0;
+    z-index: 1;
+
+    transform: translate(-50%, -40%) rotate(15deg) scale(0.7);
+}
+
+/* CONTROLES */
+
+.historia-controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    margin-top: 15px;
+}
+
+/* FLECHITAS */
+
+.historia-flecha {
+    width: 43px;
+    height: 43px;
+
+    border: 1px solid var(--dorado-claro);
+    border-radius: 50%;
+
+    background: var(--verde);
+    color: var(--blanco);
+
+    font-size: 18px;
+
+    box-shadow: 0 4px 10px rgba(49, 32, 20, 0.18);
+
+    transition: all 0.3s ease;
+}
+
+.historia-flecha:hover {
+    background: var(--bordo);
+    transform: scale(1.1);
+}
+
+/* CONTADOR */
+
+.historia-contador {
+    color: var(--bordo);
+    font-family: var(--fuente-elegante);
+    font-size: 18px;
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    .historia-fotos {
+        width: 90vw;
+        height: 340px;
+    }
+
+    .historia-retrato {
+        width: min(68vw, 230px);
+        padding: 8px 8px 15px;
+    }
+
+    .historia-retrato img {
+        height: 245px;
+    }
+
+    .historia-retrato figcaption {
+        font-size: 15px;
+    }
+
+    .historia-controles {
+        margin-top: 8px;
+    }
+}
+/* ======================================
+   CORRECCIÓN GALERÍA SUPERPUESTA
+====================================== */
+
+#galeriaHistoria {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+}
+
+#galeriaHistoria .historia-fotos {
+    position: relative;
+    width: min(85vw, 340px);
+    height: 410px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+#galeriaHistoria .historia-fotos > .historia-retrato {
+    position: absolute !important;
+
+    top: 50% !important;
+    left: 50% !important;
+
+    margin: 0 !important;
+
+    width: 245px;
+    box-sizing: border-box;
+
+    transition:
+        transform 0.65s ease,
+        opacity 0.5s ease;
+}
+
+#galeriaHistoria .historia-retrato img {
+    display: block;
+    width: 100%;
+    height: 285px;
+    object-fit: cover;
+}
+
+#galeriaHistoria .historia-controles {
+    position: relative;
+    z-index: 10;
+    margin-top: 0;
+}
+
+@media (max-width: 600px) {
+    #galeriaHistoria .historia-fotos {
+        width: 90vw;
+        height: 365px;
+    }
+
+    #galeriaHistoria .historia-fotos > .historia-retrato {
+        width: min(68vw, 230px);
+    }
+
+    #galeriaHistoria .historia-retrato img {
+        height: 245px;
+    }
+}
+
+/* ======================================
+   TAMAÑO UNIFORME DE ORNAMENTOS FLORALES
+====================================== */
+
+/* COMPUTADORA */
+
+.seccion::before {
+    background-size:
+        100px auto,
+        100px auto,
+        100px auto,
+        100px auto,
+        100px auto,
+        100px auto;
+}
+
+.cuenta-regresiva::before,
+.regalos::before {
+    background-size:
+        100px auto,
+        100px auto,
+        100px auto,
+        100px auto;
+}
+
+/* CELULARES */
+
+@media (max-width: 700px) {
+
+    .seccion::before {
+        background-size:
+            60px auto,
+            60px auto,
+            60px auto,
+            60px auto,
+            60px auto,
+            60px auto;
+    }
+
+    .cuenta-regresiva::before,
+    .regalos::before {
+        background-size:
+            60px auto,
+            60px auto,
+            60px auto,
+            60px auto;
+    }
+}
+
+/* ======================================
+   APARICIÓN MÁGICA DE LA PORTADA
+   EFECTO NIEBLA / HUMO
+====================================== */
+
+@keyframes portada-humo-aparece {
+    0% {
+        opacity: 0;
+        filter: blur(18px);
+        transform: scale(1.025);
+    }
+
+    45% {
+        opacity: 0.45;
+        filter: blur(9px);
+        transform: scale(1.012);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+/* Fondo de la portada */
+
+.portada.portada-emergente::before,
+.portada.portada-emergente .fondo-portada,
+.portada.portada-emergente .decoracion-portada {
+    animation: portada-humo-aparece 1.5s ease-out forwards !important;
+}
+
+/* Contenido de la portada */
+
+.portada.portada-emergente .contenido-portada {
+    animation: portada-humo-aparece 1.3s ease-out 0.25s both !important;
+}
+
+/* Accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+    .portada.portada-emergente::before,
+    .portada.portada-emergente .fondo-portada,
+    .portada.portada-emergente .decoracion-portada,
+    .portada.portada-emergente .contenido-portada {
+        animation: none !important;
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+}
+
+/* Recorte victoriano de las esquinas */
+.marco-victoriano {
+    clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px),
+        0 18px
+    );
+}
+
+.cuervos-cierre {
+    width: clamp(220px, 35vw, 400px);
+    margin: 35px auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.cuervos-cierre img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}

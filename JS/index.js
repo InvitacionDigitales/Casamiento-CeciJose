@@ -1,4 +1,11 @@
+// Al recargar, volver siempre al inicio de la invitación
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
 
+window.addEventListener("pageshow", () => {
+    window.scrollTo(0, 0);
+});
 /* Cecilia Matus & José Antonio Fresco — invitación de boda */
 
 const FECHA_BODA = new Date("2027-02-13T00:00:00");
@@ -83,15 +90,6 @@ function prepararApertura() {
         etapa = "portada";
         portada.inert = false;
 
-        if (animar && !movimientoReducido.matches) {
-            const sobreRect = sobre.getBoundingClientRect();
-            const anchoVentana = document.documentElement.clientWidth;
-            const altoVentana = window.innerHeight;
-            portada.style.setProperty("--carta-inicio-x", `${sobreRect.left}px`);
-            portada.style.setProperty("--carta-inicio-y", `${sobreRect.top}px`);
-            portada.style.setProperty("--carta-escala-x", String(sobreRect.width / anchoVentana));
-            portada.style.setProperty("--carta-escala-y", String(sobreRect.height / altoVentana));
-        }
 
         portada.classList.add("portada-emergente");
 
@@ -100,10 +98,13 @@ function prepararApertura() {
         }
 
         apertura.classList.add("apertura-retirando");
-        const retirarApertura = () => {
-            apertura.hidden = true;
-            comenzar.focus();
-        };
+const retirarApertura = () => {
+    apertura.hidden = true;
+    comenzar.focus({ preventScroll: true });
+
+    // Comienza a escribirse el nombre al entrar a la portada
+    iniciarEscrituraNombres();
+};
 
         if (animar && !movimientoReducido.matches) {
             window.setTimeout(retirarApertura, 680);
@@ -505,3 +506,102 @@ document.querySelectorAll(".carrusel-arco").forEach(carrusel => {
     });
 
 });
+// ======================================
+// ESCRITURA DE LOS NOMBRES EN PORTADA
+// ======================================
+
+function iniciarEscrituraNombres() {
+    const titulo = document.getElementById("nombres-novios");
+
+    if (!titulo) return;
+
+    const texto = "José y Cecilia";
+    let indice = 0;
+
+    titulo.textContent = "";
+
+    function escribir() {
+        if (indice < texto.length) {
+            titulo.textContent += texto.charAt(indice);
+            indice++;
+
+            setTimeout(escribir, 180);
+        }
+    }
+
+    escribir();
+}
+
+// ======================================
+// GALERÍA DE FOTOS SUPERPUESTAS
+// ======================================
+
+function iniciarGaleriaHistoria() {
+
+    const galeria = document.getElementById("galeriaHistoria");
+
+    if (!galeria) return;
+
+    const fotos = Array.from(
+        galeria.querySelectorAll(".historia-retrato")
+    );
+
+    const anterior = galeria.querySelector(".historia-flecha.anterior");
+    const siguiente = galeria.querySelector(".historia-flecha.siguiente");
+    const contador = document.getElementById("contadorHistoria");
+
+    let fotoActual = 0;
+
+    function mostrarFotos() {
+
+        fotos.forEach((foto, indice) => {
+
+            foto.classList.remove(
+                "posicion-centro",
+                "posicion-izquierda",
+                "posicion-derecha",
+                "posicion-oculta"
+            );
+
+            const total = fotos.length;
+
+            const diferencia = (indice - fotoActual + total) % total;
+
+            if (diferencia === 0) {
+                foto.classList.add("posicion-centro");
+            } 
+            else if (diferencia === 1) {
+                foto.classList.add("posicion-derecha");
+            } 
+            else if (diferencia === total - 1) {
+                foto.classList.add("posicion-izquierda");
+            } 
+            else {
+                foto.classList.add("posicion-oculta");
+            }
+
+        });
+
+        contador.textContent = `${fotoActual + 1} / ${fotos.length}`;
+    }
+
+    siguiente.addEventListener("click", () => {
+
+        fotoActual = (fotoActual + 1) % fotos.length;
+
+        mostrarFotos();
+
+    });
+
+    anterior.addEventListener("click", () => {
+
+        fotoActual = (fotoActual - 1 + fotos.length) % fotos.length;
+
+        mostrarFotos();
+
+    });
+
+    mostrarFotos();
+}
+
+iniciarGaleriaHistoria();
