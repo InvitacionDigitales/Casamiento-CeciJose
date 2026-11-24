@@ -1141,10 +1141,7 @@ body.intro-activa .cuervo-volando-tarjeta {
     transition: transform .4s ease, box-shadow .4s ease;
 }
 
-.historia-retrato:hover {
-    transform: rotate(0) translateY(-5px);
-    box-shadow: 0 23px 42px rgba(59, 43, 28, .24);
-}
+
 
 .historia-retrato img {
     width: 100%;
@@ -3700,3 +3697,169 @@ body.intro-activa .cuervo-volando-tarjeta {
         font-size: 20px;
     }
 }
+
+
+/* =========================================
+   AJUSTES GENERALES PARA CELULARES
+========================================= */
+
+@media (max-width: 700px) {
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    #contenido-principal {
+        width: 100%;
+        overflow-x: clip;
+    }
+
+    #contenido-principal .tarjeta-victoriana {
+        width: calc(100% - 24px);
+        max-width: 100%;
+        padding: 48px 16px 36px;
+        margin: 22px auto;
+        box-sizing: border-box;
+    }
+
+    #contenido-principal .tarjeta-victoriana > * {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    #contenido-principal img {
+        max-width: 100%;
+    }
+
+    #contenido-principal h2 {
+        overflow-wrap: break-word;
+    }
+
+    /* Fotos de iglesia y civil */
+    #iglesia .foto-ceremonia,
+    #civil .foto-ceremonia {
+        width: min(100%, 270px);
+        height: 280px;
+        margin-inline: auto;
+    }
+
+    #iglesia .foto-ceremonia img,
+    #civil .foto-ceremonia img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    /* Contenido de las ceremonias */
+    #iglesia .contenido-ceremonia,
+    #civil .contenido-ceremonia {
+        width: 100%;
+        justify-items: center;
+        gap: 12px;
+    }
+}
+
+/* =========================================
+   GALERÍA DE HISTORIA EN CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    #galeriaHistoria {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+    }
+
+    #galeriaHistoria .historia-fotos {
+        width: 100%;
+        max-width: 310px;
+        height: 370px;
+        margin: 0 auto;
+        overflow: visible;
+    }
+
+    #galeriaHistoria .historia-fotos > .historia-retrato {
+        left: 50% !important;
+        width: min(68vw, 230px);
+        margin: 0 !important;
+        box-sizing: border-box;
+    }
+
+    #galeriaHistoria .historia-retrato.posicion-centro {
+        transform: translate(-50%, -50%) rotate(-1deg) scale(1);
+    }
+
+    /* Las fotos de atrás ya no se desplazan tanto hacia los costados */
+    #galeriaHistoria .historia-retrato.posicion-izquierda {
+        transform: translate(-53%, -48%) rotate(-7deg) scale(.88);
+    }
+
+    #galeriaHistoria .historia-retrato.posicion-derecha {
+        transform: translate(-47%, -52%) rotate(6deg) scale(.88);
+    }
+
+    #galeriaHistoria .historia-retrato.posicion-oculta {
+        transform: translate(-50%, -45%) rotate(3deg) scale(.75);
+    }
+
+
+    #galeriaHistoria .historia-controles {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        margin-top: 8px;
+    }
+}
+
+/* =========================================
+   PUNTOS DEBAJO DEL CARRUSEL DE ARCO
+========================================= */
+
+.indicadores-arco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin: 14px auto 0;
+}
+
+.indicadores-arco span {
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b9a47c;
+    opacity: .5;
+    transition: opacity .3s ease, transform .3s ease;
+}
+
+.indicadores-arco span.activo {
+    opacity: 1;
+    background: #71333d;
+    transform: scale(1.25);
+}
+
+/* Flechas centradas verticalmente en la foto */
+.carrusel-arco .flecha-carrusel {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 600px) {
+    .carrusel-arco {
+        width: min(78vw, 270px);
+        margin-inline: auto;
+    }
+
+    .indicadores-arco {
+        margin-top: 16px;
+    }
+}
+
