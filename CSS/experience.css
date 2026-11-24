@@ -2553,11 +2553,6 @@ body.intro-activa .cuervo-volando-tarjeta {
     border-radius: 12px;
 }
 
-.invitacion #regalos,
-.invitacion #confirmacion,
-.invitacion .opcion-transferencia {
-    background: rgba(245, 235, 216, var(--transparencia-secciones, .82)) !important;
-}
 
 .invitacion #regalos {
     position: relative;
@@ -2729,13 +2724,10 @@ body.intro-activa .cuervo-volando-tarjeta {
     overflow: hidden;
     border: 0;
     border-radius: 0;
-    background: transparent !important;
-    box-shadow: none;
 }
 
 .invitacion #regalos .opcion-transferencia:hover {
-    transform: none;
-    box-shadow: none;
+   
 }
 
 .invitacion #regalos .imagen-transferencia {
