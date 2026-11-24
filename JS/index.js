@@ -551,7 +551,11 @@ function iniciarGaleriaHistoria() {
     const siguiente = galeria.querySelector(".historia-flecha.siguiente");
     const contador = document.getElementById("contadorHistoria");
 
+    if (!fotos.length || !anterior || !siguiente) return;
+
     let fotoActual = 0;
+    let intervaloAutomatico;
+    let galeriaVisible = !("IntersectionObserver" in window);
 
     function mostrarFotos() {
 
@@ -583,26 +587,54 @@ function iniciarGaleriaHistoria() {
 
         });
 
-        contador.textContent = `${fotoActual + 1} / ${fotos.length}`;
+        if (contador) contador.textContent = `${fotoActual + 1} / ${fotos.length}`;
+    }
+
+    function avanzar(direccion) {
+        fotoActual = (fotoActual + direccion + fotos.length) % fotos.length;
+        mostrarFotos();
+    }
+
+    function actualizarAvanceAutomatico() {
+        const debeAvanzar = galeriaVisible
+            && !document.hidden
+            && !movimientoReducido.matches
+            && !galeria.contains(document.activeElement)
+            && !galeria.matches(":hover");
+
+        if (debeAvanzar && !intervaloAutomatico) {
+            intervaloAutomatico = window.setInterval(() => avanzar(1), 5000);
+        } else if (!debeAvanzar && intervaloAutomatico) {
+            window.clearInterval(intervaloAutomatico);
+            intervaloAutomatico = undefined;
+        }
     }
 
     siguiente.addEventListener("click", () => {
-
-        fotoActual = (fotoActual + 1) % fotos.length;
-
-        mostrarFotos();
-
+        avanzar(1);
     });
 
     anterior.addEventListener("click", () => {
-
-        fotoActual = (fotoActual - 1 + fotos.length) % fotos.length;
-
-        mostrarFotos();
-
+        avanzar(-1);
     });
 
+    galeria.addEventListener("focusin", actualizarAvanceAutomatico);
+    galeria.addEventListener("focusout", actualizarAvanceAutomatico);
+    galeria.addEventListener("mouseenter", actualizarAvanceAutomatico);
+    galeria.addEventListener("mouseleave", actualizarAvanceAutomatico);
+    document.addEventListener("visibilitychange", actualizarAvanceAutomatico);
+    movimientoReducido.addEventListener("change", actualizarAvanceAutomatico);
+
+    if ("IntersectionObserver" in window) {
+        const observador = new IntersectionObserver((entradas) => {
+            galeriaVisible = entradas.some((entrada) => entrada.isIntersecting);
+            actualizarAvanceAutomatico();
+        });
+        observador.observe(galeria);
+    }
+
     mostrarFotos();
+    actualizarAvanceAutomatico();
 }
 
 iniciarGaleriaHistoria();
