@@ -63,84 +63,85 @@ function prepararRevelaciones() {
 }
 
 /* Mantiene el contenido inerte mientras el sobre actúa como diálogo de apertura. */
-function prepararApertura() {
-    const sello = document.getElementById("sello-apertura");
-    const apertura = document.getElementById("apertura");
-    const texto = document.getElementById("apertura-texto");
-    const portada = document.getElementById("inicio");
-    const comenzar = document.getElementById("comenzar-invitacion");
 
-    if (!sello || !apertura || !texto || !portada || !comenzar) return;
-    const sobre = apertura.querySelector(".sobre-antiguo");
-    if (!sobre) return;
+function prepararApertura() {
+    const intro = document.getElementById("intro-cinematica");
+    const boton = document.getElementById("iniciar-video");
+    const video = document.getElementById("video-apertura");
+    const portada = document.getElementById("inicio");
+
+    if (!intro || !boton || !video || !portada) return;
 
     const contenidoBloqueado = Array.from(
         document.querySelectorAll("#contenido-principal > *")
-    ).filter((elemento) => elemento !== apertura);
+    ).filter(elemento => elemento !== intro && elemento !== portada);
+
     const pie = document.querySelector(".tana-footer");
-    let etapa = "sobre-cerrado";
 
-    const bloquearContenido = () => {
-        contenidoBloqueado.forEach((elemento) => { elemento.inert = true; });
-        if (pie) pie.inert = true;
-    };
+    contenidoBloqueado.forEach(elemento => {
+        elemento.inert = true;
+    });
 
-    const mostrarPortada = (animar = true) => {
-        if (etapa === "portada") return;
-        etapa = "portada";
-        portada.inert = false;
+    if (pie) pie.inert = true;
 
+    portada.inert = true;
 
-        portada.classList.add("portada-emergente");
+    let iniciada = false;
+    let finalizada = false;
 
-        if (!animar || movimientoReducido.matches) {
-            portada.classList.add("portada-sin-animacion");
-        }
+    boton.addEventListener("click", async () => {
+        if (iniciada) return;
 
-        apertura.classList.add("apertura-retirando");
-const retirarApertura = () => {
-    apertura.hidden = true;
-    comenzar.focus({ preventScroll: true });
+        iniciada = true;
+        boton.disabled = true;
 
-    // Comienza a escribirse el nombre al entrar a la portada
-    iniciarEscrituraNombres();
-};
+        intro.classList.add("reproduciendo");
 
-        if (animar && !movimientoReducido.matches) {
-            window.setTimeout(retirarApertura, 680);
-        } else {
-            retirarApertura();
-        }
-    };
-
-    bloquearContenido();
-
-    sello.addEventListener("click", () => {
-        if (etapa !== "sobre-cerrado") return;
-        etapa = "abriendo-sobre";
-        sello.disabled = true;
-        sello.setAttribute("aria-pressed", "true");
-        apertura.classList.add("sobre-abierto");
-        texto.textContent = "La invitación está saliendo del sobre.";
-
-        if (movimientoReducido.matches) {
-            mostrarPortada(false);
+        try {
+            await video.play();
+        } catch (error) {
+            console.error("No se pudo reproducir el video:", error);
+            iniciada = false;
+            boton.disabled = false;
+            intro.classList.remove("reproduciendo");
             return;
         }
-
-        window.setTimeout(() => mostrarPortada(true), 1050);
     });
 
-    comenzar.addEventListener("click", () => {
-        if (!document.body.classList.contains("intro-activa")) return;
+    video.addEventListener("ended", () => {
+        if (finalizada) return;
+        finalizada = true;
+
+        portada.inert = false;
+        portada.classList.add("portada-emergente");
 
         document.body.classList.remove("intro-activa");
-        contenidoBloqueado.forEach((elemento) => { elemento.inert = false; });
+
+        contenidoBloqueado.forEach(elemento => {
+            elemento.inert = false;
+        });
+
         if (pie) pie.inert = false;
-        portada.classList.remove("portada-emergente", "portada-sin-animacion");
-        portada.hidden = true;
+
+        window.scrollTo({ top: 0, behavior: "instant" });
+
+        intro.classList.add("finalizada");
+
+       window.setTimeout(() => {
+    intro.hidden = true;
+    iniciarEscrituraNombres();
+
+    document.getElementById("comenzar-invitacion")
+        ?.focus({ preventScroll: true });
+
+    window.setTimeout(() => {
+        portada.classList.remove("portada-emergente");
+    }, 1300);
+
+}, 800);
     });
 }
+
 
 /* Actualiza el audio y el estado accesible del botón según los eventos del reproductor. */
 function prepararMusica() {

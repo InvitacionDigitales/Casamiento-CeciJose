@@ -3863,3 +3863,148 @@ body.intro-activa .cuervo-volando-tarjeta {
     }
 }
 
+
+
+/* =====================================
+   INTRODUCCIÓN CON CORTINAS Y VIDEO
+===================================== */
+
+.intro-cinematica {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(ellipse at center, #3a3022, #100f0c 85%);
+}
+
+.cortina {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 51%;
+    z-index: 3;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #35151d 0px,
+            #682b37 18px,
+            #421b26 38px,
+            #241016 58px
+        );
+    box-shadow: inset 0 0 35px rgba(0,0,0,.65);
+    transition: transform 1.5s cubic-bezier(.7,0,.2,1);
+}
+
+.cortina-izquierda {
+    left: 0;
+    border-right: 2px solid #b18a4e;
+}
+
+.cortina-derecha {
+    right: 0;
+    border-left: 2px solid #b18a4e;
+}
+
+.boton-iniciar-video {
+    position: relative;
+    z-index: 5;
+    border: 1px solid #c6a66a;
+    border-radius: 3px;
+    padding: 17px 24px;
+    color: #f5e5c5;
+    background: rgba(42, 24, 23, .9);
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 3vw, 22px);
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.boton-iniciar-video span {
+    color: #d9b875;
+    padding: 0 7px;
+}
+
+.video-apertura {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0;
+    transition: opacity .8s ease;
+    background: #100f0c;
+}
+
+.intro-cinematica.reproduciendo .video-apertura {
+    opacity: 1;
+}
+
+.intro-cinematica.reproduciendo .boton-iniciar-video {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro-cinematica.reproduciendo .cortina-izquierda {
+    transform: translateX(-105%);
+}
+
+.intro-cinematica.reproduciendo .cortina-derecha {
+    transform: translateX(105%);
+}
+
+.intro-cinematica.finalizada {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .8s ease;
+}
+
+@media (max-width: 600px) {
+    .video-apertura {
+        object-fit: contain;
+    }
+
+    .boton-iniciar-video {
+        max-width: 85%;
+        padding: 15px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cortina,
+    .video-apertura,
+    .intro-cinematica {
+        transition-duration: .01ms;
+    }
+}
+
+/* CORREGIR CLIC DE APERTURA */
+.intro-cinematica {
+    position: fixed;
+    isolation: isolate;
+}
+
+.cortina {
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+
+.video-apertura {
+    z-index: 1;
+    pointer-events: none;
+}
+
+.boton-iniciar-video {
+    position: absolute !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
+    cursor: pointer;
+}

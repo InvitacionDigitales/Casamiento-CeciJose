@@ -32,30 +32,32 @@
 
     <main class="invitacion" id="contenido-principal">
         <!-- 01. APERTURA Y SOBRE INTERACTIVO -->
-        <section class="apertura" id="apertura" role="dialog" aria-modal="true" aria-labelledby="apertura-titulo">
-            <div class="marco-apertura">
-                <p class="apertura-etiqueta" id="apertura-titulo">Una invitación especial para vos</p>
-                <div class="ornamentos-apertura" aria-hidden="true">
-                    <img class="firulete-apertura firulete-apertura-superior-izquierdo" src="IMG/firulete-dorado.png" alt="">
-                    <img class="firulete-apertura firulete-apertura-superior-derecho" src="IMG/firulete-dorado.png" alt="">
-                    <img class="firulete-apertura firulete-apertura-inferior-izquierdo" src="IMG/firulete-dorado.png" alt="">
-                    <img class="firulete-apertura firulete-apertura-inferior-derecho" src="IMG/firulete-dorado.png" alt="">
-                </div>
-                <div class="sobre-antiguo">
-                    <!-- El globo se ancla al sobre para quedar junto al pico en cualquier pantalla. -->
-                    <img class="globo-apertura" src="IMG/goblo-dialogo.png" alt="">
-                    <span class="sobre-solapa" aria-hidden="true"></span>
-                    <span class="sobre-pliegue sobre-pliegue-izquierdo" aria-hidden="true"></span>
-                    <span class="sobre-pliegue sobre-pliegue-derecho" aria-hidden="true"></span>
-                    <span class="sobre-pliegue sobre-pliegue-inferior" aria-hidden="true"></span>
-                    <button class="sello-cera" id="sello-apertura" type="button" aria-label="Abrir el sello de la invitación" aria-pressed="false">
-                        <img src="IMG/Escudo de Cera Roja con Crestón Dorado.png" alt="Escudo de José y Cecilia">
-                    </button>
-                    <img class="cuervo-mensajero" src="IMG/cuervo.png" alt="">
-                </div>
-                <p class="apertura-texto" id="apertura-texto" aria-live="polite">Tocá el sello para abrir</p>
-                <span class="separador-apertura" aria-hidden="true">✥</span>
-            </div>
+
+<!-- INTRODUCCIÓN CINEMATOGRÁFICA -->
+<section class="intro-cinematica" id="intro-cinematica">
+
+    <div class="cortina cortina-izquierda"></div>
+    <div class="cortina cortina-derecha"></div>
+
+    <button type="button" id="iniciar-video" class="boton-iniciar-video">
+        <span>✦</span>
+        Tocá para abrir la invitación
+        <span>✦</span>
+    </button>
+
+    <video
+        id="video-apertura"
+        class="video-apertura"
+        playsinline
+        preload="auto"
+        controlslist="nodownload nofullscreen noremoteplayback"
+    >
+        <source src="VIDEO/portada-video.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video.
+    </video>
+
+</section>
+
         </section>
 
         <!-- =========================
