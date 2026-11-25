@@ -3740,3 +3740,13 @@ background:
     object-fit: cover;
     object-position: center;
 }
+
+.intro-cinematica.finalizada {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+.intro-cinematica[hidden] {
+    display: none !important;
+}

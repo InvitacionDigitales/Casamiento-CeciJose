@@ -90,25 +90,23 @@ function prepararApertura() {
     let finalizada = false;
 
 boton.addEventListener("click", async () => {
-    if (iniciada) return;
+        if (iniciada) return;
 
-    iniciada = true;
-    boton.disabled = true;
+        iniciada = true;
+        boton.disabled = true;
+        video.muted = true;
 
-    intro.classList.add("reproduciendo");
+        intro.classList.add("reproduciendo");
 
-    // Asegurar silenciado para que el móvil permita reproducir
-    video.muted = true;
-
-    try {
-        await video.play();
-    } catch (error) {
-        console.error("No se pudo reproducir el video:", error);
-        iniciada = false;
-        boton.disabled = false;
-        intro.classList.remove("reproduciendo");
-    }
-});
+        try {
+            await video.play();
+        } catch (error) {
+            console.error("No se pudo reproducir el video:", error);
+            iniciada = false;
+            boton.disabled = false;
+            intro.classList.remove("reproduciendo");
+        }
+    });
 
     video.addEventListener("ended", () => {
         if (finalizada) return;
