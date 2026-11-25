@@ -3722,3 +3722,21 @@ background:
 .boton-copiar-alias {
     margin: 15px auto 0;
 }
+
+#intro-cinematica {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* Soporte para barras navegadoras de celular */
+    z-index: 10000;
+    background-color: #000;
+}
+
+#video-apertura {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}

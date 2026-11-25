@@ -89,24 +89,26 @@ function prepararApertura() {
     let iniciada = false;
     let finalizada = false;
 
-    boton.addEventListener("click", async () => {
-        if (iniciada) return;
+boton.addEventListener("click", async () => {
+    if (iniciada) return;
 
-        iniciada = true;
-        boton.disabled = true;
+    iniciada = true;
+    boton.disabled = true;
 
-        intro.classList.add("reproduciendo");
+    intro.classList.add("reproduciendo");
 
-        try {
-            await video.play();
-        } catch (error) {
-            console.error("No se pudo reproducir el video:", error);
-            iniciada = false;
-            boton.disabled = false;
-            intro.classList.remove("reproduciendo");
-            return;
-        }
-    });
+    // Asegurar silenciado para que el móvil permita reproducir
+    video.muted = true;
+
+    try {
+        await video.play();
+    } catch (error) {
+        console.error("No se pudo reproducir el video:", error);
+        iniciada = false;
+        boton.disabled = false;
+        intro.classList.remove("reproduciendo");
+    }
+});
 
     video.addEventListener("ended", () => {
         if (finalizada) return;
