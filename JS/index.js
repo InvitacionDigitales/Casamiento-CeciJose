@@ -89,12 +89,21 @@ function prepararApertura() {
     let iniciada = false;
     let finalizada = false;
 
-boton.addEventListener("click", async () => {
+video.addEventListener("error", () => {
+        console.error("Error de carga en #video-apertura:", video.error);
+    });
+
+    boton.addEventListener("click", async () => {
         if (iniciada) return;
 
         iniciada = true;
         boton.disabled = true;
         video.muted = true;
+        video.playsInline = true;
+
+        if (video.readyState === 0) {
+            video.load();
+        }
 
         intro.classList.add("reproduciendo");
 
