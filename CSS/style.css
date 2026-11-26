@@ -1358,7 +1358,6 @@ img {
 }
 
 .texto-transferencia {
-    flex: 1 1 200px !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 6px !important;
@@ -3597,30 +3596,68 @@ background:
     }
 }
 
-.boton-copiar-alias {
-    position: relative;
-    top: 5px;
-}
-.opcion-transferencia {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.texto-transferencia,
-.datos-regalo {
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
-.datos-regalo {
-    margin-top: 10px;
+#regalos .opcion-regalo.opcion-transferencia {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    padding: 18px 16px !important;
+    overflow: visible !important;
+    text-align: center !important;
+    background: rgba(255, 252, 245, 0.95) !important;
+    border: 1px solid rgba(155, 122, 72, 0.35) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 12px rgba(73, 53, 38, 0.08) !important;
 }
 
-.boton-copiar-alias {
-    margin: 15px auto 0;
+#regalos .opcion-transferencia .titulo-transferencia {
+    font-family: var(--fuente-elegante), serif !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
 }
 
+#regalos .opcion-transferencia .datos-regalo {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    text-align: center !important;
+    color: var(--marron, #60503e) !important;
+    font-family: var(--fuente-texto), sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    overflow-wrap: anywhere !important;
+}
+
+#regalos .opcion-transferencia #alias-regalo {
+    color: var(--libro-bordo, var(--bordo)) !important;
+    font-weight: 700 !important;
+}
+
+#regalos .opcion-transferencia .boton-copiar-alias {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    flex: 0 0 auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    min-width: 140px !important;
+    max-width: 100% !important;
+    min-height: 44px !important;
+    margin: 4px auto 0 !important;
+    padding: 10px 20px !important;
+    border: 1px solid var(--dorado-claro) !important;
+    border-radius: 20px !important;
+    background: var(--verde) !important;
+    color: var(--blanco) !important;
+    font-family: var(--fuente-texto), sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+}
