@@ -3661,3 +3661,110 @@ background:
     font-weight: 600 !important;
     white-space: nowrap !important;
 }
+
+/* =========================================
+   AJUSTE FOOTER EN CELULARES (ANA · CENTRO · NATA)
+========================================= */
+@media (max-width: 768px) {
+    footer.tana-footer {
+        display: grid !important;
+        grid-template-columns: minmax(68px, 84px) minmax(0, 1fr) minmax(68px, 84px) !important;
+        grid-template-rows: auto !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 0 !important;
+        padding: 18px 10px 26px !important;
+        box-sizing: border-box !important;
+        overflow-x: clip !important;
+    }
+
+    footer.tana-footer .persona-ana {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        align-self: center !important;
+        justify-self: center !important;
+    }
+
+    footer.tana-footer .footer-centro {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        align-self: center !important;
+        justify-self: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        gap: 5px !important;
+    }
+
+    footer.tana-footer .persona-nata {
+        grid-column: 3 !important;
+        grid-row: 1 !important;
+        align-self: center !important;
+        justify-self: center !important;
+    }
+
+    footer.tana-footer .cabeza-marco {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
+        aspect-ratio: 1 / 1 !important;
+        overflow: hidden !important;
+        border-radius: 50% !important;
+    }
+
+    footer.tana-footer .cabeza-marco img,
+    footer.tana-footer .foto-persona,
+    footer.tana-footer .cabeza-foto {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        object-fit: cover !important;
+        object-position: center 25% !important;
+        border-radius: 50% !important;
+    }
+
+    footer.tana-footer .nombre-persona {
+        font-size: 11px !important;
+        line-height: 1.1 !important;
+    }
+
+    footer.tana-footer .marca {
+        font-size: clamp(20px, 5.5vw, 26px) !important;
+        line-height: 1.05 !important;
+    }
+
+    footer.tana-footer .correo {
+        font-size: 10px !important;
+        padding: 4px 8px !important;
+        max-width: 100% !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    footer.tana-footer .copyright {
+        font-size: 9px !important;
+        line-height: 1.25 !important;
+    }
+
+    /* Ubicamos los @instagram debajo de cada foto sin romper las 3 columnas */
+    footer.tana-footer .ig-decorativo {
+        position: static !important;
+        grid-row: 2 !important;
+        align-self: start !important;
+        justify-self: center !important;
+        margin: 0 !important;
+        font-size: 8px !important;
+        letter-spacing: 0.2px !important;
+        opacity: 0.75 !important;
+        white-space: nowrap !important;
+    }
+
+    footer.tana-footer .ig-ana {
+        grid-column: 1 !important;
+    }
+
+    footer.tana-footer .ig-nata {
+        grid-column: 3 !important;
+    }
+}
